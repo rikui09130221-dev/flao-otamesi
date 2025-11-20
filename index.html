@@ -75,31 +75,68 @@
     }
 
     /* ヒーローエリア */
+       /* ヒーローエリア（全面スライドショー） */
     .hero {
-      background: linear-gradient(135deg, #ffcc80, #ffe0b2);
+      position: relative;
+      overflow: hidden;
       border-bottom: 4px solid var(--primary);
+      color: #fff;
+      min-height: 320px;
     }
 
+    /* 背景スライド */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hero-bg .slide.active {
+      opacity: 1;
+    }
+
+    /* 上にかぶせるグラデーション */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(120deg,
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.25)
+      );
+    }
+
+    /* テキスト部分（前面） */
     .hero-inner {
+      position: relative;
+      z-index: 2;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 16px 36px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      gap: 28px;
-      align-items: center;
+      padding: 60px 16px 70px;
     }
 
     .hero-title {
       font-size: 28px;
       font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
+      color: #fff;
+      margin-bottom: 12px;
     }
 
     .hero-sub {
       font-size: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      color: #f5f5f5;
+      max-width: 640px;
     }
 
     .hero-badges {
@@ -113,25 +150,15 @@
       font-size: 11px;
       padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(0,0,0,0.06);
-      color: #5d4037;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
     }
 
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
     }
 
     .btn-primary {
@@ -145,13 +172,14 @@
 
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--primary-dark);
-      color: var(--primary-dark);
+      border: 2px solid #ffffff;
+      color: #ffffff;
     }
 
     .btn-outline:hover {
-      background: rgba(0,0,0,0.06);
+      background: rgba(255, 255, 255, 0.12);
     }
+
 
     /* ★ スライドショー部分 ★ */
     .hero-slider {
@@ -376,41 +404,41 @@
     </div>
   </header>
 
-  <!-- ヒーロー（左：テキスト / 右：スライドショー） -->
+    <!-- ヒーロー：全面スライドショー＋テキスト -->
   <section class="hero">
+    <!-- 背景スライドたち -->
+    <div class="hero-bg">
+      <img src="HP1.jpg.jpg" alt="ラオスの様子1" class="slide active">
+      <img src="HP2.jpg.jpg" alt="ラオスの様子2" class="slide">
+      <img src="HP3.jpg.jpg" alt="ラオスの様子3" class="slide">
+      <img src="HP4.jpg.jpg" alt="ラオスの様子4" class="slide">
+      <img src="HP5.jpg.jpg" alt="ラオスの様子5" class="slide">
+      <img src="HP6.jpg.jpg" alt="ラオスの様子6" class="slide">
+    </div>
+
+    <!-- 写真の上にかぶせるグラデーション -->
+    <div class="hero-overlay"></div>
+
+    <!-- 手前側のテキスト・ボタン -->
     <div class="hero-inner">
-      <div>
-        <h1 class="hero-title">コーヒーと教育支援で、ラオスの子どもたちの「将来の選択肢」をひろげる。</h1>
-        <p class="hero-sub">
-          Smile F LAOS（通称エフラオ）は、ラオスの農家さんのコーヒーやワークショップを通して、子どもたちの学びと出会いをつくる東洋大学の学生サークルです。
-        </p>
-        <div class="hero-badges">
-          <span class="badge">フェアトレードコーヒー</span>
-          <span class="badge">職業図鑑プロジェクト</span>
-          <span class="badge">学童ワークショップ</span>
-        </div>
-        <div class="hero-buttons">
-          <a href="#activities" class="btn btn-primary">活動内容を見る</a>
-          <a href="gallery.html" class="btn btn-outline">写真ギャラリーへ</a>
-        </div>
+      <h1 class="hero-title">
+        コーヒーと教育支援で、ラオスの子どもたちの「将来の選択肢」をひろげる。
+      </h1>
+      <p class="hero-sub">
+        Smile F LAOS（通称エフラオ）は、ラオスの農家さんのコーヒーやワークショップを通して、子どもたちの学びと出会いをつくる東洋大学の学生サークルです。
+      </p>
+      <div class="hero-badges">
+        <span class="badge">フェアトレードコーヒー</span>
+        <span class="badge">職業図鑑プロジェクト</span>
+        <span class="badge">学童ワークショップ</span>
       </div>
-
-      <div class="hero-slider">
-  <div class="slider">
-    <img src="HP1.jpg.jpg" alt="写真1" class="slide active">
-    <img src="HP2.jpg.jpg" alt="写真2" class="slide">
-    <img src="HP3.jpg.jpg" alt="写真3" class="slide">
-    <img src="HP4.jpg.jpg" alt="写真4" class="slide">
-    <img src="HP5.jpg.jpg" alt="写真5" class="slide">
-    <img src="HP6.jpg.jpg" alt="写真6" class="slide">
-  </div>
-  <p class="hero-slider-caption">スタディツアーで出会った、ラオスの子どもたちと風景。</p>
-</div>
-
-        <p class="hero-slider-caption">スタディツアーで出会った、ラオスの子どもたちと風景。</p>
+      <div class="hero-buttons">
+        <a href="#activities" class="btn btn-primary">活動内容を見る</a>
+        <a href="gallery.html" class="btn btn-outline">写真ギャラリーへ</a>
       </div>
     </div>
   </section>
+
 
   <!-- ここから下は前と同じ構成（団体紹介・活動内容など） -->
   <main class="wrapper">
