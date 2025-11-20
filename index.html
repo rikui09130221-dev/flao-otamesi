@@ -24,17 +24,20 @@
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
-    }
+      padding-top: 60px;   /* ← ヘッダーの高さ分だけ下げる */
+}
 
     /* ヘッダー & ナビ */
     header {
-      position: sticky;
+      position: fixed;          /* ← sticky から fixed に変更 */
       top: 0;
-      z-index: 50;
+      left: 0;
+      right: 0;
+      z-index: 100;
       background: var(--primary);
       color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
+}
 
     .header-inner {
       max-width: 1100px;
