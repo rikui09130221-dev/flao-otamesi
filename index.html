@@ -3,37 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smile F LAOS｜ホームページ（テスト版）</title>
+  <title>Smile F LAOS｜学生によるラオス支援サークル</title>
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      background: #f5f5f5;
+    :root {
+      --primary: #c62828;
+      --primary-dark: #8e0000;
+      --accent: #ffb74d;
+      --bg: #f5f5f5;
+      --text-main: #212121;
     }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* ヘッダー & ナビ */
     header {
-      background: #c62828;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--primary);
       color: #fff;
-      padding: 16px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .logo span {
+      font-size: 12px;
+      display: block;
+      opacity: 0.8;
     }
 
     nav {
-      background: #b71c1c;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px 8px;
+      gap: 18px;
+      font-size: 14px;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      font-size: 14px;
       font-weight: 600;
     }
 
@@ -41,110 +74,471 @@
       text-decoration: underline;
     }
 
+    /* ヒーローエリア */
     .hero {
-      padding: 40px 20px;
-      text-align: center;
-      background: #ffe0b2;
+      background: linear-gradient(135deg, #ffcc80, #ffe0b2);
+      border-bottom: 4px solid var(--primary);
     }
 
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: 26px;
-      color: #bf360c;
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 28px;
+      align-items: center;
     }
 
-    .hero p {
-      margin: 0;
+    .hero-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
       font-size: 15px;
+      margin-bottom: 20px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 16px 40px;
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
     }
 
-    section {
-      background: #fff;
-      border-radius: 8px;
-      padding: 20px 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    .badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      color: #5d4037;
     }
 
-    section h2 {
-      margin-top: 0;
-      font-size: 18px;
-      border-left: 5px solid #c62828;
-      padding-left: 10px;
-      color: #c62828;
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    footer {
-      text-align: center;
-      padding: 12px;
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #6a0000;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-dark);
+      color: var(--primary-dark);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* ★ スライドショー部分 ★ */
+    .hero-slider {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      background: #000;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .hero-slider-caption {
       font-size: 12px;
+      color: #444;
+      text-align: right;
+    }
+
+    /* メインコンテンツ */
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 20px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* 3カラム 活動紹介カード */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    .card {
+      border-radius: 10px;
+      border: 1px solid #eee;
+      padding: 14px 12px 12px;
+      background: #fff;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #ffecb3;
+      color: #795548;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* 2カラム セクション */
+    .two-cols {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .pill-list li {
+      background: #f1f1f1;
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    /* お知らせ */
+    .news-list {
+      list-style: none;
+      font-size: 13px;
+    }
+
+    .news-item + .news-item {
+      margin-top: 8px;
+      border-top: 1px dashed #eee;
+      padding-top: 6px;
+    }
+
+    .news-date {
+      font-weight: 600;
+      margin-right: 6px;
+      color: #555;
+    }
+
+    /* Call to action */
+    .cta {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 6px;
+    }
+
+    .cta p {
+      margin-bottom: 10px;
+    }
+
+    /* フッター */
+    footer {
       background: #212121;
       color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
     }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 22px;
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
+
       nav {
         gap: 10px;
+        font-size: 13px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 26px 14px 22px;
+      }
+
+      .hero-title {
+        font-size: 22px;
+      }
+
+      .wrapper {
+        margin-top: 18px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .two-cols {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <header>Smile F LAOS（エフラオ）</header>
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        Smile F LAOS
+        <span>ラオスと日本をつなぐ学生サークル</span>
+      </div>
+      <nav>
+        <a href="#about">団体紹介</a>
+        <a href="#activities">活動内容</a>
+        <a href="gallery.html">写真ギャラリー</a>
+        <a href="#join">参加したい方へ</a>
+      </nav>
+    </div>
+  </header>
 
-  <nav>
-    <a href="#">ホーム</a>
-    <a href="#">団体紹介</a>
-    <a href="#">活動内容</a>
-    <a href="gallery.html">写真ギャラリー</a>
-    <a href="#">お問い合わせ</a>
-  </nav>
+  <!-- ヒーロー（左：テキスト / 右：スライドショー） -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-title">コーヒーと教育支援で、ラオスの子どもたちの「将来の選択肢」をひろげる。</h1>
+        <p class="hero-sub">
+          Smile F LAOS（通称エフラオ）は、ラオスの農家さんのコーヒーやワークショップを通して、子どもたちの学びと出会いをつくる東洋大学の学生サークルです。
+        </p>
+        <div class="hero-badges">
+          <span class="badge">フェアトレードコーヒー</span>
+          <span class="badge">職業図鑑プロジェクト</span>
+          <span class="badge">学童ワークショップ</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="#activities" class="btn btn-primary">活動内容を見る</a>
+          <a href="gallery.html" class="btn btn-outline">写真ギャラリーへ</a>
+        </div>
+      </div>
 
-  <div class="hero">
-    <h1>ラオスと日本をつなぐ、学生ボランティア団体</h1>
-    <p>コーヒー・教育支援・ワークショップを通して、子どもたちの未来の選択肢を広げます。</p>
+      <div class="hero-slider">
+  <div class="slider">
+    <img src="HP1.jpg.jpg" alt="写真1" class="slide active">
+    <img src="HP2.jpg.jpg" alt="写真2" class="slide">
+    <img src="HP3.jpg.jpg" alt="写真3" class="slide">
+    <img src="HP4.jpg.jpg" alt="写真4" class="slide">
+    <img src="HP5.jpg.jpg" alt="写真5" class="slide">
+    <img src="HP6.jpg.jpg" alt="写真6" class="slide">
   </div>
+  <p class="hero-slider-caption">スタディツアーで出会った、ラオスの子どもたちと風景。</p>
+</div>
 
-  <div class="container">
-    <section>
-      <h2>Smile F LAOSとは？</h2>
+        <p class="hero-slider-caption">スタディツアーで出会った、ラオスの子どもたちと風景。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ここから下は前と同じ構成（団体紹介・活動内容など） -->
+  <main class="wrapper">
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2 class="section-title">Smile F LAOSとは？</h2>
+        <div class="section-sub">About us</div>
+      </div>
       <p>
-        Smile F LAOS（通称：エフラオ）は、ラオスの農家さんからフェアトレードで仕入れたコーヒー豆を学生が製品化し、販売で得た利益の一部をラオスの子どもたちの教育支援に充てる――そんな“循環型の支援”を行う東洋大学の学生団体です。
-
-生産者と学生、そしてお客様が共につくるこの仕組みを通して、
-「継続可能な支援」と「より豊かな学びの機会」をラオスに届けることを目指しています。
+        Smile F LAOS（エフラオ）は、ラオスの子どもたちの教育支援や文化交流を目的に活動している学生団体です。
+        コーヒー販売・職業図鑑・ワークショップなど、 <strong>「楽しさ」×「学び」</strong> がつながる場づくりを大切にしています。
       </p>
     </section>
 
-    <section>
-      <h2>最近の活動</h2>
-      <ul>
-        <li>職業図鑑（最新版）の制作＆ラオスの学校への寄贈準備</li>
-        <li>大学祭でのラオスコーヒー販売と活動紹介ブース出展</li>
-        <li>学童での「ラオス×職業」ワークショップ開催</li>
+    <section class="section" id="activities">
+      <div class="section-header">
+        <h2 class="section-title">主な活動</h2>
+        <div class="section-sub">Activities</div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-badge">コーヒー × フェアトレード</div>
+          <h3 class="card-title">ラオス産コーヒーの販売</h3>
+          <p class="card-text">
+            ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、ドリップパックなどに製品化。大学祭や学内販売会で紹介し、売上の一部を教育支援に活用しています。
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-badge">Education</div>
+          <h3 class="card-title">職業図鑑プロジェクト</h3>
+          <p class="card-text">
+            子どもたちが「将来なりたい自分」をイメージできるよう、仕事の内容・なり方・日常とのつながりをまとめた職業図鑑を制作し、ラオスの学校へ寄贈しています。
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-badge">Workshop</div>
+          <h3 class="card-title">学童でのワークショップ</h3>
+          <p class="card-text">
+            日本の学童でラオス紹介や職業クイズ、遊びを組み合わせたワークショップを実施。子どもたちに「世界」と「働く」を身近に感じてもらう時間をつくっています。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">コーヒーと教育支援のサイクル</h2>
+        <div class="section-sub">Our model</div>
+      </div>
+
+      <div class="two-cols">
+        <div>
+          <p>
+            エフラオの活動は、<strong>「コーヒー」</strong> と <strong>「教育支援」</strong> がぐるっと循環するモデルになっています。
+          </p>
+          <ul class="pill-list">
+            <li>ラオスの農家さんからコーヒー豆を購入</li>
+            <li>学生が企画して販売・広報</li>
+            <li>売上の一部を教育支援に活用</li>
+            <li>現地でのニーズを聞きながら支援内容をアップデート</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;">
+            これまでには浄水器やコンポストの設置支援、職業図鑑の制作・寄贈などを行ってきました。<br>
+            今年は、PC・プリンターなど学びの環境を整える支援も検討しています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">お知らせ</h2>
+        <div class="section-sub">News</div>
+      </div>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">2025.11.xx</span>
+          白山祭でのコーヒー販売と活動紹介ブースは無事終了しました。ご来場・ご協力ありがとうございました！
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025.10.xx</span>
+          2025年版 職業図鑑の制作がスタートしました。内容チェックにご協力いただける方も募集中です。
+        </li>
       </ul>
     </section>
 
-    <section>
-      <h2>メンバー募集</h2>
-      <p>
-        エフラオの活動に興味のある方は、SNSやお問い合わせフォームからぜひご連絡ください。  
-        「ラオスが好き」「国際協力に興味がある」「子どもと関わるのが好き」など、きっかけはなんでもOKです。
-      </p>
+    <section class="section" id="join">
+      <div class="section-header">
+        <h2 class="section-title">参加してみたい方へ</h2>
+        <div class="section-sub">Join us</div>
+      </div>
+      <div class="cta">
+        <p>
+          「ラオスが好き」「国際協力に興味がある」「子どもと関わるのが好き」  
+          そんな人は、きっとエフラオと相性ばっちりです。
+        </p>
+        <p>
+          新歓情報や活動の様子は、SNSや写真ギャラリーでも発信していきます。  
+          気になった方は、メンバーやSNS経由で気軽に声をかけてください。
+        </p>
+      </div>
     </section>
-  </div>
+  </main>
 
   <footer>
     © 2025 Smile F LAOS
   </footer>
+
+  <!-- ★ スライドショー用のシンプルなJS ★ -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(next) {
+      slides[current].classList.remove('active');
+      current = (next + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    if (slides.length > 0) {
+      slides[0].classList.add('active');
+      setInterval(() => showSlide(current + 1), 5000); // 5秒ごとに切り替え
+    }
+  </script>
 </body>
 </html>
