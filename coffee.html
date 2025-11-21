@@ -369,6 +369,43 @@
       content: "← ";
     }
 
+    .page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* 既存の back-link はそのまま利用 */
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+
+/* 左の「←」は活動一覧だけにつけたいので back-link-main には付けない */
+.back-link::before {
+  content: "← ";
+}
+
+/* メインのリンク（販売会お知らせボタン）用のスタイル */
+.back-link-main {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.back-link-main::before {
+  content: ""; /* 矢印消す */
+}
+
+.back-link-main:hover {
+  background: #8a3f25; /* ちょっと濃い色に */
+}
+
     /* フッター */
     footer {
       background: #212121;
@@ -625,7 +662,17 @@
     </p>
   </section>
 
-  <a href="index.html#activities" class="back-link">活動一覧に戻る</a>
+  <div class="page-links">
+  <a href="index.html#activities" class="back-link">
+    活動一覧に戻る
+  </a>
+
+  <!-- ★ お知らせ（販売会予定）へのリンク ★ -->
+  <a href="index.html#news" class="back-link back-link-main">
+    今後の販売会のお知らせを見る
+  </a>
+</div>
+
 </main>
 
 <footer>
