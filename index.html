@@ -288,6 +288,29 @@ header {
       font-size: 14px;
     }
 
+        /* ▼ カード全体をリンクっぽくする ▼ */
+    .card-link {
+      text-decoration: none;   /* 下線を消す */
+      color: inherit;          /* 文字色はそのまま継承 */
+      display: block;          /* aタグ全体をブロックにしてカードごとクリック可能に */
+      border-radius: 10px;
+      transition: 0.25s ease;
+    }
+
+    /* ▼ ホバーしたときの演出 ▼ */
+    .card-link:hover .card {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+      transform: translateY(-4px);
+      border-color: var(--primary);  /* エフラオカラーの枠線に */
+    }
+
+    /* キーボード操作時のフォーカスも見えるように（おまけ） */
+    .card-link:focus-visible .card {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    
     .card-text {
       font-size: 13px;
       color: #555;
@@ -458,31 +481,41 @@ header {
         <div class="section-sub">Activities</div>
       </div>
 
-      <div class="cards">
-        <article class="card">
-          <div class="card-badge">coffee</div>
-          <h3 class="card-title">ラオス産コーヒーの販売</h3>
-          <p class="card-text">
-            ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
-          </p>
-        </article>
+            <div class="cards">
+        <!-- ラオス産コーヒー 詳細ページへ -->
+        <a href="coffee.html" class="card-link">
+          <article class="card">
+            <div class="card-badge">coffee</div>
+            <h3 class="card-title">ラオス産コーヒーの販売</h3>
+            <p class="card-text">
+              ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
+            </p>
+          </article>
+        </a>
 
-        <article class="card">
-          <div class="card-badge">Education</div>
-          <h3 class="card-title">教育支援</h3>
-          <p class="card-text">
-            毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
-          </p>
-        </article>
+        <!-- 教育支援 詳細ページへ -->
+        <a href="education.html" class="card-link">
+          <article class="card">
+            <div class="card-badge">Education</div>
+            <h3 class="card-title">教育支援</h3>
+            <p class="card-text">
+              毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
+            </p>
+          </article>
+        </a>
 
-        <article class="card">
-          <div class="card-badge">studytour</div>
-          <h3 class="card-title">スタディツアー</h3>
-          <p class="card-text">
-            毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
-          </p>
-        </article>
+        <!-- スタディツアー 詳細ページへ -->
+        <a href="studytour.html" class="card-link">
+          <article class="card">
+            <div class="card-badge">studytour</div>
+            <h3 class="card-title">スタディツアー</h3>
+            <p class="card-text">
+              毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
+            </p>
+          </article>
+        </a>
       </div>
+
     </section>
 
     <section class="section">
