@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スタディツアー｜Smile F LAOS</title>
+  <style>
+    :root { --primary:#a44f30; --primary-dark:#a44f30; --bg:#ffffff; --text-main:#000; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);color:var(--text-main);line-height:1.7;padding-top:60px;
+    }
+    header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--primary);color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+    .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
+    .logo{font-weight:800;font-size:20px;letter-spacing:.05em;}
+    .logo span{font-size:12px;display:block;opacity:.8;}
+    nav{display:flex;gap:18px;font-size:14px;}
+    nav a{color:#fff;text-decoration:none;font-weight:600;}
+    nav a:hover{text-decoration:underline;}
+
+    .wrapper{max-width:1100px;margin:24px auto 40px;padding:0 16px;}
+    .page-hero{background:#fff5ee;border-radius:12px;padding:20px 18px 18px;margin-bottom:20px;border-left:5px solid var(--primary);}
+    .page-title{font-size:22px;font-weight:800;margin-bottom:6px;}
+    .page-sub{font-size:13px;color:#777;}
+
+    .section{background:#fff;border-radius:12px;padding:20px 18px 18px;margin-bottom:18px;box-shadow:0 2px 6px rgba(0,0,0,.05);font-size:14px;}
+    .section h2{font-size:17px;margin-bottom:8px;color:var(--primary-dark);}
+    .section h3{font-size:15px;margin:14px 0 6px;color:var(--primary-dark);}
+    ul{padding-left:1.2em;} li{margin-bottom:4px;}
+
+    .back-link{display:inline-block;margin-top:12px;font-size:13px;text-decoration:none;color:var(--primary-dark);}
+    .back-link::before{content:"← ";}
+
+    footer{background:#212121;color:#eee;text-align:center;padding:14px 8px;font-size:12px;margin-top:24px;}
+
+    @media(max-width:768px){
+      .header-inner{flex-direction:column;align-items:flex-start;gap:6px;}
+      nav{font-size:13px;gap:10px;}
+      .page-title{font-size:19px;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      Smile F LAOS
+      <span>ラオスと日本をつなぐ学生サークル</span>
+    </div>
+    <nav>
+      <a href="index.html#about">団体紹介</a>
+      <a href="index.html#activities">活動内容</a>
+      <a href="gallery.html">写真ギャラリー</a>
+      <a href="index.html#join">参加したい方へ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrapper">
+  <div class="page-hero">
+    <div class="page-title">スタディツアー</div>
+    <div class="page-sub">ラオスの空気を「体感」しながら学ぶ10日間</div>
+  </div>
+
+  <section class="section">
+    <h2>スタディツアーとは？</h2>
+    <p>
+      エフラオが毎年12月ごろに実施している約10日間のラオス訪問プログラムです。
+      コーヒー農家さんや教育局、現地の学校、村の人たちとの交流を通して、
+      「支援される側」「支援する側」という関係を超えた、顔の見えるつながりをつくることを大切にしています。
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>主なプログラム</h2>
+
+    <h3>① 小学校での交流・ワークショップ</h3>
+    <p>
+      ラオスの小学校を訪問し、図鑑の紹介や授業見学、簡単な遊びや交流を行います。
+      子どもたちの笑顔や、学校の雰囲気を肌で感じることができる時間です。
+    </p>
+
+    <h3>② コーヒー農家さんの訪問</h3>
+    <p>
+      実際にコーヒーが栽培・加工されている農園を訪れ、栽培の工夫や収穫の大変さ、
+      価格の変動などについてお話を聞きます。日本で販売しているコーヒーが、
+      どのような現場から届いているのかを学びます。
+    </p>
+
+    <h3>③ ホームステイ・家計調査</h3>
+    <p>
+      農家さんの家に泊まり込み、生活を共にするホームステイを行う年もあります。
+      必要に応じて家計調査なども行い、支援の方向性を考えるための情報を集めます。
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>参加すると得られるもの</h2>
+    <ul>
+      <li>「国際協力」や「フェアトレード」が自分ごととしてイメージできる</li>
+      <li>ラオスの人たちとの実際のつながりができる</li>
+      <li>自分がこれからどんな関わり方をしたいか考えるきっかけになる</li>
+    </ul>
+    <p>
+      ツアーはあくまで「きっかけ」であり、帰国後の活動や、ラオスとの関わり方を
+      一緒に考えていくことを大事にしています。
+    </p>
+  </section>
+
+  <a href="index.html#activities" class="back-link">活動一覧に戻る</a>
+</main>
+
+<footer>
+  © 2025 Smile F LAOS
+</footer>
+</body>
+</html>
