@@ -5,6 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ラオス産コーヒーの販売｜Smile F LAOS</title>
   <style>
+    /* 中煎り・深煎りの図っぽい表示 */
+.roast-compare {
+  background: #fff8f3;
+}
+
+.roast-compare-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* 共通カード */
+.roast-card {
+  flex: 1 1 260px;
+  border-radius: 12px;
+  padding: 16px 14px 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 上のラベル帯 */
+.roast-label {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* 中煎り＝緑、深煎り＝茶色 ※ここ重要 */
+.roast-card--medium {
+  border-top: 6px solid #3aa86b;
+}
+.roast-card--medium .roast-label {
+  background: #3aa86b;
+}
+
+.roast-card--dark {
+  border-top: 6px solid #a44f30;
+}
+.roast-card--dark .roast-label {
+  background: #a44f30;
+}
+
+.roast-note {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* 簡易グラフ（酸味／コク） */
+.roast-bars {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.roast-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.roast-bar-label {
+  width: 42px;
+}
+
+.roast-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.roast-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* 中煎りバーの色 */
+.roast-card--medium .roast-bar-fill {
+  background: linear-gradient(90deg, #a8e2c0, #3aa86b);
+}
+
+/* 深煎りバーの色 */
+.roast-card--dark .roast-bar-fill {
+  background: linear-gradient(90deg, #f0c0a4, #a44f30);
+}
+
+/* ほんのりアイコンっぽい丸 */
+.roast-icon {
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.roast-card--medium .roast-icon {
+  background: #3aa86b;
+}
+.roast-card--dark .roast-icon {
+  background: #a44f30;
+}
+
     :root {
       --primary: #a44f30;
       --primary-dark: #a44f30;
@@ -315,14 +425,71 @@
       </article>
 
       <!-- 焙煎度と飲み方 -->
-      <article class="bean-card">
-        <h3>中煎りと深煎りの2種類</h3>
-        <p>飲み方や気分に合わせて、2つの焙煎度から選んで楽しんでいただけます。</p>
-        <ul>
-          <li><strong>中煎り：</strong>酸味とコクのバランスがよく、ホットコーヒーに最適。</li>
-          <li><strong>深煎り：</strong>しっかりとしたコクと香ばしさがあり、アイスコーヒーにぴったり。</li>
-        </ul>
-      </article>
+        <section class="section roast-compare">
+    <h2>中煎りと深煎りの2種類</h2>
+    <p style="font-size:13px; margin-top:4px;">
+      飲み方や気分に合わせて、2つの焙煎度から選んで楽しんでいただけます。
+    </p>
+
+    <div class="roast-compare-grid">
+      <!-- 中煎りカード -->
+      <div class="roast-card roast-card--medium">
+        <span class="roast-label">中煎り（ミディアム）</span>
+        <p class="roast-note">
+          酸味とコクのバランスがよく、後味はすっきり。<br>
+          ホットコーヒーで、華やかな香りを楽しみたい方におすすめです。
+        </p>
+
+        <div class="roast-bars">
+          <div class="roast-bar-row">
+            <span class="roast-bar-label">酸味</span>
+            <div class="roast-bar-track">
+              <!-- 70%くらい -->
+              <div class="roast-bar-fill" style="width:70%;"></div>
+            </div>
+          </div>
+          <div class="roast-bar-row">
+            <span class="roast-bar-label">コク</span>
+            <div class="roast-bar-track">
+              <!-- 50%くらい -->
+              <div class="roast-bar-fill" style="width:50%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roast-icon"></div>
+      </div>
+
+      <!-- 深煎りカード -->
+      <div class="roast-card roast-card--dark">
+        <span class="roast-label">深煎り（ダーク）</span>
+        <p class="roast-note">
+          しっかりとしたコクと香ばしさがあり、ミルクとも相性◎。<br>
+          アイスコーヒーや、濃いめの味わいが好きな方にぴったりです。
+        </p>
+
+        <div class="roast-bars">
+          <div class="roast-bar-row">
+            <span class="roast-bar-label">酸味</span>
+            <div class="roast-bar-track">
+              <!-- 30%くらい -->
+              <div class="roast-bar-fill" style="width:30%;"></div>
+            </div>
+          </div>
+          <div class="roast-bar-row">
+            <span class="roast-bar-label">コク</span>
+            <div class="roast-bar-track">
+              <!-- 85%くらい -->
+              <div class="roast-bar-fill" style="width:85%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roast-icon"></div>
+      </div>
+    </div>
+  </section>
+
 
       <!-- 国内焙煎・鮮度 -->
       <article class="bean-card">
