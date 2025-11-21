@@ -11,7 +11,7 @@
       --accent: #a44f30;
       --bg: #ffffff;
       --text-main: #000000;
-}
+    }
 
     * {
       box-sizing: border-box;
@@ -25,19 +25,19 @@
       color: var(--text-main);
       line-height: 1.7;
       padding-top: 60px;   
-}
+    }
 
-   /* ヘッダー & ナビ */
-header {
+    /* ヘッダー & ナビ */
+    header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: #a44f30;   /* ← 茶色に変更 */
+      background: #a44f30;   /* 茶色 */
       color: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+    }
 
     .header-inner {
       max-width: 1100px;
@@ -48,10 +48,14 @@ header {
       padding: 10px 16px;
     }
 
+    /* ▼ ロゴをリンクにしてもデザインが崩れないように調整 ▼ */
     .logo {
       font-weight: 800;
       font-size: 20px;
       letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
     }
 
     .logo span {
@@ -77,8 +81,7 @@ header {
       text-decoration: underline;
     }
 
-    /* ヒーローエリア */
-       /* ヒーローエリア（全面スライドショー） */
+    /* ヒーローエリア（全面スライドショー） */
     .hero {
       position: relative;
       overflow: hidden;
@@ -167,6 +170,13 @@ header {
     .btn-primary {
       background: var(--primary-dark);
       color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: none;
+      display: inline-block;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
     }
 
     .btn-primary:hover {
@@ -177,14 +187,18 @@ header {
       background: transparent;
       border: 2px solid #ffffff;
       color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      display: inline-block;
+      font-size: 13px;
+      text-decoration: none;
     }
 
     .btn-outline:hover {
       background: rgba(255, 255, 255, 0.12);
     }
 
-
-    /* ★ スライドショー部分 ★ */
+    /* スライドショー部分（個別） */
     .hero-slider {
       display: flex;
       flex-direction: column;
@@ -288,29 +302,26 @@ header {
       font-size: 14px;
     }
 
-        /* ▼ カード全体をリンクっぽくする ▼ */
+    /* カード全体をリンクっぽくする */
     .card-link {
-      text-decoration: none;   /* 下線を消す */
-      color: inherit;          /* 文字色はそのまま継承 */
-      display: block;          /* aタグ全体をブロックにしてカードごとクリック可能に */
+      text-decoration: none;
+      color: inherit;
+      display: block;
       border-radius: 10px;
       transition: 0.25s ease;
     }
 
-    /* ▼ ホバーしたときの演出 ▼ */
     .card-link:hover .card {
       box-shadow: 0 6px 16px rgba(0,0,0,0.18);
       transform: translateY(-4px);
-      border-color: var(--primary);  /* エフラオカラーの枠線に */
+      border-color: var(--primary);
     }
 
-    /* キーボード操作時のフォーカスも見えるように（おまけ） */
     .card-link:focus-visible .card {
       outline: 2px solid var(--primary);
       outline-offset: 3px;
     }
 
-    
     .card-text {
       font-size: 13px;
       color: #555;
@@ -391,7 +402,6 @@ header {
       }
 
       .hero-inner {
-        grid-template-columns: 1fr;
         padding: 26px 14px 22px;
       }
 
@@ -417,10 +427,11 @@ header {
   <!-- ヘッダー -->
   <header>
     <div class="header-inner">
-      <div class="logo">
+      <!-- ▼ ロゴをクリックすると常にトップページへ戻る ▼ -->
+      <a href="index.html" class="logo">
         Smile F LAOS
         <span>ラオスと日本をつなぐ学生サークル</span>
-      </div>
+      </a>
       <nav>
         <a href="#about">団体紹介</a>
         <a href="#activities">活動内容</a>
@@ -430,7 +441,7 @@ header {
     </div>
   </header>
 
-    <!-- ヒーロー：全面スライドショー＋テキスト -->
+  <!-- ヒーロー：全面スライドショー＋テキスト -->
   <section class="hero">
     <!-- 背景スライドたち -->
     <div class="hero-bg">
@@ -451,7 +462,8 @@ header {
         １杯のコーヒーがつなぐラオスのこども達の笑顔
       </h1>
       <p class="hero-sub">
-        Smile F LAOS（通称エフラオ）は、ラオスのフェアトレードコーヒーを学生が製品化・販売し、<br>その利益をこどもたちの教育支援へと循環させる活動を行う東洋大学の学生サークルです。
+        Smile F LAOS（通称エフラオ）は、ラオスのフェアトレードコーヒーを学生が製品化・販売し、<br>
+        その利益をこどもたちの教育支援へと循環させる活動を行う東洋大学の学生サークルです。
       </p>
       <div class="hero-badges">
         <span class="badge">フェアトレードコーヒー</span>
@@ -461,8 +473,7 @@ header {
     </div>
   </section>
 
-
-  <!-- ここから下は前と同じ構成（団体紹介・活動内容など） -->
+  <!-- メイン -->
   <main class="wrapper">
     <section class="section" id="about">
       <div class="section-header">
@@ -481,7 +492,7 @@ header {
         <div class="section-sub">Activities</div>
       </div>
 
-            <div class="cards">
+      <div class="cards">
         <!-- ラオス産コーヒー 詳細ページへ -->
         <a href="coffee.html" class="card-link">
           <article class="card">
@@ -559,6 +570,15 @@ header {
           2025年版 職業図鑑の制作がスタートしました。内容チェックにご協力いただける方も募集中です。
         </li>
       </ul>
+      <!-- ▼ お知らせ専用ページへの導線 ▼ -->
+      <div class="cta">
+        <p>
+          今後の販売会やイベントの詳しい予定は、お知らせページにまとめていきます。
+        </p>
+        <p>
+          <a href="news.html" class="btn-primary">お知らせページへ</a>
+        </p>
+      </div>
     </section>
 
     <section class="section" id="join">
@@ -583,7 +603,7 @@ header {
     © 2025 Smile F LAOS
   </footer>
 
-  <!-- ★ スライドショー用のシンプルなJS ★ -->
+  <!-- スライドショー用のシンプルなJS -->
   <script>
     const slides = document.querySelectorAll('.slide');
     let current = 0;
