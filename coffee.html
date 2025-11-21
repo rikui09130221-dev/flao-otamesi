@@ -5,157 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ラオス産コーヒーの販売｜Smile F LAOS</title>
   <style>
-    .ingr-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 24px 20px;
-  margin-top: -10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.ingr-flex {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.ingr-item {
-  flex: 1;
-  min-width: 250px;
-  background: #fff8f4;
-  border-left: 4px solid #a44f30;
-  border-radius: 10px;
-  padding: 16px 14px;
-}
-
-.ingr-item h3 {
-  margin-bottom: 6px;
-  font-size: 15px;
-  color: #a44f30;
-}
-
-.ingr-item p {
-  font-size: 13px;
-  color: #444;
-}
-
-.ingr-icon {
-  font-size: 20px;
-  color: #a44f30;
-  margin-bottom: 4px;
-}
-
-    /* 中煎り・深煎りの図っぽい表示 */
-.roast-compare {
-  background: #fff8f3;
-}
-
-.roast-compare-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-/* 共通カード */
-.roast-card {
-  flex: 1 1 260px;
-  border-radius: 12px;
-  padding: 16px 14px 14px;
-  background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-  position: relative;
-  overflow: hidden;
-}
-
-/* 上のラベル帯 */
-.roast-label {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* 中煎り＝緑、深煎り＝茶色 ※ここ重要 */
-.roast-card--medium {
-  border-top: 6px solid #3aa86b;
-}
-.roast-card--medium .roast-label {
-  background: #3aa86b;
-}
-
-.roast-card--dark {
-  border-top: 6px solid #a44f30;
-}
-.roast-card--dark .roast-label {
-  background: #a44f30;
-}
-
-.roast-note {
-  font-size: 13px;
-  margin-top: 8px;
-}
-
-/* 簡易グラフ（酸味／コク） */
-.roast-bars {
-  margin-top: 10px;
-  font-size: 12px;
-}
-
-.roast-bar-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.roast-bar-label {
-  width: 42px;
-}
-
-.roast-bar-track {
-  flex: 1;
-  height: 6px;
-  border-radius: 999px;
-  background: #eee;
-  overflow: hidden;
-}
-
-.roast-bar-fill {
-  height: 100%;
-  border-radius: 999px;
-}
-
-/* 中煎りバーの色 */
-.roast-card--medium .roast-bar-fill {
-  background: linear-gradient(90deg, #a8e2c0, #3aa86b);
-}
-
-/* 深煎りバーの色 */
-.roast-card--dark .roast-bar-fill {
-  background: linear-gradient(90deg, #f0c0a4, #a44f30);
-}
-
-/* ほんのりアイコンっぽい丸 */
-.roast-icon {
-  position: absolute;
-  right: -18px;
-  bottom: -18px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  opacity: 0.08;
-}
-.roast-card--medium .roast-icon {
-  background: #3aa86b;
-}
-.roast-card--dark .roast-icon {
-  background: #a44f30;
-}
-
     :root {
       --primary: #a44f30;
       --primary-dark: #a44f30;
@@ -198,10 +47,14 @@
       padding: 10px 16px;
     }
 
+    /* index.html と同じノリでロゴをリンク化 */
     .logo {
       font-weight: 800;
       font-size: 20px;
       letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
     }
 
     .logo span {
@@ -317,6 +170,188 @@
       color: var(--primary-dark);
     }
 
+    /* Peaberry 説明ブロック */
+    .section-peaberry {
+      font-size: 14px;
+    }
+
+    .peaberry-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .peaberry-text p + p {
+      margin-top: 6px;
+    }
+
+    .peaberry-point {
+      background: #fff5ee;
+      border-radius: 10px;
+      padding: 12px 12px 10px;
+      font-size: 13px;
+    }
+
+    .peaberry-point h4 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    /* 隙間を埋める特徴カード */
+    .ingr-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      margin-top: -10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .ingr-flex {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .ingr-item {
+      flex: 1;
+      min-width: 250px;
+      background: #fff8f4;
+      border-left: 4px solid #a44f30;
+      border-radius: 10px;
+      padding: 16px 14px;
+    }
+
+    .ingr-item h3 {
+      margin-bottom: 6px;
+      font-size: 15px;
+      color: #a44f30;
+    }
+
+    .ingr-item p {
+      font-size: 13px;
+      color: #444;
+    }
+
+    .ingr-icon {
+      font-size: 20px;
+      color: #a44f30;
+      margin-bottom: 4px;
+    }
+
+    /* 中煎り・深煎りの図っぽい表示 */
+    .roast-compare {
+      /* 背景は他の section と同じ白に統一 */
+      background: #fff;
+    }
+
+    .roast-compare-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    /* 共通カード */
+    .roast-card {
+      flex: 1 1 260px;
+      border-radius: 12px;
+      padding: 16px 14px 14px;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 上のラベル帯 */
+    .roast-label {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* 中煎り＝緑、深煎り＝茶色（ここ重要） */
+    .roast-card--medium {
+      border-top: 6px solid #3aa86b;
+    }
+    .roast-card--medium .roast-label {
+      background: #3aa86b;
+    }
+
+    .roast-card--dark {
+      border-top: 6px solid #a44f30;
+    }
+    .roast-card--dark .roast-label {
+      background: #a44f30;
+    }
+
+    .roast-note {
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    /* 簡易グラフ（酸味／コク） */
+    .roast-bars {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .roast-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .roast-bar-label {
+      width: 42px;
+    }
+
+    .roast-bar-track {
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: #eee;
+      overflow: hidden;
+    }
+
+    .roast-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    /* 中煎りバーの色 */
+    .roast-card--medium .roast-bar-fill {
+      background: linear-gradient(90deg, #a8e2c0, #3aa86b);
+    }
+
+    /* 深煎りバーの色 */
+    .roast-card--dark .roast-bar-fill {
+      background: linear-gradient(90deg, #f0c0a4, #a44f30);
+    }
+
+    /* ほんのりアイコンっぽい丸 */
+    .roast-icon {
+      position: absolute;
+      right: -18px;
+      bottom: -18px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+    .roast-card--medium .roast-icon {
+      background: #3aa86b;
+    }
+    .roast-card--dark .roast-icon {
+      background: #a44f30;
+    }
+
     /* コーヒー豆の特徴カード */
     .beans-section {
       margin-bottom: 22px;
@@ -356,10 +391,16 @@
       margin-top: 4px;
     }
 
-    /* 戻るリンク */
+    /* ページ下のリンク */
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
     .back-link {
       display: inline-block;
-      margin-top: 12px;
       font-size: 13px;
       text-decoration: none;
       color: var(--primary-dark);
@@ -369,42 +410,22 @@
       content: "← ";
     }
 
-    .page-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
-}
+    /* メインボタン（お知らせページ用） */
+    .back-link-main {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
 
-/* 既存の back-link はそのまま利用 */
-.back-link {
-  display: inline-block;
-  font-size: 13px;
-  text-decoration: none;
-  color: var(--primary-dark);
-}
+    .back-link-main::before {
+      content: "";
+    }
 
-/* 左の「←」は活動一覧だけにつけたいので back-link-main には付けない */
-.back-link::before {
-  content: "← ";
-}
-
-/* メインのリンク（販売会お知らせボタン）用のスタイル */
-.back-link-main {
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--primary);
-  color: #fff;
-  font-weight: 600;
-}
-
-.back-link-main::before {
-  content: ""; /* 矢印消す */
-}
-
-.back-link-main:hover {
-  background: #8a3f25; /* ちょっと濃い色に */
-}
+    .back-link-main:hover {
+      background: #8a3f25;
+    }
 
     /* フッター */
     footer {
@@ -442,16 +463,21 @@
       .bean-cards {
         grid-template-columns: 1fr;
       }
+
+      .peaberry-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <div class="logo">
+    <!-- ロゴクリックでトップへ -->
+    <a href="index.html" class="logo">
       Smile F LAOS
       <span>ラオスと日本をつなぐ学生サークル</span>
-    </div>
+    </a>
     <nav>
       <a href="index.html#about">団体紹介</a>
       <a href="index.html#activities">活動内容</a>
@@ -471,7 +497,6 @@
   <!-- 写真＋ざっくり商品紹介 -->
   <section class="product-intro">
     <div class="product-photo-wrap">
-      <!-- ここを実際のファイル名に合わせて変更してね -->
       <img src="HP7.jpg" alt="Smile F LAOSのChampa Coffeeパッケージ写真" class="product-photo">
     </div>
     <div class="product-lead">
@@ -484,70 +509,69 @@
     </div>
   </section>
 
-<section class="section section-peaberry">
-  <h2>エフラオのコーヒー豆の特徴</h2>
+  <section class="section section-peaberry">
+    <h2>エフラオのコーヒー豆の特徴</h2>
 
-  <div class="peaberry-grid">
-    <!-- 左：詳しい説明 -->
-    <div class="peaberry-text">
-      <h3>ピーベリー（Peaberry）100％</h3>
-      <p>
-        最大の特徴は、希少なピーベリー（丸豆）を100％使用していることです。通常のコーヒーチェリーは
-        1つの実の中に2つの豆が入っていますが、ピーベリーはごく稀に1粒だけが育つ丸い豆で、
-        全収穫量のうちわずか数％ほどしか採れません。
-      </p>
-      <p>
-        形が丸く熱が均一に入りやすいため、雑味が少なく、香りが立ち、クリアな味わいが楽しめます。
-      </p>
+    <div class="peaberry-grid">
+      <!-- 左：詳しい説明 -->
+      <div class="peaberry-text">
+        <h3>ピーベリー（Peaberry）100％</h3>
+        <p>
+          最大の特徴は、希少なピーベリー（丸豆）を100％使用していることです。通常のコーヒーチェリーは
+          1つの実の中に2つの豆が入っていますが、ピーベリーはごく稀に1粒だけが育つ丸い豆で、
+          全収穫量のうちわずか数％ほどしか採れません。
+        </p>
+        <p>
+          形が丸く熱が均一に入りやすいため、雑味が少なく、香りが立ち、クリアな味わいが楽しめます。
+        </p>
+      </div>
+
+      <!-- 右：かんたんポイント（重複しない内容） -->
+      <div class="peaberry-point">
+        <h4>ピーベリーのポイント</h4>
+        <ul>
+          <li>収穫量わずか数％の希少な丸豆のみを使用</li>
+          <li>ムラなく焙煎できるので、雑味が少なくクリアな味</li>
+          <li>香りが立ち、後味がすっきりと長く続く</li>
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <!-- 右：かんたんポイントだけ（重複しない内容） -->
-    <div class="peaberry-point">
-      <h4>ピーベリーのポイント</h4>
-      <ul>
-        <li>収穫量わずか数％の希少な丸豆のみを使用</li>
-        <li>ムラなく焙煎できるので、雑味が少なくクリアな味わい</li>
-        <li>香りが立ち、後味がすっきりと長く続く</li>
-      </ul>
+  <!-- 隙間を埋める図解カード -->
+  <section class="section ingr-card">
+    <div class="ingr-flex">
+
+      <div class="ingr-item">
+        <div class="ingr-icon">●</div>
+        <h3>希少な丸豆（ピーベリー）</h3>
+        <p>通常1つの実に2つ入るところ、1粒だけが育つ特別な豆。収穫量のわずか5%ほど。</p>
+      </div>
+
+      <div class="ingr-item">
+        <div class="ingr-icon">◎</div>
+        <h3>雑味が少ない</h3>
+        <p>形が丸く均一に熱が入りやすいため、雑味が少なくクリアで上品な味になります。</p>
+      </div>
+
+      <div class="ingr-item">
+        <div class="ingr-icon">★</div>
+        <h3>香りが立つ</h3>
+        <p>丸豆特有の華やかな香り立ちを感じられます。</p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ★★★ ここから追加！隙間を埋める図解カード ★★★ -->
-<section class="section ingr-card">
-  <div class="ingr-flex">
-
-    <div class="ingr-item">
-      <div class="ingr-icon">●</div>
-      <h3>希少な丸豆（ピーベリー）</h3>
-      <p>通常1つの実に2つ入るところ、1粒だけが育つ特別な豆。収穫量のわずか5%ほど。</p>
-    </div>
-
-    <div class="ingr-item">
-      <div class="ingr-icon">◎</div>
-      <h3>雑味が少ない</h3>
-      <p>形が丸く均一に熱が入りやすいため、雑味が少なくクリアで上品な味になります。</p>
-    </div>
-
-    <div class="ingr-item">
-      <div class="ingr-icon">★</div>
-      <h3>香りが立つ</h3>
-      <p>丸豆特有の華やかな香り立ちを感じられます。</p>
-    </div>
-
-  </div>
-</section>
-<!-- ★★★ ここまで追加 ★★★ -->
-
-      <!-- 焙煎度と飲み方 -->
-        <section class="section roast-compare">
+  <!-- 焙煎度と飲み方 -->
+  <section class="section roast-compare">
     <h2>中煎りと深煎りの2種類</h2>
     <p style="font-size:13px; margin-top:4px;">
       飲み方や気分に合わせて、2つの焙煎度から選んで楽しんでいただけます。
     </p>
 
     <div class="roast-compare-grid">
-      <!-- 中煎りカード -->
+      <!-- 中煎りカード（緑） -->
       <div class="roast-card roast-card--medium">
         <span class="roast-label">中煎り（ミディアム）</span>
         <p class="roast-note">
@@ -559,14 +583,12 @@
           <div class="roast-bar-row">
             <span class="roast-bar-label">酸味</span>
             <div class="roast-bar-track">
-              <!-- 70%くらい -->
               <div class="roast-bar-fill" style="width:70%;"></div>
             </div>
           </div>
           <div class="roast-bar-row">
             <span class="roast-bar-label">コク</span>
             <div class="roast-bar-track">
-              <!-- 50%くらい -->
               <div class="roast-bar-fill" style="width:50%;"></div>
             </div>
           </div>
@@ -575,7 +597,7 @@
         <div class="roast-icon"></div>
       </div>
 
-      <!-- 深煎りカード -->
+      <!-- 深煎りカード（茶色） -->
       <div class="roast-card roast-card--dark">
         <span class="roast-label">深煎り（ダーク）</span>
         <p class="roast-note">
@@ -587,14 +609,12 @@
           <div class="roast-bar-row">
             <span class="roast-bar-label">酸味</span>
             <div class="roast-bar-track">
-              <!-- 30%くらい -->
               <div class="roast-bar-fill" style="width:30%;"></div>
             </div>
           </div>
           <div class="roast-bar-row">
             <span class="roast-bar-label">コク</span>
             <div class="roast-bar-track">
-              <!-- 85%くらい -->
               <div class="roast-bar-fill" style="width:85%;"></div>
             </div>
           </div>
@@ -605,7 +625,11 @@
     </div>
   </section>
 
+  <!-- 豆のこだわり（2枚のカードに整理） -->
+  <section class="section beans-section">
+    <h2 class="beans-section-title">焙煎と味わいのこだわり</h2>
 
+    <div class="bean-cards">
       <!-- 国内焙煎・鮮度 -->
       <article class="bean-card">
         <h3>国内焙煎・新鮮さへのこだわり</h3>
@@ -662,16 +686,17 @@
     </p>
   </section>
 
+  <!-- 戻りリンク＋お知らせページ導線 -->
   <div class="page-links">
-  <a href="index.html#activities" class="back-link">
-    活動一覧に戻る
-  </a>
+    <a href="index.html#activities" class="back-link">
+      活動一覧に戻る
+    </a>
 
-  <!-- ★ お知らせ（販売会予定）へのリンク ★ -->
-  <a href="index.html#news" class="back-link back-link-main">
-    今後の販売会のお知らせを見る
-  </a>
-</div>
+    <!-- お知らせ（販売会予定）へのリンク -->
+    <a href="news.html" class="back-link back-link-main">
+      今後の販売会のお知らせを見る
+    </a>
+  </div>
 
 </main>
 
