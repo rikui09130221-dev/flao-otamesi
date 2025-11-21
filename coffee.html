@@ -4,189 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ラオス産コーヒーの販売｜Smile F LAOS</title>
-  <style>
-    :root {
-      --primary: #a44f30;
-      --primary-dark: #a44f30;
-      --bg: #ffffff;
-      --text-main: #000000;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
-      padding-top: 60px;
-    }
-    header {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-    }
-    .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.05em; }
-    .logo span { font-size: 12px; display: block; opacity: .8; }
-    nav { display: flex; gap: 18px; font-size: 14px; }
-    nav a { color: #fff; text-decoration: none; font-weight: 600; }
-    nav a:hover { text-decoration: underline; }
+ <style>
+  :root {
+    --primary: #a44f30;
+    --accent-bg: #fff8f3;
+  }
 
-    .wrapper {
-      max-width: 1100px;
-      margin: 24px auto 40px;
-      padding: 0 16px;
-    }
-    .page-hero {
-      background: #fff5ee;
-      border-radius: 12px;
-      padding: 20px 18px 18px;
-      margin-bottom: 20px;
-      border-left: 5px solid var(--primary);
-    }
-    .page-title { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
-    .page-sub { font-size: 13px; color: #777; }
+  body {
+    font-family: system-ui, sans-serif;
+    line-height: 1.85;
+  }
 
-    .section {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px 18px 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      font-size: 14px;
-    }
-    .section h2 {
-      font-size: 17px;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-    }
-    .section h3 {
-      font-size: 15px;
-      margin: 14px 0 6px;
-      color: var(--primary-dark);
-    }
-    ul { padding-left: 1.2em; }
-    li { margin-bottom: 4px; }
+  /* セクションを読みやすく */
+  .coffee-box {
+    background: var(--accent-bg);
+    padding: 22px 24px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    max-width: 800px;  /* ← 読みやすい横幅に調整 */
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .back-link {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 13px;
-      text-decoration: none;
-      color: var(--primary-dark);
-    }
-    .back-link::before { content: "← "; }
+  .coffee-box h2 {
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
 
-    footer {
-      background: #212121;
-      color: #eee;
-      text-align: center;
-      padding: 14px 8px;
-      font-size: 12px;
-      margin-top: 24px;
-    }
+  .coffee-box h3 {
+    font-size: 16px;
+    color: var(--primary);
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
 
-    @media (max-width: 768px) {
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 6px; }
-      nav { font-size: 13px; gap: 10px; }
-      .page-title { font-size: 19px; }
-    }
-.coffee-image-box {
-  width: 100%;
-  margin: 20px 0 30px;
-  text-align: center;
-}
+  .coffee-box p,
+  .coffee-box li {
+    font-size: 15px;
+  }
 
-.coffee-image {
-  width: 85%;
-  max-width: 650px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-    
-  </style>
-</head>
-<body>
-<header>
-  <div class="header-inner">
-    <div class="logo">
-      Smile F LAOS
-      <span>ラオスと日本をつなぐ学生サークル</span>
-    </div>
-    <nav>
-      <a href="index.html#about">団体紹介</a>
-      <a href="index.html#activities">活動内容</a>
-      <a href="gallery.html">写真ギャラリー</a>
-      <a href="index.html#join">参加したい方へ</a>
-    </nav>
-  </div>
-</header>
+  ul {
+    padding-left: 1.2em;
+  }
 
-<main class="wrapper">
-  <div class="page-hero">
-    <div class="page-title">ラオス産コーヒーの販売</div>
-    <div class="page-sub">coffee × fairtrade</div>
-  </div>
+  /* 写真（中央） */
+  .coffee-img {
+    display: block;
+    max-width: 360px;
+    width: 90%;
+    margin: 0 auto 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+</style>
 
-<div class="coffee-image-box">
-  <img src="HP7.jpg" alt="Champa Coffee" class="coffee-image">
+
+<!-- 写真 -->
+<img src="HP7.jpg" alt="チャンパコーヒー" class="coffee-img">
+
+<div class="coffee-box">
+  <h2>エフラオのコーヒー豆の特徴</h2>
+  <p>
+    エフラオのコーヒーは、ラオス南部・パクソン近郊の<strong>ボラヴェン高原</strong>で育てられたアラビカ種のコーヒー豆を使用しています。火山灰土壌と昼夜の寒暖差の大きい気候により、香りが高く雑味の少ない味わいが生まれます。
+  </p>
 </div>
-  
-  <section class="section">
-    <h2>CHAMPA COFFEE</h2>
-    <p>
-      Champa coffeeは、Smile F LAOSがコーヒー豆の焙煎度合いからパッケージデザインまで決定し、製品化したフェアトレードラオスコーヒーです。
-Champa（チャンパ）はラオス語で「プルメリア」という意味です。このプルメリアはラオスの国花であり、花言葉は「気品」とされています。
-     ドリップパックや豆の販売を通して、ラオスの魅力や農家さんのこだわりをキャンパス内外に伝えています。
-    </p>
-  </section>
-  <section class="section">
-    <h2>エフラオのコーヒー豆の特徴</h2>
-    <p>
-      エフラオのコーヒーは、ラオス南部・パクソン近郊の
-      <strong>ボラヴェン高原</strong>で育てられたアラビカ種のコーヒー豆を使用しています。<br>
-      火山灰土壌と昼夜の寒暖差の大きい気候により、香りが高く雑味の少ない味わいが生まれます。
-    </p>
 
-    <h3>ピーベリー（Peaberry）100％</h3>
-    <p>
-      最大の特徴は、<strong>希少なピーベリー（丸豆）を100％使用</strong>していることです。<br>
-      通常のコーヒーチェリーは1つの実の中に2つの豆が入っていますが、ピーベリーは
-      ごく稀に<strong>1粒だけが育つ丸い豆</strong>で、全収穫量のうちわずか数％ほどしか採れません。<br>
-      形が丸く熱が均一に入りやすいため、<strong>雑味が少なく、香りが立ち、クリアな味わい</strong>が楽しめます。
-    </p>
+<div class="coffee-box">
+  <h2>ピーベリー（Peaberry）100％</h2>
+  <p>
+    最大の特徴は、希少な<strong>ピーベリー（丸豆）を100％使用</strong>していることです。  
+    通常のコーヒーチェリーは1つの実の中に2つの豆が入っていますが、ピーベリーはごく稀に<strong>1粒だけが育つ丸い豆</strong>で、全収穫量のうちわずか数％しか採れません。
+  </p>
+  <p>
+    形が丸く熱が均一に入りやすいため、<strong>雑味が少なく、香りが立ち、クリアな味わい</strong>が楽しめます。
+  </p>
+</div>
 
-    <h3>中煎りと深煎りの2種類</h3>
-    <ul>
-      <li><strong>中煎り：</strong>酸味とコクのバランスがよく、ホットコーヒーに最適。</li>
-      <li><strong>深煎り：</strong>しっかりとしたコクと香ばしさがあり、アイスコーヒーにぴったり。</li>
-    </ul>
-    <p>
-      飲み方や気分に合わせて、2つの焙煎度から選んで楽しんでいただけます。
-    </p>
+<div class="coffee-box">
+  <h2>中煎りと深煎りの2種類</h2>
+  <ul>
+    <li><strong>中煎り：</strong>酸味とコクのバランスがよく、ホットコーヒーに最適。</li>
+    <li><strong>深煎り：</strong>しっかりとしたコクと香ばしさがあり、アイスコーヒーにぴったり。</li>
+  </ul>
+  <p>飲み方や気分に合わせて、2つの焙煎度から選んで楽しんでいただけます。</p>
+</div>
 
-    <h3>国内焙煎 × 新鮮さへのこだわり</h3>
-    <p>
-      エフラオのコーヒー豆は<strong>日本国内で焙煎</strong>しており、
-      販売時には<strong>焙煎から1か月以内の新鮮な豆</strong>のみを使用しています。<br>
-      新鮮な豆だからこそ、香りがしっかりと立ち、ピーベリーならではのすっきりとした味わいを感じていただけます。
-    </p>
+<div class="coffee-box">
+  <h2>国内焙煎・新鮮さへのこだわり</h2>
+  <p>
+    エフラオのコーヒー豆は<strong>日本国内で焙煎</strong>しており、販売時には<strong>焙煎から1か月以内</strong>の新鮮な豆のみを使用しています。
+  </p>
+</div>
 
-    <h3>飲みやすく、毎日続けられる一杯を</h3>
-    <p>
-      アラビカ種100％の豆を使ったエフラオのコーヒーは、<strong>香りが豊かで、苦味が穏やか</strong>なのが特徴です。<br>
-      ナッツやチョコレートを思わせる香ばしさと、ほのかな酸味、すっきりとした後味で、
-      「コーヒーがあまり得意ではない」という方からも「飲みやすい」と好評です。
-    </p>
-  </section>
+<div class="coffee-box">
+  <h2>飲みやすく、毎日続けられる一杯</h2>
+  <p>
+    香りが豊かで、苦味が穏やかなのが特徴です。ナッツやチョコレートを思わせるほのかな甘味、すっきりとした後味で、「コーヒーがあまり得意ではない」という方からも好評です。
+  </p>
+</div>
+
 
   <section class="section">
     <h2>どこで販売している？</h2>
