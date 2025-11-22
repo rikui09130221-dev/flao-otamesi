@@ -5,49 +5,324 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>教育支援｜Smile F LAOS</title>
   <style>
-    :root { --primary:#a44f30; --primary-dark:#a44f30; --bg:#ffffff; --text-main:#000; }
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:var(--bg);color:var(--text-main);line-height:1.7;padding-top:60px;
+    :root {
+      --primary: #a44f30;
+      --primary-dark: #a44f30;
+      --bg: #ffffff;
+      --text-main: #000000;
     }
-    header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--primary);color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);}
-    .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;}
-    .logo{font-weight:800;font-size:20px;letter-spacing:.05em;}
-    .logo span{font-size:12px;display:block;opacity:.8;}
-    nav{display:flex;gap:18px;font-size:14px;}
-    nav a{color:#fff;text-decoration:none;font-weight:600;}
-    nav a:hover{text-decoration:underline;}
 
-    .wrapper{max-width:1100px;margin:24px auto 40px;padding:0 16px;}
-    .page-hero{background:#fff5ee;border-radius:12px;padding:20px 18px 18px;margin-bottom:20px;border-left:5px solid var(--primary);}
-    .page-title{font-size:22px;font-weight:800;margin-bottom:6px;}
-    .page-sub{font-size:13px;color:#777;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    .section{background:#fff;border-radius:12px;padding:20px 18px 18px;margin-bottom:18px;box-shadow:0 2px 6px rgba(0,0,0,.05);font-size:14px;}
-    .section h2{font-size:17px;margin-bottom:8px;color:var(--primary-dark);}
-    .section h3{font-size:15px;margin:14px 0 6px;color:var(--primary-dark);}
-    ul{padding-left:1.2em;} li{margin-bottom:4px;}
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-top: 60px;
+    }
 
-    .back-link{display:inline-block;margin-top:12px;font-size:13px;text-decoration:none;color:var(--primary-dark);}
-    .back-link::before{content:"← ";}
+    /* ヘッダー（index / coffee と共通） */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
 
-    footer{background:#212121;color:#eee;text-align:center;padding:14px 8px;font-size:12px;margin-top:24px;}
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
 
-    @media(max-width:768px){
-      .header-inner{flex-direction:column;align-items:flex-start;gap:6px;}
-      nav{font-size:13px;gap:10px;}
-      .page-title{font-size:19px;}
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .logo span {
+      font-size: 12px;
+      display: block;
+      opacity: .8;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* 共通レイアウト */
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .page-hero {
+      background: #fff5ee;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .section p + p {
+      margin-top: 6px;
+    }
+
+    ul {
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    /* これまでの支援（タイムライン風） */
+    .timeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--primary-dark);
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .timeline-desc {
+      margin-top: 2px;
+      color: #444;
+    }
+
+    /* 取り組みカード（今年度など） */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .card {
+      background: #fff5ee;
+      border-radius: 12px;
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #ffecb3;
+      color: #795548;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .card ul {
+      margin-top: 4px;
+    }
+
+    /* 大切にしていること（3カラム→スマホ1カラム） */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .value-item {
+      background: #f7f3f0;
+      border-radius: 10px;
+      padding: 10px 10px 9px;
+    }
+
+    .value-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    /* ページ下のリンク */
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--primary-dark);
+    }
+
+    .back-link::before {
+      content: "← ";
+    }
+
+    .back-link-main {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .back-link-main::before {
+      content: "";
+    }
+
+    .back-link-main:hover {
+      background: #8a3f25;
+    }
+
+    /* フッター */
+    footer {
+      background: #212121;
+      color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      nav {
+        font-size: 13px;
+        gap: 10px;
+      }
+
+      .page-title {
+        font-size: 19px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 <header>
   <div class="header-inner">
-    <div class="logo">
+    <!-- ロゴクリックでトップへ -->
+    <a href="index.html" class="logo">
       Smile F LAOS
       <span>ラオスと日本をつなぐ学生サークル</span>
-    </div>
+    </a>
     <nav>
       <a href="index.html#about">団体紹介</a>
       <a href="index.html#activities">活動内容</a>
@@ -58,47 +333,168 @@
 </header>
 
 <main class="wrapper">
+  <!-- タイトル -->
   <div class="page-hero">
     <div class="page-title">教育支援</div>
-    <div class="page-sub">ラオスの子どもたちの「学びの選択肢」を広げる</div>
+    <div class="page-sub">education support</div>
   </div>
 
+  <!-- エフラオの教育支援とは？ -->
   <section class="section">
-    <h2>エフラオの教育支援の考え方</h2>
+    <div class="section-header">
+      <h2 class="section-title">エフラオの教育支援とは？</h2>
+      <div class="section-sub">What we do</div>
+    </div>
     <p>
-      エフラオの教育支援は、「私たちが一方的に与える支援」ではなく、
-      現地の先生や子どもたちの声を聞きながら、一緒に形にしていくことを大事にしています。
-      どの学校に何を届けるのか、ラオスの教育局やコーディネーターの方と相談しながら決めています。
+      Smile F LAOSでは、コーヒーの売上の一部を活用しながら、ラオスのこどもたちの
+      「学びの選択肢」を広げることを目的とした教育支援を行っています。
+    </p>
+    <p>
+      支援の内容は、年ごとに現地の先生やこどもたちの声を聞きながらアップデートしており、
+      物を届けるだけでなく、ワークショップやスタディツアーを通した「双方向の学び」を大切にしています。
     </p>
   </section>
 
+  <!-- これまでの支援の例 -->
   <section class="section">
-    <h2>これまでに行ってきた主な支援</h2>
+    <div class="section-header">
+      <h2 class="section-title">これまでの支援の例</h2>
+      <div class="section-sub">Past projects</div>
+    </div>
 
-    <h3>職業図鑑の制作・寄贈</h3>
-    <p>
-      子どもたちが「将来なりたい自分」をイメージできるように、日本語・ラオス語・英語で
-      職業の紹介をまとめた職業図鑑を制作し、学校に寄贈してきました。
-      2025年度は、昨年度の図鑑をバージョンアップした改訂版を届ける予定です。
-    </p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2022年ごろ〜</div>
+        <div class="timeline-title">浄水器・コンポストの設置支援</div>
+        <div class="timeline-desc">
+          学校に浄水器やコンポストを設置することで、こどもたちの健康や環境への意識づけにつながる
+          支援を行ってきました。
+        </div>
+      </div>
 
-    <h3>学校設備の環境整備</h3>
-    <p>
-      過去には浄水器やコンポストの設置支援など、子どもたちが安心して学べる環境づくりにも
-      取り組んできました。今後は、学習に使うPC・プリンターなどの機材支援も検討しています。
-    </p>
+      <div class="timeline-item">
+        <div class="timeline-year">2023〜2024年</div>
+        <div class="timeline-title">職業図鑑の制作・寄贈</div>
+        <div class="timeline-desc">
+          ラオス語・日本語でつくった「職業図鑑」を制作し、小学校に寄贈しました。
+          将来の夢を考えるきっかけになるよう、身近な仕事から少し遠い仕事まで、
+          さまざまな職業をイラストと一緒に紹介しています。
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">ワークショップ・交流</div>
+        <div class="timeline-title">小学校での体験型ワークショップ</div>
+        <div class="timeline-desc">
+          スタディツアーの中では、職業をテーマにしたワークショップや、日本の遊びを通じた交流なども
+          行っています。遊びの中で「働くこと」「学ぶこと」を考える時間をつくっています。
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- 2025年度の取り組み -->
   <section class="section">
-    <h2>これからのチャレンジ</h2>
+    <div class="section-header">
+      <h2 class="section-title">2025年度の取り組み</h2>
+      <div class="section-sub">This year's project</div>
+    </div>
+
     <p>
-      学校ごとに必要なものは違います。スタディツアーやオンラインのヒアリングを通して、
-      「本当に必要とされている支援」を一緒に考えながら、無理のない形で続けていくことを目指しています。
-      学生だからこそできるスピード感と柔軟さを活かしつつ、長期的に続く支援の形を模索中です。
+      2025年度は、これまでに寄贈してきた職業図鑑をさらにバージョンアップし、
+      より多くのこどもたちにとって「自分ごと」として読める内容を目指しています。
     </p>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-tag">Project 01</div>
+        <div class="card-title">職業図鑑のアップデート・製本</div>
+        <p>
+          昨年度版の内容を見直し、新しい職業や、こどもたちの声を反映したページを追加します。
+          しっかりと製本した形で寄贈することで、学校図書として長く使ってもらえることを目指しています。
+        </p>
+        <ul>
+          <li>文章・イラストのブラッシュアップ</li>
+          <li>ラオス語訳の確認・調整</li>
+          <li>耐久性を意識した製本</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-tag">Project 02</div>
+        <div class="card-title">授業で使いやすい活用シート</div>
+        <p>
+          図鑑を読んで終わりではなく、「授業でどう使うか」を考えたワークシートも検討しています。
+          先生・こどもたちそれぞれが、図鑑を通じて将来を考えられるような仕掛けづくりを行います。
+        </p>
+        <ul>
+          <li>職業を選んで発表するワーク</li>
+          <li>自分の夢を描くページ</li>
+          <li>先生向けの簡単な活用アイデア</li>
+        </ul>
+      </article>
+    </div>
   </section>
 
-  <a href="index.html#activities" class="back-link">活動一覧に戻る</a>
+  <!-- 大切にしていること -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">大切にしていること</h2>
+      <div class="section-sub">Our values</div>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-title">現地の声を聞くこと</div>
+        <p>
+          どんな支援が必要かは、現場で活動する先生やこどもたちが一番知っています。
+          スタディツアーやオンラインでの対話を通じて、「一緒に考える」ことから始めています。
+        </p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-title">押しつけない支援</div>
+        <p>
+          日本側だけの「やりたいこと」をそのまま持ち込むのではなく、
+          現地の文化や生活に合う形を一緒に探すことを大切にしています。
+        </p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-title">学び合いの関係づくり</div>
+        <p>
+          支援する／されるという一方通行ではなく、日本の学生もラオスのこどもたちから
+          多くのことを学ばせてもらっています。その気づきを今後の活動にも活かしていきます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 現地とのつながり -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">スタディツアーとのつながり</h2>
+      <div class="section-sub">Link to study tours</div>
+    </div>
+    <p>
+      教育支援は、毎年12月に行うスタディツアーと強く結びついています。
+      ツアーの中で行うワークショップやホームステイを通じて、こどもたちの様子や
+      学校の状況を直接見ることができ、その経験が次年度以降の支援内容の見直しにつながります。
+    </p>
+    <p>
+      「目の前にいるこどもたち」の顔を思い浮かべながら、コーヒー販売や支援の企画を進めていくことが、
+      エフラオらしい教育支援のあり方だと考えています。
+    </p>
+
+    <div class="page-links">
+      <a href="studytour.html" class="back-link">
+        スタディツアーについて見る
+      </a>
+      <a href="index.html#activities" class="back-link back-link-main">
+        活動一覧に戻る
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
