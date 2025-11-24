@@ -124,7 +124,7 @@
       color: #555;
     }
 
-    /* 年表（上段） */
+    /* 凡例 */
     .history-legend {
       display: flex;
       gap: 12px;
@@ -151,6 +151,7 @@
       background: #c5e1a5;  /* ラオス */
     }
 
+    /* 年表（上段） */
     .history-table {
       margin-top: 14px;
       border-top: 1px solid #eee;
@@ -159,7 +160,7 @@
 
     .history-row {
       display: grid;
-      grid-template-columns: 90px 1fr 1fr;
+      grid-template-columns: 150px 1fr 1fr;
       gap: 12px;
       padding: 10px 8px;
       border-bottom: 1px solid #f3f3f3;
@@ -249,6 +250,24 @@
       margin-top: 6px;
     }
 
+    /* 年表に戻るボタン（下） */
+    .back-timeline-btn {
+      display: none;
+      margin-top: 14px;
+      padding: 6px 12px;
+      font-size: 13px;
+      border-radius: 8px;
+      border: 1px solid #a44f30;
+      background: #fff;
+      color: #a44f30;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .back-timeline-btn:hover {
+      background: #fff5ee;
+    }
+
     /* 戻りリンク */
     .page-links {
       display: flex;
@@ -328,7 +347,7 @@
     </p>
   </div>
 
-  <!-- 年表（クリックで詳細を切り替える） -->
+  <!-- 年表（クリックで詳細を切り替え） -->
   <section class="section">
     <h2>国内の活動とラオスでの活動</h2>
     <p class="section-lead">
@@ -344,7 +363,7 @@
     <div class="history-table">
       <!-- 2013 -->
       <div class="history-row" data-year="2013">
-        <div class="history-year">2013</div>
+        <div class="history-year">2013年度</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -363,7 +382,7 @@
 
       <!-- 2014 -->
       <div class="history-row" data-year="2014">
-        <div class="history-year">2014</div>
+        <div class="history-year">2014年度（第1期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -383,7 +402,7 @@
 
       <!-- 2015 -->
       <div class="history-row" data-year="2015">
-        <div class="history-year">2015</div>
+        <div class="history-year">2015年度（第2期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -402,7 +421,7 @@
 
       <!-- 2016 -->
       <div class="history-row" data-year="2016">
-        <div class="history-year">2016</div>
+        <div class="history-year">2016年度（第3期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -421,7 +440,7 @@
 
       <!-- 2017 -->
       <div class="history-row" data-year="2017">
-        <div class="history-year">2017</div>
+        <div class="history-year">2017年度（第4期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -440,7 +459,7 @@
 
       <!-- 2018 -->
       <div class="history-row" data-year="2018">
-        <div class="history-year">2018</div>
+        <div class="history-year">2018年度（第5期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -459,7 +478,7 @@
 
       <!-- 2019 -->
       <div class="history-row" data-year="2019">
-        <div class="history-year">2019</div>
+        <div class="history-year">2019年度（第6期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -478,7 +497,7 @@
 
       <!-- 2020 -->
       <div class="history-row" data-year="2020">
-        <div class="history-year">2020</div>
+        <div class="history-year">2020年度（第7期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -497,7 +516,7 @@
 
       <!-- 2021 -->
       <div class="history-row" data-year="2021">
-        <div class="history-year">2021</div>
+        <div class="history-year">2021年度（第8期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -515,7 +534,7 @@
 
       <!-- 2022 -->
       <div class="history-row" data-year="2022">
-        <div class="history-year">2022</div>
+        <div class="history-year">2022年度（第9期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -535,7 +554,7 @@
 
       <!-- 2023 -->
       <div class="history-row" data-year="2023">
-        <div class="history-year">2023</div>
+        <div class="history-year">2023年度（第10期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -553,7 +572,7 @@
 
       <!-- 2024 -->
       <div class="history-row" data-year="2024">
-        <div class="history-year">2024</div>
+        <div class="history-year">2024年度（第11期）</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
@@ -573,7 +592,7 @@
     </div>
 
     <p class="history-note">
-      ※ 年度ごとの詳しい内容は、下の「年度詳細」に表示されます。
+      ※ 年度ごとの詳しい内容は、下の「年度ごとのストーリー」に表示されます。
     </p>
   </section>
 
@@ -823,7 +842,6 @@
       <h3 class="year-detail-heading">2022年度（第9期）｜サークルとして再スタート、2年ぶりの渡航</h3>
       <p class="year-detail-meta">サークル1年目。多くの不安を乗り越えて、2年ぶりにラオスへ渡航した年。</p>
 
-      <!-- 写真 -->
       <!--
       <div class="year-detail-photos">
         <img src="history_photos/2022_1.jpg" alt="2022年度スタディツアーの様子">
@@ -885,7 +903,7 @@
 
     <!-- 2024（第11期） -->
     <div class="year-detail" data-year="2024">
-      <h3 class="year-detail-heading">2024年度（第11期）｜教育支援の方向性が見えてきた年</h3>
+      <h3 class="year-detail-heading">2024年度（第11期）｜教育支援の方向性とクラウドファンディング</h3>
       <p class="year-detail-meta">インフラと学びの中身、その両方をどう支えるかを考え始めたタイミング。</p>
 
       <!--
@@ -907,11 +925,13 @@
           「学びの内容を支える教材」と「学びの環境を支えるインフラ」の両方が必要であることを、
           エフラオの側も強く認識するようになります。
         </p>
-         <p>
-    こうした取り組みを支えるために、クラウドファンディングにも挑戦しました。
-    職業図鑑の制作費や現地での教育支援にかかる費用を広く呼びかけることで、
-    大学の外にもエフラオの活動を知ってもらい、「一緒にラオスの子どもたちの学びを支える仲間」を増やすきっかけになりました。
-  </p>
+        <p>
+          こうした取り組みを支えるために、クラウドファンディングにも挑戦しました。
+          職業図鑑の制作費や現地での教育支援にかかる費用を広く呼びかけることで、
+          大学の外にもエフラオの活動を知ってもらい、「一緒にラオスの子どもたちの学びを支える仲間」を増やすきっかけになりました。
+          支援メッセージの中には、かつてのメンバーや教職員、ラオスに関心を持つ一般の方からの言葉も多く、
+          エフラオが育んできたつながりの広さを実感する機会にもなりました。
+        </p>
         <p>
           日本では、販売会や白山祭のブースでこうした気づきを発信しながら、
           次の世代に向けて教育支援のアイデアを共有しました。
@@ -920,6 +940,9 @@
         </p>
       </div>
     </div>
+
+    <!-- 年表に戻るボタン（ページの一番下） -->
+    <button id="back-to-timeline" class="back-timeline-btn">↑ 年表に戻る</button>
 
     <div class="page-links">
       <a href="index.html#about" class="back-link">トップページ（団体紹介）に戻る</a>
@@ -937,12 +960,15 @@
     const rows = document.querySelectorAll('.history-row');
     const details = document.querySelectorAll('.year-detail');
     const detailSection = document.getElementById('year-detail-section');
+    const backBtn = document.getElementById('back-to-timeline');
+    const historyTop = document.querySelector('.history-table');
 
     function showYear(year) {
       // 行のハイライト
       rows.forEach(row => {
         row.classList.toggle('active', row.dataset.year === year);
       });
+
       // 詳細の切り替え
       let anyShown = false;
       details.forEach(block => {
@@ -950,20 +976,33 @@
         block.classList.toggle('active', match);
         if (match) anyShown = true;
       });
+
+      // 詳細エリアへスクロール & 戻るボタン表示
       if (anyShown && detailSection) {
         detailSection.scrollIntoView({ behavior: 'smooth' });
+        if (backBtn) {
+          backBtn.style.display = 'inline-block';
+        }
       }
     }
 
-    // 初期状態：最新年（2024）を表示したければここで指定
-    showYear('2024');
-
+    // 年表の行クリック時
     rows.forEach(row => {
       row.addEventListener('click', () => {
         const year = row.dataset.year;
         showYear(year);
       });
     });
+
+    // 「年表に戻る」ボタン
+    if (backBtn && historyTop) {
+      backBtn.addEventListener('click', () => {
+        historyTop.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // 初期表示：最新年（2024）を表示
+    showYear('2024');
   });
 </script>
 </body>
