@@ -26,7 +26,7 @@
       padding-top: 60px;
     }
 
-    /* ヘッダー（他ページと共通イメージ） */
+    /* ヘッダー */
     header {
       position: fixed;
       top: 0;
@@ -78,7 +78,7 @@
       text-decoration: underline;
     }
 
-    /* レイアウト */
+    /* レイアウト共通 */
     .wrapper {
       max-width: 1100px;
       margin: 24px auto 40px;
@@ -124,7 +124,7 @@
       color: #555;
     }
 
-    /* 年表スタイル（上段） */
+    /* 年表（上段） */
     .history-legend {
       display: flex;
       gap: 12px;
@@ -159,10 +159,20 @@
 
     .history-row {
       display: grid;
-      grid-template-columns: 70px 1fr 1fr;
+      grid-template-columns: 90px 1fr 1fr;
       gap: 12px;
-      padding: 10px 0;
+      padding: 10px 8px;
       border-bottom: 1px solid #f3f3f3;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .history-row:hover {
+      background: #fff8f4;
+    }
+
+    .history-row.active {
+      background: #ffe9db;
     }
 
     .history-year {
@@ -194,61 +204,31 @@
       margin-top: 6px;
     }
 
-    /* 年度ごとのストーリー（アコーディオン） */
-    .year-detail {
-      border-radius: 10px;
-      border: 1px solid #eee;
-      margin-top: 10px;
-      overflow: hidden;
-      background: #fff;
+    /* 年度詳細エリア */
+    #year-detail-section {
+      scroll-margin-top: 80px;
     }
 
-    .year-detail-header {
-      width: 100%;
-      padding: 10px 12px;
-      border: none;
-      background: #fff8f4;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
+    .year-detail {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .year-detail.active {
+      display: block;
+    }
+
+    .year-detail-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
     }
 
     .year-detail-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
-      text-align: left;
-    }
-
-    .year-detail-year {
-      font-size: 13px;
-      font-weight: 700;
-      color: #a44f30;
-    }
-
-    .year-detail-title {
-      font-size: 13px;
-      color: #333;
-    }
-
-    .year-detail-toggle {
-      font-size: 18px;
-      color: #a44f30;
-      transition: transform 0.2s ease;
-    }
-
-    .year-detail-body {
-      display: none;
-      padding: 10px 12px 12px;
-      font-size: 13px;
-      color: #444;
-      border-top: 1px solid #f0e0d6;
-    }
-
-    .year-detail-body p + p {
-      margin-top: 6px;
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 6px;
     }
 
     .year-detail-photos {
@@ -265,13 +245,8 @@
       display: block;
     }
 
-    /* 開いているとき */
-    .year-detail.open .year-detail-body {
-      display: block;
-    }
-
-    .year-detail.open .year-detail-toggle {
-      transform: rotate(45deg); /* ＋ が × っぽく見える */
+    .year-detail-text p + p {
+      margin-top: 6px;
     }
 
     /* 戻りリンク */
@@ -349,15 +324,15 @@
     <div class="page-sub">History of Smile F LAOS</div>
     <p class="section-lead" style="margin-top:8px;">
       2013年のラオス・スタディツアーをきっかけに、エフラオはコーヒー販売と教育支援を軸に活動を続けてきました。
-      国内での学びや販売活動と、ラオスでのスタディツアーや支援活動が、互いに影響し合いながら変化してきた12年の歩みをまとめています。
+      このページでは、国内での活動とラオスでの活動の変化を年表で振り返りながら、気になる年度の詳細ストーリーを読むことができます。
     </p>
   </div>
 
-  <!-- 年表（ざっくり） -->
+  <!-- 年表（クリックで詳細を切り替える） -->
   <section class="section">
     <h2>国内の活動とラオスでの活動</h2>
     <p class="section-lead">
-      左側に「国内での活動」、右側に「ラオスでの活動」を並べています。<br>
+      行をクリックすると、その年度の詳しいストーリーが下に表示されます。<br>
       「大学の中で何をしてきたのか」「ラオスの現場で何をしてきたのか」が一目でわかる年表です。
     </p>
 
@@ -368,13 +343,13 @@
 
     <div class="history-table">
       <!-- 2013 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2013">
         <div class="history-year">2013</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
           <ul>
             <li>社会文化体験演習の一環として、ラオス・スタディツアーの企画が立ち上がる。</li>
-            <li>「現地の生活や教育の実態を自分の目で見て学びたい」という学生の声から、準備が始まる。</li>
+            <li>現地の生活や教育の実態を自分の目で見て学びたいという学生の声から、準備が始まる。</li>
           </ul>
         </div>
         <div class="history-col">
@@ -387,7 +362,7 @@
       </div>
 
       <!-- 2014 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2014">
         <div class="history-year">2014</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -407,7 +382,7 @@
       </div>
 
       <!-- 2015 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2015">
         <div class="history-year">2015</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -426,7 +401,7 @@
       </div>
 
       <!-- 2016 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2016">
         <div class="history-year">2016</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -445,7 +420,7 @@
       </div>
 
       <!-- 2017 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2017">
         <div class="history-year">2017</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -464,7 +439,7 @@
       </div>
 
       <!-- 2018 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2018">
         <div class="history-year">2018</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -483,7 +458,7 @@
       </div>
 
       <!-- 2019 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2019">
         <div class="history-year">2019</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -502,7 +477,7 @@
       </div>
 
       <!-- 2020 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2020">
         <div class="history-year">2020</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -521,7 +496,7 @@
       </div>
 
       <!-- 2021 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2021">
         <div class="history-year">2021</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -539,7 +514,7 @@
       </div>
 
       <!-- 2022 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2022">
         <div class="history-year">2022</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -559,7 +534,7 @@
       </div>
 
       <!-- 2023 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2023">
         <div class="history-year">2023</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -577,7 +552,7 @@
       </div>
 
       <!-- 2024 -->
-      <div class="history-row">
+      <div class="history-row" data-year="2024">
         <div class="history-year">2024</div>
         <div class="history-col">
           <div class="history-col-title">国内</div>
@@ -597,424 +572,346 @@
     </div>
 
     <p class="history-note">
-      ※ 年度ごとのより詳しい内容や数値は、社会文化体験演習の活動報告書やエフラオの内部資料にも整理されています。
+      ※ 年度ごとの詳しい内容は、下の「年度詳細」に表示されます。
     </p>
   </section>
 
-  <!-- 年度ごとのストーリー（クリックで開く詳細） -->
-  <section class="section">
+  <!-- 年度ごとの詳細（年表クリックで切り替え） -->
+  <section class="section" id="year-detail-section">
     <h2>年度ごとのストーリー</h2>
     <p class="section-lead">
-      年表だけでは伝えきれない、それぞれの年の背景や学生たちの思いをまとめています。<br>
-      気になる年度をクリックすると、詳しいストーリーが表示されます。
+      年表の行をクリックすると、ここにその年度のストーリーが表示されます。<br>
+      2014年度以降には、第◯期の区分もあわせて記載しています。
     </p>
 
-    <!-- 2013年度 -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2013年度</span>
-          <span class="year-detail-title">ラオスとの出会いと原点のスタディツアー</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!-- ※写真があればここに year-detail-photos を追加 -->
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2013_1.jpg" alt="2013年度のラオス訪問の様子">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2013年度は、まだ「Smile F LAOS」という名前すらなかった、いわば0年目の期間です。
-            社会文化体験演習の一つの企画としてラオスへのスタディツアーが立ち上がり、学生たちは初めてラオスの村を訪れました。
-            教科書やノートが十分でない教室、水やトイレが整っていない校舎、裸足で走り回る子どもたちの姿に、大きな衝撃を受けます。
-          </p>
-          <p>
-            しかし同時に、子どもたちは人懐っこい笑顔で出迎えてくれ、「ありがとう」と何度も声をかけてくれました。
-            「自分たちは短期間訪れただけなのに、本当に感謝されるのは良いのだろうか」という問いが生まれ、
-            観光としての海外渡航とは違う、現地の暮らしに関わることの重さを実感した年でもあります。
-          </p>
-          <p>
-            日本に戻った後も「見て終わり」にはしたくない、あの子どもたちと何らかの形でつながり続けたい、
-            という思いが有志の間に残りました。このモヤモヤとした気持ちこそが、のちにエフラオの活動を形づくる出発点となっていきます。
-          </p>
-        </div>
+    <!-- 2013 -->
+    <div class="year-detail" data-year="2013">
+      <h3 class="year-detail-heading">2013年度｜ラオスとの出会いと原点のスタディツアー</h3>
+      <p class="year-detail-meta">※この年はまだ「Smile F LAOS」の名前はなく、前身となるスタディツアーの時期です。</p>
+
+      <!-- 写真があればここに -->
+      <!--
+      <div class="year-detail-photos">
+        <img src="history_photos/2013_1.jpg" alt="2013年度のラオス訪問の様子">
+      </div>
+      -->
+
+      <div class="year-detail-text">
+        <p>
+          2013年度は、まだ「Smile F LAOS」という名前すらなかった、いわば0年目の期間です。
+          社会文化体験演習の一つの企画としてラオスへのスタディツアーが立ち上がり、学生たちは初めてラオスの村を訪れました。
+          教科書やノートが十分でない教室、水やトイレが整っていない校舎、裸足で走り回る子どもたちの姿に、大きな衝撃を受けます。
+        </p>
+        <p>
+          しかし同時に、子どもたちは人懐っこい笑顔で出迎えてくれ、「ありがとう」と何度も声をかけてくれました。
+          「自分たちは短期間訪れただけなのに、本当に感謝されるのは良いのだろうか」という問いが生まれ、
+          観光としての海外渡航とは違う、現地の暮らしに関わることの重さを実感した年でもあります。
+        </p>
+        <p>
+          日本に戻った後も「見て終わり」にはしたくない、あの子どもたちと何らかの形でつながり続けたい、
+          という思いが有志の間に残りました。このモヤモヤとした気持ちこそが、のちにエフラオの活動を形づくる出発点となっていきます。
+        </p>
       </div>
     </div>
 
-    <!-- 2014年度（第1期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2014年度（第1期）</span>
-          <span class="year-detail-title">Smile F LAOS誕生と浄水器10台の設置</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!-- 写真（用意できたら追加） -->
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2014_1.jpg" alt="2014年度の販売会の様子">
-          <img src="history_photos/2014_2.jpg" alt="浄水器設置の様子">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2014年度は、2013年度の経験を受けて「Smile F LAOS」という名前のプロジェクトが正式に立ち上がった年です。
-            ただ寄付を集めるのではなく、「ラオスと日本の人びとがコーヒーを通してつながる仕組みをつくろう」と考え、
-            ラオス産コーヒーを使ったオリジナル商品づくりに挑戦しました。
-          </p>
-          <p>
-            生豆の仕入れ先探しやパッケージデザイン、焙煎方法の検討、価格設定、販路の開拓など、
-            ほとんどの工程が初めての経験でしたが、協力企業や先生方に教わりながら、学生主体で決めていきました。
-            白山祭や学外販売会では、「コーヒーを買うことでラオスの子どもたちの支援につながる」というメッセージを自分たちの言葉で伝えました。
-          </p>
-          <p>
-            売上の一部で購入した浄水器10台を、スタディツアーでラオスの小学校に設置したことで、
-            日本での販売活動とラオスでの変化が一本の線でつながったと実感します。
-            「自分たちの行動が、遠く離れた誰かの日常を少し良くできるかもしれない」。
-            そんな実感をメンバーが共有した、エフラオの原点となる1年でした。
-          </p>
-        </div>
+    <!-- 2014（第1期） -->
+    <div class="year-detail" data-year="2014">
+      <h3 class="year-detail-heading">2014年度（第1期）｜Smile F LAOS誕生と浄水器10台の設置</h3>
+      <p class="year-detail-meta">2013年度の経験を受けて、「Smile F LAOS」としての活動が正式にスタートした年。</p>
+
+      <!-- 写真 -->
+      <!--
+      <div class="year-detail-photos">
+        <img src="history_photos/2014_1.jpg" alt="2014年度の販売会の様子">
+        <img src="history_photos/2014_2.jpg" alt="浄水器設置の様子">
+      </div>
+      -->
+
+      <div class="year-detail-text">
+        <p>
+          2014年度は、2013年度の経験を受けて「Smile F LAOS」という名前のプロジェクトが正式に立ち上がった年です。
+          ただ寄付を集めるのではなく、「ラオスと日本の人びとがコーヒーを通してつながる仕組みをつくろう」と考え、
+          ラオス産コーヒーを使ったオリジナル商品づくりに挑戦しました。
+        </p>
+        <p>
+          生豆の仕入れ先探しやパッケージデザイン、焙煎方法の検討、価格設定、販路の開拓など、
+          ほとんどの工程が初めての経験でしたが、協力企業や先生方に教わりながら、学生主体で決めていきました。
+          白山祭や学外販売会では、「コーヒーを買うことでラオスの子どもたちの支援につながる」というメッセージを自分たちの言葉で伝えました。
+        </p>
+        <p>
+          売上の一部で購入した浄水器10台を、スタディツアーでラオスの小学校に設置したことで、
+          日本での販売活動とラオスでの変化が一本の線でつながったと実感します。
+          「自分たちの行動が、遠く離れた誰かの日常を少し良くできるかもしれない」。
+          そんな実感をメンバーが共有した、エフラオの原点となる1年でした。
+        </p>
       </div>
     </div>
 
-    <!-- 2015年度（第2期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2015年度（第2期）</span>
-          <span class="year-detail-title">物資支援から「教育支援」へのシフト</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!-- 写真 placeholder -->
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2015_1.jpg" alt="2015年度の活動写真">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2015年度は、「支援のかたち」を改めて問い直した1年でした。
-            浄水器や学用品といった物資を届けることは確かに役に立つ一方で、
-            「子どもたちの未来の選択肢を広げるには、どんな関わり方が必要なのか」という問いが生まれます。
-          </p>
-          <p>
-            そこでエフラオは、「職業絵本」をつくるプロジェクトを始めます。
-            ラオスの子どもたちに、自分たちの国や世界にはどんな仕事があり、どんな人が社会を支えているのかを、
-            絵とやさしい言葉で伝えることを目指しました。
-            絵や文章を考えるプロセスで、メンバー自身も「働くこと」や「将来の夢」について深く考えるきっかけを得ていきます。
-          </p>
-          <p>
-            また、家計調査やインタビューを通して、農家の収入構造や教育費の負担についても詳しく知るようになりました。
-            コーヒーの取引が農家の生活にどのような影響を与えているのかを考えることは、
-            フェアトレードの意味を自分たちの言葉で説明できるようになることにもつながりました。
-          </p>
-        </div>
+    <!-- 2015（第2期） -->
+    <div class="year-detail" data-year="2015">
+      <h3 class="year-detail-heading">2015年度（第2期）｜物資支援から「教育支援」へのシフト</h3>
+      <p class="year-detail-meta">浄水器などの物資支援から、「学びを支える支援」へと考え方が変わり始めた時期。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2015年度は、「支援のかたち」を改めて問い直した1年でした。
+          浄水器や学用品といった物資を届けることは確かに役に立つ一方で、
+          「子どもたちの未来の選択肢を広げるには、どんな関わり方が必要なのか」という問いが生まれます。
+        </p>
+        <p>
+          そこでエフラオは、「職業絵本」をつくるプロジェクトを始めます。
+          ラオスの子どもたちに、自分たちの国や世界にはどんな仕事があり、どんな人が社会を支えているのかを、
+          絵とやさしい言葉で伝えることを目指しました。
+          絵や文章を考えるプロセスで、メンバー自身も「働くこと」や「将来の夢」について深く考えるきっかけを得ていきます。
+        </p>
+        <p>
+          また、家計調査やインタビューを通して、農家の収入構造や教育費の負担についても詳しく知るようになりました。
+          コーヒーの取引が農家の生活にどのような影響を与えているのかを考えることは、
+          フェアトレードの意味を自分たちの言葉で説明できるようになることにもつながりました。
+        </p>
       </div>
     </div>
 
-    <!-- 2016年度（第3期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2016年度（第3期）</span>
-          <span class="year-detail-title">衛生教育と教員インタビューの本格化</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2016_1.jpg" alt="2016年度の衛生教育の様子">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2016年度は、衛生教育と教員インタビューが本格化した年です。
-            手洗いや歯みがきといった衛生教育ワークショップを行いながら、
-            「なぜ学校に来られない子どもがいるのか」「先生たちはどのような環境で働いているのか」といった背景に目を向けるようになりました。
-          </p>
-          <p>
-            教員へのインタビューでは、教員が兼業をしていること、教材が不足していること、
-            子どもの出席状況が家庭の事情に左右されることなど、これまで見えていなかった課題が少しずつ浮かび上がってきます。
-            支援は「かわいそうだから助ける」のではなく、「構造的な問題を一緒に考えること」でもあると気づかされました。
-          </p>
-          <p>
-            日本側では、販売会や報告会でこうした気づきを共有し、
-            「コーヒーを買う」ことの先にあるストーリーを伝える工夫も少しずつ増えていきました。
-            メンバーにとっても、国際協力を“遠い世界の話”ではなく自分事として捉え直す1年となりました。
-          </p>
-        </div>
+    <!-- 2016（第3期） -->
+    <div class="year-detail" data-year="2016">
+      <h3 class="year-detail-heading">2016年度（第3期）｜衛生教育と教員インタビューの本格化</h3>
+      <p class="year-detail-meta">子どもたちの健康だけでなく、教員の働き方や学校の環境にも目を向け始めた年。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2016年度は、衛生教育と教員インタビューが本格化した年です。
+          手洗いや歯みがきといった衛生教育ワークショップを行いながら、
+          「なぜ学校に来られない子どもがいるのか」「先生たちはどのような環境で働いているのか」といった背景に目を向けるようになりました。
+        </p>
+        <p>
+          教員へのインタビューでは、教員が兼業をしていること、教材が不足していること、
+          子どもの出席状況が家庭の事情に左右されることなど、これまで見えていなかった課題が少しずつ浮かび上がってきます。
+          支援は「かわいそうだから助ける」のではなく、「構造的な問題を一緒に考えること」でもあると気づかされました。
+        </p>
+        <p>
+          日本側では、販売会や報告会でこうした気づきを共有し、
+          「コーヒーを買う」ことの先にあるストーリーを伝える工夫も少しずつ増えていきました。
+          メンバーにとっても、国際協力を“遠い世界の話”ではなく自分事として捉え直す1年となりました。
+        </p>
       </div>
     </div>
 
-    <!-- 2017年度（第4期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2017年度（第4期）</span>
-          <span class="year-detail-title">調査・販売・ワークショップの三本柱へ</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <div class="year-detail-text">
-          <p>
-            2017年度は、エフラオの活動が「調査・販売・ワークショップ」という三本柱で整理されていった年です。
-            コーヒー販売だけでなく、現地調査やワークショップを通じた教育支援も同じくらい大切な軸であると認識されるようになりました。
-          </p>
-          <p>
-            ラオスでは、複数の小学校で授業の様子を見学し、子どもたちの学力差や、
-            家庭の事情による出席状況の違いなどを観察しました。
-            同時に、子どもたちと一緒に遊んだり、クイズ形式で学ぶ時間もつくり、
-            「楽しいからこそ学べる」場づくりにも挑戦しました。
-          </p>
-          <p>
-            日本では、SDGsやフェアトレードに関する学びの企画が増え、
-            メンバー自身が「なぜこの活動をするのか」を言語化する機会が多くなります。
-            それぞれの経験が少しずつ積み重なり、エフラオという場が「単なるボランティア」ではなく、
-            学びと挑戦の場として形を帯びてきた時期でした。
-          </p>
-        </div>
+    <!-- 2017（第4期） -->
+    <div class="year-detail" data-year="2017">
+      <h3 class="year-detail-heading">2017年度（第4期）｜調査・販売・ワークショップの三本柱へ</h3>
+      <p class="year-detail-meta">エフラオの活動の軸が、はっきりと三本柱として整理されていった時期。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2017年度は、エフラオの活動が「調査・販売・ワークショップ」という三本柱で整理されていった年です。
+          コーヒー販売だけでなく、現地調査やワークショップを通じた教育支援も同じくらい大切な軸であると認識されるようになりました。
+        </p>
+        <p>
+          ラオスでは、複数の小学校で授業の様子を見学し、子どもたちの学力差や、
+          家庭の事情による出席状況の違いなどを観察しました。
+          同時に、子どもたちと一緒に遊んだり、クイズ形式で学ぶ時間もつくり、
+          「楽しいからこそ学べる」場づくりにも挑戦しました。
+        </p>
+        <p>
+          日本では、SDGsやフェアトレードに関する学びの企画が増え、
+          メンバー自身が「なぜこの活動をするのか」を言語化する機会が多くなります。
+          それぞれの経験が少しずつ積み重なり、エフラオという場が「単なるボランティア」ではなく、
+          学びと挑戦の場として形を帯びてきた時期でした。
+        </p>
       </div>
     </div>
 
-    <!-- 2018年度（第5期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2018年度（第5期）</span>
-          <span class="year-detail-title">体験型キャリア教育としてのエフラオ</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <div class="year-detail-text">
-          <p>
-            2018年度は、エフラオが「体験型キャリア教育」の場として位置づけられていった年です。
-            販売会やイベント出店に加え、授業内でのプレゼンやディスカッションも増え、
-            メンバーは「自分はなぜこの活動をしているのか」「どんな社会をつくりたいのか」を考える機会が多くなりました。
-          </p>
-          <p>
-            ラオスのスタディツアーでは、複数の小学校を訪問し、授業の様子や子どもたちの生活を継続的に観察しました。
-            教科書・ノートの不足、先生の兼業、家庭の事情による欠席など、
-            教育をとりまく環境が単純ではないことを改めて実感するフィールドワークとなりました。
-          </p>
-          <p>
-            日本での活動とラオスでの経験が行き来する中で、「支援する／される」という単純な関係ではなく、
-            お互いに学び合うパートナーとしてラオスと向き合う視点が育っていきます。
-            メンバーにとっても、自分の将来やキャリアを考えるうえで大きな転機になった年でした。
-          </p>
-        </div>
+    <!-- 2018（第5期） -->
+    <div class="year-detail" data-year="2018">
+      <h3 class="year-detail-heading">2018年度（第5期）｜体験型キャリア教育としてのエフラオ</h3>
+      <p class="year-detail-meta">「国際協力」だけでなく、「自分のキャリアを考える場」としての側面が強まった年。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2018年度は、エフラオが「体験型キャリア教育」の場として位置づけられていった年です。
+          販売会やイベント出店に加え、授業内でのプレゼンやディスカッションも増え、
+          メンバーは「自分はなぜこの活動をしているのか」「どんな社会をつくりたいのか」を考える機会が多くなりました。
+        </p>
+        <p>
+          ラオスのスタディツアーでは、複数の小学校を訪問し、授業の様子や子どもたちの生活を継続的に観察しました。
+          教科書・ノートの不足、先生の兼業、家庭の事情による欠席など、
+          教育をとりまく環境が単純ではないことを改めて実感するフィールドワークとなりました。
+        </p>
+        <p>
+          日本での活動とラオスでの経験が行き来する中で、「支援する／される」という単純な関係ではなく、
+          お互いに学び合うパートナーとしてラオスと向き合う視点が育っていきます。
+          メンバーにとっても、自分の将来やキャリアを考えるうえで大きな転機になった年でした。
+        </p>
       </div>
     </div>
 
-    <!-- 2019年度（第6期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2019年度（第6期）</span>
-          <span class="year-detail-title">活動規模が最大に広がった年</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <div class="year-detail-text">
-          <p>
-            2019年度は、エフラオの活動規模が最も大きく広がった年の一つです。
-            コーヒー販売会、学園祭でのブース出展、学外イベントへの出店など、
-            さまざまな場でラオスとコーヒーの物語を伝える機会が増えました。
-            売上だけでなく、活動に共感してくれる人や、一緒に考えてくれる人の輪も広がっていきました。
-          </p>
-          <p>
-            ラオスでは、これまでの調査をベースに、学力・出席・家庭環境などをより多角的に捉えようとしました。
-            学校ごとの違いや、村ごとの経済状況の差なども意識するようになり、
-            「一律の支援」ではなく、地域や学校に合わせた関わり方の必要性を感じるようになります。
-          </p>
-          <p>
-            一方で、活動の幅が広がるほど、メンバーの負担や情報共有の難しさも浮かび上がってきました。
-            この経験は、後の世代が「組織のあり方」や「役割分担」を考えるうえで大きなヒントとなっていきます。
-          </p>
-        </div>
+    <!-- 2019（第6期） -->
+    <div class="year-detail" data-year="2019">
+      <h3 class="year-detail-heading">2019年度（第6期）｜活動規模が最大に広がった年</h3>
+      <p class="year-detail-meta">販売・イベント・調査など、活動がもっとも広がった時期のひとつ。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2019年度は、エフラオの活動規模が最も大きく広がった年の一つです。
+          コーヒー販売会、学園祭でのブース出展、学外イベントへの出店など、
+          さまざまな場でラオスとコーヒーの物語を伝える機会が増えました。
+          売上だけでなく、活動に共感してくれる人や、一緒に考えてくれる人の輪も広がっていきました。
+        </p>
+        <p>
+          ラオスでは、これまでの調査をベースに、学力・出席・家庭環境などをより多角的に捉えようとしました。
+          学校ごとの違いや、村ごとの経済状況の差なども意識するようになり、
+          「一律の支援」ではなく、地域や学校に合わせた関わり方の必要性を感じるようになります。
+        </p>
+        <p>
+          一方で、活動の幅が広がるほど、メンバーの負担や情報共有の難しさも浮かび上がってきました。
+          この経験は、後の世代が「組織のあり方」や「役割分担」を考えるうえで大きなヒントとなっていきます。
+        </p>
       </div>
     </div>
 
-    <!-- 2020年度（第7期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2020年度（第7期）</span>
-          <span class="year-detail-title">コロナ禍での模索と職業図鑑プロジェクトの始動</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <div class="year-detail-text">
-          <p>
-            2020年度は、新型コロナウイルスの影響により、渡航や対面での活動がほぼすべて中止となった年でした。
-            例年のようにラオスに行くことも、学内で大規模な販売会を行うこともできず、
-            「エフラオとして何ができるのか」をゼロから考え直すことになります。
-          </p>
-          <p>
-            その中で、本格的に動き出したのが「職業図鑑」プロジェクトです。
-            それぞれの職業について「どんな仕事か」「日常生活とのつながり」「どうやってなれるのか」「一言メッセージ」といった項目を整理し、
-            子どもたちにとってわかりやすい表現を模索しました。
-            作業の多くはオンラインで行われ、世代や班を超えた協働の場にもなっていきます。
-          </p>
-          <p>
-            活動が制限される中でも、ラオスのことを忘れずに準備を続けることは、メンバーにとって心の支えにもなりました。
-            「今すぐ現地に行けなくても、次に会いに行くときのためにできることがある」という実感を得た1年でした。
-          </p>
-        </div>
+    <!-- 2020（第7期） -->
+    <div class="year-detail" data-year="2020">
+      <h3 class="year-detail-heading">2020年度（第7期）｜コロナ禍での模索と職業図鑑プロジェクトの始動</h3>
+      <p class="year-detail-meta">渡航ができない中でも、「次に会いに行くための準備」を進めた1年。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2020年度は、新型コロナウイルスの影響により、渡航や対面での活動がほぼすべて中止となった年でした。
+          例年のようにラオスに行くことも、学内で大規模な販売会を行うこともできず、
+          「エフラオとして何ができるのか」をゼロから考え直すことになります。
+        </p>
+        <p>
+          その中で、本格的に動き出したのが「職業図鑑」プロジェクトです。
+          それぞれの職業について「どんな仕事か」「日常生活とのつながり」「どうやってなれるのか」「一言メッセージ」といった項目を整理し、
+          子どもたちにとってわかりやすい表現を模索しました。
+          作業の多くはオンラインで行われ、世代や班を超えた協働の場にもなっていきます。
+        </p>
+        <p>
+          活動が制限される中でも、ラオスのことを忘れずに準備を続けることは、メンバーにとって心の支えにもなりました。
+          「今すぐ現地に行けなくても、次に会いに行くときのためにできることがある」という実感を得た1年でした。
+        </p>
       </div>
     </div>
 
-    <!-- 2021年度（第8期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2021年度（第8期）</span>
-          <span class="year-detail-title">渡航なしの中での準備とサークル化の決断</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <div class="year-detail-text">
-          <p>
-            2021年度も渡航は叶わず、オンライン中心の活動が続きました。
-            それでも、職業図鑑の内容を改善したり、これまでの調査データや写真を整理したりと、
-            「次に現地へ行くときに何をしたいか」をじっくり考える時間となりました。
-          </p>
-          <p>
-            この年の大きな転機は、エフラオが学科の授業プロジェクトから独立し、
-            2022年度から「学生サークル」として活動していくことが決まったことです。
-            単位を得る場から、より自発的に参加する場へと性格が変わることで、
-            責任も自由度も大きくなる節目のタイミングでした。
-          </p>
-          <p>
-            渡航がないからこそ、活動の意味や組織のあり方を落ち着いて考えることができた年とも言えます。
-            このときの話し合いが、その後の9期以降の運営やチームづくりに生かされていきます。
-          </p>
-        </div>
+    <!-- 2021（第8期） -->
+    <div class="year-detail" data-year="2021">
+      <h3 class="year-detail-heading">2021年度（第8期）｜渡航なしの中での準備とサークル化の決断</h3>
+      <p class="year-detail-meta">授業プロジェクトからサークルへ。エフラオの形が変わる直前の年。</p>
+
+      <div class="year-detail-text">
+        <p>
+          2021年度も渡航は叶わず、オンライン中心の活動が続きました。
+          それでも、職業図鑑の内容を改善したり、これまでの調査データや写真を整理したりと、
+          「次に現地へ行くときに何をしたいか」をじっくり考える時間となりました。
+        </p>
+        <p>
+          この年の大きな転機は、エフラオが学科の授業プロジェクトから独立し、
+          2022年度から「学生サークル」として活動していくことが決まったことです。
+          単位を得る場から、より自発的に参加する場へと性格が変わることで、
+          責任も自由度も大きくなる節目のタイミングでした。
+        </p>
+        <p>
+          渡航がないからこそ、活動の意味や組織のあり方を落ち着いて考えることができた年とも言えます。
+          このときの話し合いが、その後の9期以降の運営やチームづくりに生かされていきます。
+        </p>
       </div>
     </div>
 
-    <!-- 2022年度（第9期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2022年度（第9期）</span>
-          <span class="year-detail-title">サークルとして再スタート、2年ぶりの渡航</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!-- 写真を入れるならここ -->
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2022_1.jpg" alt="2022年度スタディツアーの様子">
-          <img src="history_photos/2022_2.jpg" alt="9期メンバー集合写真">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2022年度は、エフラオが学生サークルとして本格的に動き出した最初の年であり、
-            2年ぶりにラオスへのスタディツアーが実現した年でもあります。
-            コロナ禍や体制変更など、多くの不安やハードルを乗り越えての渡航は、メンバーにとって大きな自信となりました。
-          </p>
-          <p>
-            ラオスでは、小学校でのワークショップや家計調査、ホームステイなどを通して、
-            コロナ後の暮らしや学びの様子を自分たちの目で確かめました。
-            休校やオンライン授業がなかったラオスでも、学習の遅れや格差が生じていることを実感し、
-            「教育支援の必要性」はむしろ高まっていることに気づきます。
-          </p>
-          <p>
-            日本では、サークルとしての新しい運営体制づくりに取り組みながら、
-            販売会や新歓活動も再開しました。
-            メンバー同士で対話を重ね、「これからのエフラオをどうしたいか」を話し合ったことが、
-            次の世代へとバトンをつなぐ土台になっていきます。
-          </p>
-        </div>
+    <!-- 2022（第9期） -->
+    <div class="year-detail" data-year="2022">
+      <h3 class="year-detail-heading">2022年度（第9期）｜サークルとして再スタート、2年ぶりの渡航</h3>
+      <p class="year-detail-meta">サークル1年目。多くの不安を乗り越えて、2年ぶりにラオスへ渡航した年。</p>
+
+      <!-- 写真 -->
+      <!--
+      <div class="year-detail-photos">
+        <img src="history_photos/2022_1.jpg" alt="2022年度スタディツアーの様子">
+        <img src="history_photos/2022_2.jpg" alt="9期メンバー集合写真">
+      </div>
+      -->
+
+      <div class="year-detail-text">
+        <p>
+          2022年度は、エフラオが学生サークルとして本格的に動き出した最初の年であり、
+          2年ぶりにラオスへのスタディツアーが実現した年でもあります。
+          コロナ禍や体制変更など、多くの不安やハードルを乗り越えての渡航は、メンバーにとって大きな自信となりました。
+        </p>
+        <p>
+          ラオスでは、小学校でのワークショップや家計調査、ホームステイなどを通して、
+          コロナ後の暮らしや学びの様子を自分たちの目で確かめました。
+          休校やオンライン授業がなかったラオスでも、学習の遅れや格差が生じていることを実感し、
+          「教育支援の必要性」はむしろ高まっていることに気づきます。
+        </p>
+        <p>
+          日本では、サークルとしての新しい運営体制づくりに取り組みながら、
+          販売会や新歓活動も再開しました。
+          メンバー同士で対話を重ね、「これからのエフラオをどうしたいか」を話し合ったことが、
+          次の世代へとバトンをつなぐ土台になっていきます。
+        </p>
       </div>
     </div>
 
-    <!-- 2023年度（第10期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2023年度（第10期）</span>
-          <span class="year-detail-title">職業図鑑ワークショップの初実施</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2023_1.jpg" alt="職業図鑑WSの様子">
-          <img src="history_photos/2023_2.jpg" alt="子どもたちと紙芝居を読む場面">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2023年度は、これまで準備を重ねてきた「職業図鑑」を、実際にラオスの小学校で使ってみた年です。
-            紙芝居やクイズの形式を取り入れ、子どもたちが楽しみながら「仕事」について考えられるよう工夫されたワークショップは、
-            現地の先生や子どもたちからもポジティブな反応を得ました。
-          </p>
-          <p>
-            子どもたちに「将来なりたい仕事」を聞くと、兵士や教師、医者などさまざまな答えが返ってきます。
-            その一方で、「仕事」そのものをイメージできない子どももいることがわかり、
-            情報に触れる機会の少なさや、身近なロールモデルの不足といった課題も見えてきました。
-          </p>
-          <p>
-            日本では、図鑑制作の裏側やワークショップの様子を販売会や報告会で共有し、
-            「コーヒーを買うこと」と「教育支援」がどのようにつながっているのかを、より具体的に伝えるようになりました。
-            10期という節目にふさわしく、「エフラオらしい活動」が形になった1年だったと言えます。
-          </p>
-        </div>
+    <!-- 2023（第10期） -->
+    <div class="year-detail" data-year="2023">
+      <h3 class="year-detail-heading">2023年度（第10期）｜職業図鑑ワークショップの初実施</h3>
+      <p class="year-detail-meta">長く準備してきた職業図鑑を、ついに現地の子どもたちと一緒に使ってみた年。</p>
+
+      <!--
+      <div class="year-detail-photos">
+        <img src="history_photos/2023_1.jpg" alt="職業図鑑WSの様子">
+        <img src="history_photos/2023_2.jpg" alt="子どもたちと紙芝居を読む場面">
+      </div>
+      -->
+
+      <div class="year-detail-text">
+        <p>
+          2023年度は、これまで準備を重ねてきた「職業図鑑」を、実際にラオスの小学校で使ってみた年です。
+          紙芝居やクイズの形式を取り入れ、子どもたちが楽しみながら「仕事」について考えられるよう工夫されたワークショップは、
+          現地の先生や子どもたちからもポジティブな反応を得ました。
+        </p>
+        <p>
+          子どもたちに「将来なりたい仕事」を聞くと、兵士や教師、医者などさまざまな答えが返ってきます。
+          その一方で、「仕事」そのものをイメージできない子どももいることがわかり、
+          情報に触れる機会の少なさや、身近なロールモデルの不足といった課題も見えてきました。
+        </p>
+        <p>
+          日本では、図鑑制作の裏側やワークショップの様子を販売会や報告会で共有し、
+          「コーヒーを買うこと」と「教育支援」がどのようにつながっているのかを、より具体的に伝えるようになりました。
+          10期という節目にふさわしく、「エフラオらしい活動」が形になった1年だったと言えます。
+        </p>
       </div>
     </div>
 
-    <!-- 2024年度（第11期） -->
-    <div class="year-detail">
-      <button class="year-detail-header" type="button">
-        <div class="year-detail-meta">
-          <span class="year-detail-year">2024年度（第11期）</span>
-          <span class="year-detail-title">教育支援の方向性が見えてきた年</span>
-        </div>
-        <span class="year-detail-toggle">＋</span>
-      </button>
-      <div class="year-detail-body">
-        <!--
-        <div class="year-detail-photos">
-          <img src="history_photos/2024_1.jpg" alt="2024年度WSの様子">
-          <img src="history_photos/2024_2.jpg" alt="教員インタビューの場面">
-        </div>
-        -->
-        <div class="year-detail-text">
-          <p>
-            2024年度は、エフラオの教育支援の方向性がよりはっきりと見えてきた年です。
-            8つの職業を紹介する職業図鑑を完成させ、表現やイラストをブラッシュアップしたうえで、
-            3つの村の小学校で紙芝居とクイズを組み合わせたワークショップを実施しました。
-          </p>
-          <p>
-            また、教員インタビューを通して、コロナによる学習の遅れや、
-            学用品・PC・プリンタなどの不足といった課題が改めて浮き彫りになりました。
-            「学びの内容を支える教材」と「学びの環境を支えるインフラ」の両方が必要であることを、
-            エフラオの側も強く認識するようになります。
-          </p>
-          <p>
-            日本では、販売会や白山祭のブースでこうした気づきを発信しながら、
-            次の世代に向けて教育支援のアイデアを共有しました。
-            エフラオの活動は、コーヒーから始まり、衛生・教育・キャリア支援へと少しずつ広がりながら、
-            「ラオスと日本が学び合う場」として進化し続けています。
-          </p>
-        </div>
+    <!-- 2024（第11期） -->
+    <div class="year-detail" data-year="2024">
+      <h3 class="year-detail-heading">2024年度（第11期）｜教育支援の方向性が見えてきた年</h3>
+      <p class="year-detail-meta">インフラと学びの中身、その両方をどう支えるかを考え始めたタイミング。</p>
+
+      <!--
+      <div class="year-detail-photos">
+        <img src="history_photos/2024_1.jpg" alt="2024年度WSの様子">
+        <img src="history_photos/2024_2.jpg" alt="教員インタビューの場面">
+      </div>
+      -->
+
+      <div class="year-detail-text">
+        <p>
+          2024年度は、エフラオの教育支援の方向性がよりはっきりと見えてきた年です。
+          8つの職業を紹介する職業図鑑を完成させ、表現やイラストをブラッシュアップしたうえで、
+          3つの村の小学校で紙芝居とクイズを組み合わせたワークショップを実施しました。
+        </p>
+        <p>
+          また、教員インタビューを通して、コロナによる学習の遅れや、
+          学用品・PC・プリンタなどの不足といった課題が改めて浮き彫りになりました。
+          「学びの内容を支える教材」と「学びの環境を支えるインフラ」の両方が必要であることを、
+          エフラオの側も強く認識するようになります。
+        </p>
+        <p>
+          日本では、販売会や白山祭のブースでこうした気づきを発信しながら、
+          次の世代に向けて教育支援のアイデアを共有しました。
+          エフラオの活動は、コーヒーから始まり、衛生・教育・キャリア支援へと少しずつ広がりながら、
+          「ラオスと日本が学び合う場」として進化し続けています。
+        </p>
       </div>
     </div>
 
@@ -1029,14 +926,36 @@
 </footer>
 
 <script>
-  // 年度ごとのアコーディオン開閉
+  // 年表クリックで詳細切り替え
   document.addEventListener('DOMContentLoaded', () => {
-    const yearDetails = document.querySelectorAll('.year-detail');
+    const rows = document.querySelectorAll('.history-row');
+    const details = document.querySelectorAll('.year-detail');
+    const detailSection = document.getElementById('year-detail-section');
 
-    yearDetails.forEach(block => {
-      const header = block.querySelector('.year-detail-header');
-      header.addEventListener('click', () => {
-        block.classList.toggle('open');
+    function showYear(year) {
+      // 行のハイライト
+      rows.forEach(row => {
+        row.classList.toggle('active', row.dataset.year === year);
+      });
+      // 詳細の切り替え
+      let anyShown = false;
+      details.forEach(block => {
+        const match = block.dataset.year === year;
+        block.classList.toggle('active', match);
+        if (match) anyShown = true;
+      });
+      if (anyShown && detailSection) {
+        detailSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 初期状態：最新年（2024）を表示したければここで指定
+    showYear('2024');
+
+    rows.forEach(row => {
+      row.addEventListener('click', () => {
+        const year = row.dataset.year;
+        showYear(year);
       });
     });
   });
