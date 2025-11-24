@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>団体紹介｜Smile F LAOS</title>
+  <style>
+    :root {
+      --primary: #a44f30;
+      --primary-dark: #a44f30;
+      --bg: #ffffff;
+      --text-main: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-top: 60px;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .logo span {
+      font-size: 12px;
+      display: block;
+      opacity: .8;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* 共通レイアウト */
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 20px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .section p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* ヒーロー */
+    .page-hero {
+      background: #fff5ee;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .hero-lead {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    /* 2カラム */
+    .two-cols {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .pill-list li {
+      background: #f1f1f1;
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    /* ミッション・ビジョン */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .mv-card {
+      background: #fff8f4;
+      border-radius: 10px;
+      padding: 12px 14px 10px;
+    }
+
+    .mv-card h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+    }
+
+    .mv-card p {
+      font-size: 13px;
+    }
+
+    /* チーム紹介 */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .team-card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .team-card h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+    }
+
+    /* ミニ年表 */
+    .mini-history {
+      margin-top: 8px;
+      border-radius: 10px;
+      background: #fff8f4;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .mini-history-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .mini-history-year {
+      width: 70px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .mini-history-text {
+      flex: 1;
+    }
+
+    /* ボタン */
+    .btn-primary {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: none;
+      display: inline-block;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #6a0000;
+    }
+
+    .page-links {
+      margin-top: 14px;
+    }
+
+    .back-link {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--primary-dark);
+    }
+
+    .back-link::before {
+      content: "← ";
+    }
+
+    /* フッター */
+    footer {
+      background: #212121;
+      color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      nav {
+        font-size: 13px;
+        gap: 10px;
+      }
+
+      .page-title {
+        font-size: 19px;
+      }
+
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+
+      .mv-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      Smile F LAOS
+      <span>ラオスと日本をつなぐ学生サークル</span>
+    </a>
+    <nav>
+      <a href="about.html">団体紹介</a>
+      <a href="index.html#activities">活動内容</a>
+      <a href="gallery.html">写真ギャラリー</a>
+      <a href="index.html#join">参加したい方へ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrapper">
+  <!-- ヒーロー -->
+  <section class="page-hero">
+    <h1 class="page-title">Smile F LAOSとは？</h1>
+    <div class="page-sub">About us</div>
+    <p class="hero-lead">
+      Smile F LAOS（エフラオ）は、ラオスの子どもたちの教育支援と、ラオスと日本の交流を目的に活動している東洋大学の学生サークルです。
+      コーヒー販売・教育支援・スタディツアーを通して、<strong>「楽しさ」×「学び」</strong> がつながる場づくりを大切にしています。
+    </p>
+  </section>
+
+  <!-- 団体の概要 -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">どんな団体？</h2>
+      <div class="section-sub">Who we are</div>
+    </div>
+
+    <div class="two-cols">
+      <div>
+        <p>
+          エフラオは、ラオス南部の高原地帯でつくられるコーヒーをフェアトレードで仕入れ、学生の手で商品化・販売しています。
+          その売上の一部を、ラオスの子どもたちの学びを支える活動に活用しています。
+        </p>
+        <p style="margin-top:8px;">
+          ただ「モノを届ける」だけではなく、スタディツアーで現地に行き、子ども・先生・家族の声を直接聞きながら、
+          支援の内容をアップデートしていくことを大事にしています。
+        </p>
+      </div>
+      <div>
+        <p style="font-size:13px; color:#555;">
+          エフラオはこんな人たちが集まる場所です：
+        </p>
+        <ul class="pill-list">
+          <li>ラオスや東南アジアに興味がある</li>
+          <li>国際協力に関わってみたい</li>
+          <li>子どもや教育が好き</li>
+          <li>コーヒーが好き・学びたい</li>
+          <li>仲間と一緒に企画するのが好き</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ミッション・ビジョン -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">ミッションとビジョン</h2>
+      <div class="section-sub">Mission / Vision</div>
+    </div>
+
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h3>Mission（ミッション）</h3>
+        <p>
+          ラオスの子どもたちが、自分の「将来の選択肢」をあきらめずにいられるよう、
+          教育の機会と学びの環境を少しずつ整えていくこと。
+        </p>
+      </div>
+      <div class="mv-card">
+        <h3>Vision（ビジョン）</h3>
+        <p>
+          ラオスと日本の若者が、コーヒーや教育をきっかけに出会い、
+          お互いの暮らしや価値観から学び合いながら、共に未来をつくっていく社会。
+        </p>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:#555; margin-top:10px;">
+      エフラオの支援は、「支える側」と「支えられる側」という一方向の関係ではなく、
+      現地の人びとと一緒に考え、一緒につくっていくプロセスそのものを大切にしています。
+    </p>
+  </section>
+
+  <!-- 活動のサイクル -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">活動のサイクル</h2>
+      <div class="section-sub">Our model</div>
+    </div>
+
+    <div class="two-cols">
+      <div>
+        <p>
+          エフラオの活動は、<strong>コーヒー販売 → 教育支援 → スタディツアー</strong> がぐるっと循環するサイクルになっています。
+        </p>
+        <ul class="pill-list">
+          <li>ラオスの農家さんからコーヒー豆を購入</li>
+          <li>学生が企画・デザインして販売会を実施</li>
+          <li>売上の一部を教育支援の資金に</li>
+          <li>スタディツアーで現地の声を聞きに行く</li>
+          <li>次年度の支援内容や商品にフィードバック</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:13px;">
+          これまでには浄水器の設置、衛生教育、職業絵本・職業図鑑の制作とワークショップなど、
+          「学びの環境」と「学びの中身」の両方にアプローチしてきました。
+          <br>詳しい年度ごとの取り組みは、エフラオの歩み（History）ページで紹介しています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- チーム紹介 -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">メンバーとチーム</h2>
+      <div class="section-sub">Our team</div>
+    </div>
+
+    <p>
+      エフラオでは、役割ごとにいくつかの班に分かれて活動しています。
+      学年や経験に関係なく、やってみたいことにチャレンジできるのが特徴です。
+    </p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>コーヒー・開発班</h3>
+        <p>コーヒー豆の選定や商品企画、パッケージデザイン、新商品の検討などを担当します。</p>
+      </div>
+      <div class="team-card">
+        <h3>広報班</h3>
+        <p>SNS発信、ポスターやチラシのデザイン、HPの更新など、「伝える」部分を担うチームです。</p>
+      </div>
+      <div class="team-card">
+        <h3>渉外・イベント班</h3>
+        <p>学内外のイベント出店の調整や、他団体とのコラボ、白山祭の企画などを担当します。</p>
+      </div>
+      <div class="team-card">
+        <h3>ラオス・教育支援班</h3>
+        <p>スタディツアーの企画や、職業図鑑・ワークショップづくりなど、教育支援の中身を考える班です。</p>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:#555; margin-top:8px;">
+      どの班に所属していても、販売会の店頭に立ったり、スタディツアーに参加したりと、
+      活動のいろいろな部分に関わることができます。
+    </p>
+  </section>
+
+  <!-- ミニ年表＋Historyページへの導線 -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">エフラオの歩み（ダイジェスト）</h2>
+      <div class="section-sub">History digest</div>
+    </div>
+
+    <p style="font-size:14px;">
+      エフラオの始まりから現在までの詳しいストーリーは、専用の「エフラオの歩み」ページにまとめています。
+      ここでは、その中から特に節目となった3つの年をピックアップしています。
+    </p>
+
+    <div class="mini-history">
+      <div class="mini-history-item">
+        <div class="mini-history-year">2013年</div>
+        <div class="mini-history-text">
+          ラオスへのスタディツアーを実施。農村部の学校や暮らしを訪問した経験が、エフラオ誕生の原点となる。
+        </div>
+      </div>
+      <div class="mini-history-item">
+        <div class="mini-history-year">2014年</div>
+        <div class="mini-history-text">
+          Smile F LAOSとして本格始動。ラオス産コーヒーの販売を開始し、売上の一部で浄水器10台を小学校に設置。
+        </div>
+      </div>
+      <div class="mini-history-item">
+        <div class="mini-history-year">2024年</div>
+        <div class="mini-history-text">
+          職業図鑑ワークショップを3つの村で実施し、クラウドファンディングにも挑戦。
+          教育支援の方向性がより明確になった年。
+        </div>
+      </div>
+    </div>
+
+    <div class="page-links">
+      <a href="history.html" class="btn-primary">エフラオの歩み（History）ページを見る</a>
+      <div style="margin-top:8px;">
+        <a href="index.html#activities" class="back-link">トップページの活動紹介に戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Smile F LAOS
+</footer>
+</body>
+</html>
