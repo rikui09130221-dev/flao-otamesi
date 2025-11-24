@@ -12,11 +12,7 @@
       --text-main: #000000;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -26,12 +22,9 @@
       padding-top: 60px;
     }
 
-    /* ヘッダー */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       background: var(--primary);
       color: #fff;
@@ -55,7 +48,6 @@
       color: #fff;
       display: inline-block;
     }
-
     .logo span {
       font-size: 12px;
       display: block;
@@ -68,18 +60,13 @@
       font-size: 14px;
       flex-wrap: wrap;
     }
-
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
     }
+    nav a:hover { text-decoration: underline; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* レイアウト */
     .wrapper {
       max-width: 1100px;
       margin: 24px auto 40px;
@@ -89,9 +76,10 @@
     .section {
       background: #fff;
       border-radius: 12px;
-      padding: 22px 20px 20px;
+      padding: 20px 18px 18px;
       margin-bottom: 18px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 14px;
     }
 
     .section-header {
@@ -99,7 +87,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section-title {
@@ -109,59 +97,27 @@
       color: var(--primary-dark);
       font-weight: 700;
     }
+    .section-sub { font-size: 12px; color: #777; }
 
-    .section-sub {
-      font-size: 12px;
-      color: #777;
-    }
-
-    .section p {
-      font-size: 14px;
-      color: #333;
-    }
-
-    /* ページヒーロー */
     .page-hero {
       background: #fff5ee;
       border-radius: 12px;
       padding: 20px 18px 18px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border-left: 5px solid var(--primary);
-    }
-
-    .page-title {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .page-sub {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 8px;
-    }
-
-    .hero-tagline {
-      font-size: 13px;
-      color: #a44f30;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .hero-lead {
       font-size: 14px;
-      margin-top: 6px;
-      color: #333;
     }
+    .page-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .page-sub { font-size: 13px; color: #777; margin-bottom: 6px; }
+    .hero-tagline { font-size: 13px; color:#a44f30; font-weight:700; margin-bottom:4px; }
 
     .hero-badges {
-      margin-top: 10px;
+      margin-top: 8px;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       font-size: 11px;
     }
-
     .hero-badge {
       padding: 4px 8px;
       border-radius: 999px;
@@ -171,168 +127,66 @@
     }
 
     .hero-cta {
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       font-size: 13px;
     }
 
-    /* 汎用レイアウト */
     .two-cols {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
-      gap: 18px;
-      font-size: 14px;
+      gap: 16px;
     }
 
     .pill-list {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 6px;
+      margin-top: 6px;
       font-size: 12px;
     }
-
     .pill-list li {
       background: #f1f1f1;
-      padding: 5px 9px;
+      padding: 4px 8px;
       border-radius: 999px;
     }
 
-    /* ミッション・ビジョン・価値観 */
-    .mv-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 8px;
-      font-size: 14px;
-    }
-
-    .mv-card {
-      background: #fff8f4;
-      border-radius: 10px;
-      padding: 12px 14px 10px;
-    }
-
-    .mv-card h3 {
-      font-size: 15px;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-
-    .mv-card p {
-      font-size: 13px;
-    }
-
-    .values-list {
-      list-style: none;
-      margin-top: 6px;
-      font-size: 13px;
-    }
-
-    .values-list li + li {
-      margin-top: 4px;
-    }
-
-    .values-label {
-      font-weight: 700;
-      color: #a44f30;
-      margin-right: 4px;
-    }
-
-    /* ラオス紹介・教育状況 */
-    .info-list {
-      font-size: 13px;
-      margin-top: 6px;
-      padding-left: 1.1em;
-    }
-
-    .info-list li {
-      margin-bottom: 3px;
-    }
-
-    .note-text {
-      font-size: 12px;
-      color: #777;
-      margin-top: 6px;
-    }
-
-    /* 循環型支援モデル */
     .cycle-steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
       margin-top: 8px;
       font-size: 13px;
     }
-
     .cycle-step {
       background: #fff8f4;
       border-radius: 10px;
-      padding: 10px 12px;
+      padding: 8px 10px;
     }
-
-    .cycle-step-num {
-      font-size: 11px;
+    .cycle-step-title {
+      font-size: 13px;
       font-weight: 700;
       color: #a44f30;
       margin-bottom: 2px;
-      text-transform: uppercase;
     }
 
-    .cycle-step-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 3px;
-      color: #a44f30;
-    }
-
-    /* パートナー企業 */
-    .partner-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-      margin-top: 6px;
-      font-size: 13px;
-    }
-
-    .partner-card {
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 10px 12px;
-    }
-
-    .partner-card h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-
-    .partner-card a {
-      font-size: 12px;
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    .partner-card a:hover {
-      text-decoration: underline;
-    }
-
-    /* 強み・実績・メンバー */
+    .values-list,
     .strengths-list,
     .achievements-list {
+      list-style: none;
       font-size: 13px;
-      padding-left: 1.1em;
-      margin-top: 4px;
+      margin-top: 6px;
+      padding-left: 0;
     }
-
+    .values-list li,
     .strengths-list li,
     .achievements-list li {
       margin-bottom: 4px;
     }
-
+    .values-label,
     .highlight {
       font-weight: 700;
       color: #a44f30;
@@ -341,78 +195,43 @@
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
+      gap: 10px;
       font-size: 13px;
+      margin-top: 8px;
     }
-
     .team-card {
       background: #f9f9f9;
       border-radius: 10px;
-      padding: 10px 12px;
+      padding: 8px 10px;
     }
-
     .team-card h3 {
       font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
+      margin-bottom: 3px;
+      color:#a44f30;
     }
 
-    /* ロゴ説明 */
-    .logo-section-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 18px;
-      align-items: center;
-    }
-
-    .logo-mark-wrap {
-      text-align: center;
-    }
-
-    .logo-mark {
-      max-width: 220px;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .logo-caption {
-      font-size: 12px;
-      color: #777;
-      margin-top: 6px;
-    }
-
-    /* ミニ年表 */
     .mini-history {
       margin-top: 8px;
       border-radius: 10px;
       background: #fff8f4;
-      padding: 10px 12px;
+      padding: 8px 10px;
       font-size: 13px;
     }
-
     .mini-history-item {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 4px;
     }
-
     .mini-history-year {
-      width: 70px;
+      width: 64px;
       font-weight: 700;
-      color: var(--primary-dark);
+      color:#a44f30;
     }
 
-    .mini-history-text {
-      flex: 1;
-    }
-
-    /* ボタン・リンク・CTA */
     .btn-primary {
       background: var(--primary-dark);
       color: #fff;
-      padding: 7px 14px;
+      padding: 6px 12px;
       border-radius: 999px;
       border: none;
       display: inline-block;
@@ -420,10 +239,7 @@
       cursor: pointer;
       text-decoration: none;
     }
-
-    .btn-primary:hover {
-      background: #6a0000;
-    }
+    .btn-primary:hover { background:#6a0000; }
 
     .btn-outline {
       border-radius: 999px;
@@ -434,26 +250,15 @@
       color: #a44f30;
       background: #fff;
     }
-
-    .btn-outline:hover {
-      background: #fff5ee;
-    }
-
-    .page-links {
-      margin-top: 14px;
-    }
+    .btn-outline:hover { background:#fff5ee; }
 
     .back-link {
       font-size: 13px;
       text-decoration: none;
       color: var(--primary-dark);
     }
+    .back-link::before { content:"← "; }
 
-    .back-link::before {
-      content: "← ";
-    }
-
-    /* フッター */
     footer {
       background: #212121;
       color: #eee;
@@ -463,34 +268,15 @@
       margin-top: 24px;
     }
 
-    /* スマホ対応 */
     @media (max-width: 768px) {
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 6px;
       }
-
-      nav {
-        font-size: 13px;
-        gap: 10px;
-      }
-
-      .page-title {
-        font-size: 21px;
-      }
-
-      .two-cols {
-        grid-template-columns: 1fr;
-      }
-
-      .mv-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .logo-section-inner {
-        grid-template-columns: 1fr;
-      }
+      nav { font-size: 13px; gap: 10px; }
+      .page-title { font-size: 20px; }
+      .two-cols { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -512,14 +298,14 @@
 
 <main class="wrapper">
 
-  <!-- ページヒーロー -->
+  <!-- ヒーロー：ざっくり紹介 -->
   <section class="page-hero">
     <div class="hero-tagline">寄り添った支援・進化する支援</div>
     <h1 class="page-title">Smile F LAOSとは？</h1>
     <div class="page-sub">ラオスの子どもたちに、夢と可能性を。</div>
-    <p class="hero-lead">
-      Smile F LAOS（エフラオ）は、ラオスのコーヒーを学生の手で製品化・販売し、その収益をラオスの子どもたちの教育支援へとつなげる
-      東洋大学発の学生サークルです。コーヒー・教育支援・スタディツアーを通して、<strong>「楽しさ」×「学び」</strong> がめぐる循環型の支援モデルに取り組んでいます。
+    <p>
+      ラオスのコーヒーを学生の手で製品化・販売し、その収益で教育支援を行う東洋大学発のサークルです。
+      コーヒー・教育支援・スタディツアーがぐるっと循環する活動に取り組んでいます。
     </p>
     <div class="hero-badges">
       <span class="hero-badge">フェアトレードコーヒー</span>
@@ -528,397 +314,175 @@
     </div>
     <div class="hero-cta">
       <a href="index.html#activities" class="btn-primary">活動内容を見る</a>
-      <a href="index.html#join" class="btn-outline">参加・見学を検討している方へ</a>
+      <a href="history.html" class="btn-outline">エフラオの歩みを見る</a>
     </div>
   </section>
 
-  <!-- 団体の成り立ち -->
+  <!-- 概要＋価値観 -->
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">エフラオの始まり</h2>
-      <div class="section-sub">Our story</div>
-    </div>
-
-    <p>
-      私たち <strong>Smile F LAOS（エフラオ）</strong> は、ラオス南部で栽培されるコーヒーを学生の手で製品化・販売し、
-      その収益を活用した生産地への教育・衛生支援を行う学生団体です。
-    </p>
-    <p style="margin-top:8px;">
-      エフラオの原点は、<strong>2013年のラオス・スタディツアー</strong> にあります。東洋大学社会学部社会文化システム学科の
-      箕曲在弘（みのお・ありひろ）准教授の指導のもと、当時の2年生と1年生がラオス南部チャンパサック県に1週間滞在し、
-      コーヒー農家の暮らしや生産の現場を調査しました。
-    </p>
-    <p style="margin-top:8px;">
-      調査を通じて、学生たちはコーヒー農家の方々の熱意や誇りと同時に、手洗い設備の不足や衛生環境の課題、
-      子どもたちが手を洗わずに食事をする日常といった現実を目の当たりにしました。
-      「見て終わりにしたくない。この地域と長く関わり続けたい」という思いから、
-      <strong>2014年4月にSmile F LAOSが立ち上げられました。</strong>
-    </p>
-    <p style="margin-top:8px;">
-      創設当初から、現地協同組合のコーヒーを<strong>フェアトレードで購買</strong>し、学生自身がパッケージデザインや商品企画を行い、
-      販売で得た収益を浄水器の設置や衛生教育、職業絵本・職業図鑑の制作・寄贈などに充ててきました。
-    </p>
-    <p style="margin-top:8px;">
-      団体名の <strong>“F” は “FOR” と “FROM”</strong> を掛け合わせたもので、
-      「ラオスの人びとのために（FOR）」、そして「ラオスの現場から学びをもらう（FROM）」という双方向の関係を大切にしながら、
-      ラオスと日本の笑顔の架け橋になりたいという思いが込められています。
-    </p>
-  </section>
-
-  <!-- ラオスという国について -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">ラオスってどんな国？</h2>
-      <div class="section-sub">About Laos</div>
+      <h2 class="section-title">どんな団体？</h2>
+      <div class="section-sub">Overview & values</div>
     </div>
 
     <div class="two-cols">
       <div>
         <p>
-          ラオス（ラオス人民民主共和国）は、東南アジアの内陸部に位置する人口約700万人の国です。
-          タイ・ベトナム・カンボジア・中国・ミャンマーに囲まれ、メコン川が国土を縦断しています。
+          2013年のラオス・スタディツアーをきっかけに、2014年に誕生しました。
+          ラオス南部のコーヒー産地と長く関わりながら、子どもたちの学びの環境づくりに取り組んでいます。
         </p>
-        <ul class="info-list">
-          <li>50以上の民族が暮らす多民族国家</li>
-          <li>農業が主要な産業で、コーヒー生産も盛ん</li>
-          <li>「ボーペンニャン（大丈夫だよ）」に象徴される穏やかな国民性</li>
+        <ul class="pill-list">
+          <li>ラオスとじっくり向き合う</li>
+          <li>学生主体で企画・実行</li>
+          <li>支援も自分たちも学び続ける</li>
         </ul>
-        <p style="font-size:13px; margin-top:8px;">
-          一方で、道路や電気などのインフラ、教育や医療といった社会基盤は、まだ発展途上の部分も多くあります。
-          エフラオは、こうした現状を「かわいそう」という目線ではなく、
-          <strong>共に学び合いながら未来をつくるパートナー</strong>として捉えています。
-        </p>
       </div>
       <div>
-        <p style="font-size:13px;">
-          ラオス南部のボラベン高原は、標高1,000m級の高地で、豊かな土壌と冷涼な気候を活かしたコーヒー栽培が行われています。
-          エフラオが扱うコーヒー豆も、この地域の農家さんたちによって育てられたものです。
-        </p>
-        <p class="note-text">
-          ※エフラオのスタディツアーでは、村の暮らしや学校、コーヒー農園や加工場などを訪問し、
-          子ども・先生・農家・協同組合のメンバーなど、多様な立場の人びとから話を聞いています。
-        </p>
+        <ul class="values-list">
+          <li><span class="values-label">寄り添った支援：</span>現地の声を聞きながら、一緒に形を考える。</li>
+          <li><span class="values-label">進化する支援：</span>毎年のツアーや振り返りで、支援内容をアップデート。</li>
+          <li><span class="values-label">楽しさ×学び：</span>子どもも学生も「楽しい」と「学び」が両立する場づくり。</li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <!-- ラオスの本・教育状況＋NPOラオスのこども -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">ラオスの教育と本の状況</h2>
-      <div class="section-sub">Learning environment</div>
-    </div>
-
-    <p>
-      ラオスの子どもたちは、<strong>本や文字に触れる機会が非常に限られている</strong>という課題を抱えています。
-      書店や図書館が少ないだけでなく、学校で使う教科書さえ十分に行き渡っていません。
-      調査によると、生徒一人ひとりに教科書が行き届いている学校は、全国の約1割程度とされています。
-    </p>
-    <ul class="info-list">
-      <li>複数の生徒で1冊の教科書を共有することが多い</li>
-      <li>教師しか教科書を持っていない学校も少なくない</li>
-      <li>口承文化が強く、読書習慣が根づきにくい</li>
-    </ul>
-    <p style="font-size:13px; margin-top:8px;">
-      また、ラオス国立図書館の蔵書数は近隣国と比べて少なく、財政状況により本の購入も限られているのが現状です。
-      こうした背景のなかで、ラオス語の絵本や子ども向け図書を増やし、
-      子どもたちが本と出会う機会をひらいているのが、特定非営利活動法人<strong>「ラオスのこども」</strong>です。
-    </p>
-    <p style="font-size:13px; margin-top:8px;">
-      「ラオスのこども」は、ラオス語の創作絵本や昔話、生活に関する本などを現地で出版し、
-      図書箱・図書袋とともに全国の小中学校に届ける活動や、読書推進セミナー、子ども文化センターの運営などを行っています。
-      エフラオも、こうした先行する取り組みから多くを学びながら、<strong>自分たちらしい教育支援の形</strong>を模索しています。
-    </p>
-  </section>
-
-  <!-- ミッション・ビジョン・価値観 -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">ミッション・ビジョン・大切にしている価値観</h2>
-      <div class="section-sub">Mission / Vision / Values</div>
-    </div>
-
-    <div class="mv-grid">
-      <div class="mv-card">
-        <h3>Mission（ミッション）</h3>
-        <p>
-          ラオスの子どもたちが、自分の将来の選択肢をあきらめずにいられるよう、
-          教育の機会と学びの環境を少しずつ整えていくこと。
-        </p>
-      </div>
-      <div class="mv-card">
-        <h3>Vision（ビジョン）</h3>
-        <p>
-          ラオスと日本の若者が、コーヒーや教育をきっかけに出会い、
-          お互いの暮らしや価値観から学び合いながら、共に未来をつくっていく社会。
-        </p>
-      </div>
-    </div>
-
-    <p style="font-size:13px; margin-top:10px;">
-      そのうえで、エフラオが活動の軸として大切にしている価値観は次の3つです。
-    </p>
-    <ul class="values-list">
-      <li><span class="values-label">寄り添った支援：</span>一方的に「してあげる」のではなく、現地の人びとの声に耳を傾け、ともに考えながら形をつくる。</li>
-      <li><span class="values-label">進化する支援：</span>一度決めた支援内容に固執せず、スタディツアーでの対話や振り返りを通じて毎年見直していく。</li>
-      <li><span class="values-label">楽しさと学び：</span>支援する側・される側という関係ではなく、子どもも学生も「楽しい」「学びがある」と感じられる場をつくる。</li>
-    </ul>
   </section>
 
   <!-- 循環型支援モデル -->
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">コーヒーと教育支援の循環型モデル</h2>
-      <div class="section-sub">Our circular model</div>
+      <h2 class="section-title">コーヒーと教育支援の循環</h2>
+      <div class="section-sub">Circular model</div>
     </div>
 
-    <p>
-      エフラオの活動は、<strong>「コーヒー」→「販売」→「教育支援」→「スタディツアー」→「次の企画」</strong> という
-      循環型のモデルになっています。
-    </p>
+    <p>エフラオの活動は、コーヒーと教育支援がつながるシンプルなサイクルになっています。</p>
 
     <div class="cycle-steps">
       <div class="cycle-step">
-        <div class="cycle-step-num">STEP 1</div>
-        <div class="cycle-step-title">フェアトレードで生豆を仕入れる</div>
-        <p>
-          ラオスの協同組合JCFCとフェアトレードで取引している輸入会社（オルター・トレード・ジャパン）を通じて、
-          ラオス産コーヒーの生豆を購入します。
-        </p>
+        <div class="cycle-step-title">① 生豆をフェアトレードで仕入れ</div>
+        <p>ラオスの協同組合JCFCと取引する輸入会社を通じて、生豆をフェアトレードで購入します。</p>
       </div>
       <div class="cycle-step">
-        <div class="cycle-step-num">STEP 2</div>
-        <div class="cycle-step-title">国内で焙煎・商品づくり</div>
-        <p>
-          静岡県菊川市の株式会社流通サービスに焙煎を依頼し、学生がパッケージや商品コンセプトを考えます。
-        </p>
+        <div class="cycle-step-title">② 日本で焙煎・商品化</div>
+        <p>静岡の焙煎会社に依頼し、学生がパッケージや企画を考えて商品にします。</p>
       </div>
       <div class="cycle-step">
-        <div class="cycle-step-num">STEP 3</div>
-        <div class="cycle-step-title">販売会で消費者へ届ける</div>
-        <p>
-          学内販売会や白山祭、ラオスフェスティバルなどで、コーヒーの背景や支援の仕組みも伝えながら販売します。
-        </p>
+        <div class="cycle-step-title">③ 販売会で届ける</div>
+        <p>学内販売会や白山祭、ラオスフェスティバルなどで、コーヒーの背景も一緒に伝えながら販売します。</p>
       </div>
       <div class="cycle-step">
-        <div class="cycle-step-num">STEP 4</div>
-        <div class="cycle-step-title">収益を教育支援として還元</div>
-        <p>
-          売上の一部を使い、毎年12月のスタディツアーの際に、教育支援や支援品の寄贈、ワークショップなどを実施します。
-          現地での対話や調査をもとに、次年度の企画へとつなげていきます。
-        </p>
+        <div class="cycle-step-title">④ 収益を教育支援に還元</div>
+        <p>売上の一部を使って、12月のスタディツアー時に図鑑寄贈やワークショップなどの支援を行います。</p>
       </div>
     </div>
 
-    <p class="note-text">
-      スタディツアーでは、協同組合と連携しながらフェアトレードの影響調査やコーヒー生産現場の見学も行い、
-      「支援」と「ビジネス」の両面から学びを深めています。
+    <p style="font-size:12px; color:#777; margin-top:6px;">
+      教育支援の詳しい内容は「教育支援」ページで紹介しています。
+      <a href="education.html" class="back-link" style="font-size:12px;">教育支援ページへ</a>
     </p>
   </section>
 
-  <!-- お世話になっている企業・団体 -->
+  <!-- 強みと実績（ギュッと要約） -->
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">お世話になっている企業・団体</h2>
-      <div class="section-sub">Our partners</div>
-    </div>
-
-    <div class="partner-grid">
-      <div class="partner-card">
-        <h3>オルター・トレード・ジャパン（ATJ）</h3>
-        <p>
-          バナナやエビ、コーヒーなどの民衆交易（オルタナティブなフェアトレード）に取り組む企業です。
-          エフラオは、ラオスの協同組合JCFCとフェアトレード取引を行うATJからコーヒー生豆を購入しています。
-        </p>
-        <p style="margin-top:4px;">
-          ラオスでのコーヒー事業には、東洋大学の箕曲准教授も立ち上げ当初から関わっており、
-          そのご縁が現在のエフラオの活動にもつながっています。
-        </p>
-        <p style="margin-top:4px;">
-          <a href="https://altertrade.jp/" target="_blank" rel="noopener noreferrer">ATJ公式サイトはこちら</a>
-        </p>
-      </div>
-
-      <div class="partner-card">
-        <h3>株式会社流通サービス</h3>
-        <p>
-          静岡県菊川市に本社を置き、お茶の生産・販売とともに、直火焙煎のコーヒーづくりを行っている企業です。
-          エフラオのコーヒーの焙煎も担当していただいています。
-        </p>
-        <p style="margin-top:4px;">
-          毎年6月には工場見学や事業計画へのアドバイスをいただいたり、千葉県・京北スーパー柏店での店頭販売に参加させていただいたりと、
-          コーヒーを通じた学びの機会を多く提供していただいています。
-        </p>
-        <p style="margin-top:4px;">
-          <a href="http://www.ecofarm.co.jp/index.html" target="_blank" rel="noopener noreferrer">株式会社流通サービス公式サイトはこちら</a>
-        </p>
-      </div>
-    </div>
-
-    <p class="note-text">
-      このほかにも、ラオスの協同組合や現地の先生方、NPO法人「ラオスのこども」、大学・地域の方々など、
-      多くのパートナーの協力を得ながら活動を続けています。
-    </p>
-  </section>
-
-  <!-- エフラオの強み・実績 -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">エフラオの強みとこれまでの実績</h2>
-      <div class="section-sub">Strengths & track record</div>
+      <h2 class="section-title">エフラオの強みと実績</h2>
+      <div class="section-sub">Strengths & record</div>
     </div>
 
     <div class="two-cols">
       <div>
-        <h3 style="font-size:15px; color:#a44f30; margin-bottom:4px;">エフラオの強み</h3>
         <ul class="strengths-list">
-          <li><span class="highlight">長期的な関係性：</span>2013年から同じ地域・学校と関係を築き、変化を見届けながら支援内容をアップデートしている。</li>
-          <li><span class="highlight">学生主体の企画力：</span>コーヒーのパッケージデザインからワークショップの内容まで、学生が主体となって試行錯誤している。</li>
-          <li><span class="highlight">現地の声に基づく支援：</span>スタディツアーでのヒアリングや家計調査、先生・保護者との対話を通じて、ニーズを確かめながら支援を考えている。</li>
-          <li><span class="highlight">「楽しさ」と「学び」の両立：</span>子どもたちが楽しめるワークや遊びを取り入れつつ、将来や仕事について考えるきっかけもつくっている。</li>
+          <li><span class="highlight">10年以上同じ地域と関わり続けている。</span></li>
+          <li><span class="highlight">現地に毎年足を運び、対話しながら支援を考えている。</span></li>
+          <li><span class="highlight">コーヒーと教育支援をセットで学べる場になっている。</span></li>
         </ul>
       </div>
       <div>
-        <h3 style="font-size:15px; color:#a44f30; margin-bottom:4px;">これまでの主な取り組み</h3>
         <ul class="achievements-list">
-          <li>ラオスの小学校への浄水器設置、衛生教育の実施</li>
-          <li>職業絵本・職業図鑑の制作と寄贈、職業ワークショップの実施</li>
-          <li>複数の村での家計調査・インタビューを通じた「暮らし」の聞き取り</li>
-          <li>クラウドファンディングに挑戦し、教育支援プロジェクトの拡充につなげた（2024年度）</li>
+          <li>小学校への浄水器設置や衛生教育</li>
+          <li>職業絵本・職業図鑑の制作とワークショップ</li>
+          <li>クラウドファンディングによる教育支援プロジェクト（2024年）</li>
         </ul>
-        <p class="note-text">
-          詳しい年度ごとの活動は、「エフラオの歩み（History）」ページにまとめています。
+        <p style="font-size:12px; color:#777; margin-top:4px;">
+          年度ごとの詳しいストーリーは、Historyページにまとめています。
         </p>
       </div>
     </div>
   </section>
 
-  <!-- メンバー・チーム構成 -->
+  <!-- メンバー -->
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">メンバーとチーム構成</h2>
+      <h2 class="section-title">メンバー・チーム</h2>
       <div class="section-sub">Members</div>
     </div>
 
     <p>
-      エフラオには、東洋大学を中心に複数学部・学年の学生が所属しており、1年生から4年生までが一緒になって活動しています。
-      新歓期に入った1年生も、先輩とチームを組みながら、少しずつできるところからチャレンジしていきます。
+      東洋大学を中心に、1〜4年生までの学生が所属しています。興味や得意なことに合わせて、いくつかの班に分かれて活動しています。
     </p>
 
     <div class="team-grid">
       <div class="team-card">
         <h3>コーヒー・開発班</h3>
-        <p>コーヒー豆の選定や焙煎の相談、新商品の企画、パッケージデザインなどを担当します。</p>
+        <p>コーヒー豆や焙煎、パッケージなど商品の中身を考えるチーム。</p>
       </div>
       <div class="team-card">
         <h3>広報班</h3>
-        <p>SNS発信、ポスターやチラシ、HPの更新などを通して、活動の背景やストーリーを伝える役割を担います。</p>
+        <p>SNSやポスター、HPでエフラオの想いを発信するチーム。</p>
       </div>
       <div class="team-card">
         <h3>渉外・イベント班</h3>
-        <p>学内外イベントの出店調整や、他団体とのコラボ、白山祭の企画などを担当します。</p>
+        <p>販売会や白山祭、ラオスフェスなどのイベント調整を担当。</p>
       </div>
       <div class="team-card">
         <h3>ラオス・教育支援班</h3>
-        <p>スタディツアーの企画や、職業図鑑・ワークショップづくりなど、教育支援の中身を考えるチームです。</p>
-      </div>
-    </div>
-
-    <p class="note-text">
-      班に関係なく販売会の店頭に立ったり、スタディツアーに参加したりと、
-      メンバーそれぞれが自分の興味や得意を活かしながら活動しています。
-    </p>
-  </section>
-
-  <!-- ロゴに込めた想い -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">ロゴに込めた想い</h2>
-      <div class="section-sub">Our logo</div>
-    </div>
-
-    <div class="logo-section-inner">
-      <div>
-        <p>
-          エフラオのロゴは、デザイナーの<strong>重森健次郎さん</strong>に制作していただいたものです。
-          活動内容や大切にしたい価値観についてメンバー全員で話し合い、その要素をお伝えしたうえで、
-          現在のデザインが完成しました。
-        </p>
-        <p style="font-size:13px; margin-top:6px;">
-          中心に描かれているのは<strong>コーヒーの木</strong>です。コーヒーの実は木に実ることを知ってもらいたいという思いと、
-          コーヒーの販売を通じて支援の土台を支える存在でありたいという願いが込められています。
-        </p>
-        <p style="font-size:13px; margin-top:6px;">
-          枝葉が伸びていく姿には、<strong>ラオスの子どもたちの成長</strong>と、<strong>Smile F LAOSという団体の成長</strong>の両方が重ねられています。
-          ロゴの外枠にはラオス国旗にも使われている赤と青を取り入れ、葉の緑を加えることで、
-          明るくいきいきとした印象になるようデザインされています。
-        </p>
-      </div>
-      <div class="logo-mark-wrap">
-        <img src="logo.jpg" alt="Smile F LAOSのロゴ" class="logo-mark">
-        <div class="logo-caption">エフラオのロゴマーク（デザイン：重森健次郎さん）</div>
+        <p>スタディツアーや職業図鑑など、教育支援の企画を考えるチーム。</p>
       </div>
     </div>
   </section>
 
-  <!-- エフラオの歩みダイジェスト＋Historyリンク -->
+  <!-- 歩みダイジェスト＋パートナーは別ページに委ねる -->
   <section class="section">
     <div class="section-header">
       <h2 class="section-title">エフラオの歩み（ダイジェスト）</h2>
       <div class="section-sub">History digest</div>
     </div>
 
-    <p style="font-size:14px;">
-      エフラオの始まりから現在までの詳しいストーリーは、「エフラオの歩み（History）」ページにまとめています。
-      ここでは、その中から特に節目となった3つの年をピックアップしています。
-    </p>
+    <p>詳しい年表はHistoryページにまとめています。ここでは3つだけご紹介。</p>
 
     <div class="mini-history">
       <div class="mini-history-item">
         <div class="mini-history-year">2013年</div>
-        <div class="mini-history-text">
-          ラオスへのスタディツアーを実施。農村部の学校や暮らしを訪問した経験が、エフラオ誕生の原点となる。
-        </div>
+        <div>ラオス・スタディツアーを実施。現地訪問がエフラオ誕生のきっかけに。</div>
       </div>
       <div class="mini-history-item">
         <div class="mini-history-year">2014年</div>
-        <div class="mini-history-text">
-          Smile F LAOSとして本格始動。ラオス産コーヒーの販売を開始し、売上の一部で浄水器の設置など衛生環境の改善に取り組む。
-        </div>
+        <div>Smile F LAOSとして活動開始。コーヒー販売と支援事業がスタート。</div>
       </div>
       <div class="mini-history-item">
         <div class="mini-history-year">2024年</div>
-        <div class="mini-history-text">
-          職業図鑑ワークショップを複数の村で実施し、クラウドファンディングにも挑戦。
-          教育支援の方向性がより明確になった年。
-        </div>
+        <div>職業図鑑WSとクラウドファンディングに挑戦。教育支援が新しい段階へ。</div>
       </div>
     </div>
 
-    <div class="page-links">
-      <a href="history.html" class="btn-primary">エフラオの歩み（History）ページを見る</a>
+    <div style="margin-top:10px;">
+      <a href="history.html" class="btn-primary">詳しい歩みを見る</a>
     </div>
   </section>
 
-  <!-- 行動誘導（CTA） -->
+  <!-- CTA -->
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">一緒にエフラオの輪に入りませんか？</h2>
-      <div class="section-sub">Call to action</div>
+      <h2 class="section-title">一緒に活動してみませんか？</h2>
+      <div class="section-sub">Join us</div>
     </div>
 
     <p>
-      「ラオスに興味がある」「国際協力を自分ごととして考えてみたい」「コーヒーや教育に関わってみたい」。
-      そんな思いが少しでもあれば、エフラオはきっと居心地のいい場所になるはずです。
+      「ラオスに興味がある」「国際協力をやってみたい」「コーヒーや教育が好き」――
+      どれか一つでも当てはまったら、ぜひ一度エフラオをのぞいてみてください。
     </p>
-    <p style="margin-top:6px;">
-      新歓期以外でも、活動の見学や個別相談はいつでも歓迎しています。
-      学年や経験に関係なく、できるところから少しずつ一緒にチャレンジしていきましょう。
-    </p>
-
-    <div class="hero-cta" style="margin-top:12px;">
+    <div class="hero-cta" style="margin-top:10px;">
       <a href="index.html#join" class="btn-primary">参加方法・連絡先を見る</a>
-      <a href="index.html#activities" class="btn-outline">エフラオの活動内容を知る</a>
+      <a href="index.html#activities" class="btn-outline">活動内容をチェックする</a>
     </div>
   </section>
 
@@ -929,4 +493,3 @@
 </footer>
 </body>
 </html>
-
