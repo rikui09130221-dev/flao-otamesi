@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>支えてくだいている皆さま｜Smile F LAOS</title>
+  <style>
+    :root {
+      --primary: #a44f30;
+      --primary-dark: #a44f30;
+      --bg: #ffffff;
+      --text-main: #000000;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-top: 60px;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+    .logo span {
+      font-size: 12px;
+      display: block;
+      opacity: .8;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .page-hero {
+      background: #fff5ee;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 18px;
+      border-left: 5px solid var(--primary);
+      font-size: 14px;
+    }
+    .page-title { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .page-sub { font-size: 13px; color: #777; }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+    .section-sub { font-size: 12px; color:#777; }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .partner-card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .partner-card h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color:#a44f30;
+    }
+    .partner-card a {
+      font-size: 12px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .partner-card a:hover { text-decoration: underline; }
+
+    .note-text {
+      font-size: 12px;
+      color:#777;
+      margin-top: 8px;
+    }
+
+    .back-link {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--primary-dark);
+    }
+    .back-link::before { content:"← "; }
+
+    footer {
+      background: #212121;
+      color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      nav { font-size: 13px; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      Smile F LAOS
+      <span>ラオスと日本をつなぐ学生サークル</span>
+    </a>
+    <nav>
+      <a href="about.html">団体紹介</a>
+      <a href="index.html#activities">活動内容</a>
+      <a href="gallery.html">写真ギャラリー</a>
+      <a href="index.html#join">参加したい方へ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrapper">
+
+  <section class="page-hero">
+    <h1 class="page-title">支えてくだいている皆さま</h1>
+    <div class="page-sub">
+      エフラオの活動は、多くの企業・団体・個人のみなさまのご協力によって成り立っています。
+      ここでは、特にコーヒーづくりや教育支援の基盤を支えてくださっているパートナーをご紹介します。
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">パートナー紹介</h2>
+      <div class="section-sub">Partners</div>
+    </div>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <h3>オルター・トレード・ジャパン（ATJ）</h3>
+        <p>
+          フェアトレード食品の専門会社として、バナナ・エビ・コーヒーなどの“民衆交易（people's trade）”に取り組む企業です。
+          エフラオは、ラオス南部の協同組合JCFCとフェアトレード取引を行うATJから、ラオスコーヒーの生豆を購入しています。
+        </p>
+        <p style="margin-top:4px;">
+          ATJのラオスコーヒー事業には、東洋大学の箕曲在弘准教授も立ち上げ当初から関わっており、
+          そのご縁が現在のエフラオの活動にもつながっています。
+        </p>
+        <p style="margin-top:4px;">
+          <a href="https://altertrade.jp/" target="_blank" rel="noopener noreferrer">ATJ公式サイトはこちら</a>
+        </p>
+      </div>
+
+      <div class="partner-card">
+        <h3>株式会社流通サービス</h3>
+        <p>
+          静岡県菊川市に本社を置き、お茶の生産・販売とともに、直火焙煎によるコーヒーづくりを行っている企業です。
+          エフラオのコーヒーの焙煎を担当してくださっており、味わいづくりの要となっています。
+        </p>
+        <p style="margin-top:4px;">
+          毎年6月には工場見学や焙煎のレクチャー、事業計画へのアドバイスをいただいたり、
+          千葉県・京北スーパー柏店での店頭販売にエフラオメンバーが参加させていただいたりと、
+          実践的な学びの場を多く提供していただいています。
+        </p>
+        <p style="margin-top:4px;">
+          <a href="http://www.ecofarm.co.jp/index.html" target="_blank" rel="noopener noreferrer">株式会社流通サービス公式サイトはこちら</a>
+        </p>
+      </div>
+    </div>
+
+    <p class="note-text">
+      このほかにも、ラオスの協同組合や現地の先生方、NPO法人「ラオスのこども」、大学・地域の方々など、
+      多くのパートナーの協力を得ながら活動を続けています。
+    </p>
+
+    <p style="margin-top:10px;">
+      <a href="about.html" class="back-link">団体紹介ページに戻る</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Smile F LAOS
+</footer>
+</body>
+</html>
