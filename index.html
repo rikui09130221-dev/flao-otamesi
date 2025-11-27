@@ -271,36 +271,56 @@
       color: #777;
     }
 
-    /* 3カラム 活動紹介カード */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      font-size: 14px;
-    }
+   /* 3カラム 活動紹介カード */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  font-size: 14px;
+}
 
-    .card {
-      border-radius: 10px;
-      border: 1px solid #eee;
-      padding: 14px 12px 12px;
-      background: #fff;
-    }
+.card {
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background: #fff;
+  overflow: hidden;          /* 写真の角をカードに揃える */
+  padding: 0;                /* 中身側で余白管理する */
+}
 
-    .card-badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      background: #ffecb3;
-      color: #795548;
-      margin-bottom: 6px;
-    }
+/* カード内の写真部分 */
+.card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;       /* お好みで 16/9 に変えてもOK */
+  overflow: hidden;
+}
 
-    .card-title {
-      font-weight: 700;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* テキスト部分 */
+.card-body {
+  padding: 14px 12px 12px;
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #ffecb3;
+  color: #795548;
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
 
     /* カード全体をリンクっぽくする */
     .card-link {
@@ -575,39 +595,55 @@
       </div>
 
       <div class="cards">
-        <!-- ラオス産コーヒー 詳細ページへ -->
-        <a href="coffee.html" class="card-link">
-          <article class="card">
-            <div class="card-badge">coffee</div>
-            <h3 class="card-title">ラオス産コーヒーの販売</h3>
-            <p class="card-text">
-              ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
-            </p>
-          </article>
-        </a>
-
-        <!-- 教育支援 詳細ページへ -->
-        <a href="education.html" class="card-link">
-          <article class="card">
-            <div class="card-badge">Education</div>
-            <h3 class="card-title">教育支援</h3>
-            <p class="card-text">
-              毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
-            </p>
-          </article>
-        </a>
-
-        <!-- スタディツアー 詳細ページへ -->
-        <a href="studytour.html" class="card-link">
-          <article class="card">
-            <div class="card-badge">studytour</div>
-            <h3 class="card-title">スタディツアー</h3>
-            <p class="card-text">
-              毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
-            </p>
-          </article>
-        </a>
+  <!-- ラオス産コーヒー 詳細ページへ -->
+  <a href="coffee.html" class="card-link">
+    <article class="card">
+      <div class="card-img-wrap">
+        <img src="pillar-coffee.jpg" alt="ラオス産コーヒーの販売の様子" class="card-img">
       </div>
+      <div class="card-body">
+        <div class="card-badge">coffee</div>
+        <h3 class="card-title">ラオス産コーヒーの販売</h3>
+        <p class="card-text">
+          ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
+        </p>
+      </div>
+    </article>
+  </a>
+
+  <!-- 教育支援 詳細ページへ -->
+  <a href="education.html" class="card-link">
+    <article class="card">
+      <div class="card-img-wrap">
+        <img src="pillar-education.jpg" alt="ラオスの小学校での教育支援の様子" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="card-badge">Education</div>
+        <h3 class="card-title">教育支援</h3>
+        <p class="card-text">
+          毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
+        </p>
+      </div>
+    </article>
+  </a>
+
+  <!-- スタディツアー 詳細ページへ -->
+  <a href="studytour.html" class="card-link">
+    <article class="card">
+      <div class="card-img-wrap">
+        <img src="pillar-studytour.jpg" alt="スタディツアーで現地を訪問している様子" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="card-badge">studytour</div>
+        <h3 class="card-title">スタディツアー</h3>
+        <p class="card-text">
+          毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
+        </p>
+      </div>
+    </article>
+  </a>
+</div>
+
 
     </section>
 
