@@ -24,7 +24,7 @@
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
-      padding-top: 60px;   
+      padding-top: 60px;
     }
 
     /* ヘッダー & ナビ */
@@ -46,39 +46,98 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 16px;
+      gap: 18px;
     }
 
-    /* ▼ ロゴをリンクにしてもデザインが崩れないように調整 ▼ */
+    /* ロゴ（左上） */
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .logo-text-main {
       font-weight: 800;
       font-size: 20px;
       letter-spacing: 0.05em;
-      text-decoration: none;
-      color: #fff;
-      display: inline-block;
+      line-height: 1.1;
     }
 
-    .logo span {
+    .logo-text-sub {
       font-size: 12px;
       display: block;
       opacity: 0.8;
     }
 
-    nav {
+    /* グローバルナビ（ドロップダウン付き） */
+    .global-nav {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 18px;
       font-size: 14px;
+      list-style: none;
     }
 
-    nav a {
+    .global-nav > li {
+      position: relative;
+      list-style: none;
+    }
+
+    .global-nav > li > a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+      padding: 4px 0;
+      display: inline-block;
     }
 
-    nav a:hover {
+    .global-nav > li > a:hover {
       text-decoration: underline;
+    }
+
+    /* ▼ ドロップダウン ▼ */
+    .nav-sub {
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #ffffff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      padding: 6px 0;
+      min-width: 180px;
+      display: none;
+      z-index: 200;
+    }
+
+    .global-nav > li:hover .nav-sub,
+    .global-nav > li:focus-within .nav-sub {
+      display: block;
+    }
+
+    .nav-sub a {
+      display: block;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-sub a:hover {
+      background: #fff5ee;
+      color: #a44f30;
     }
 
     /* ヒーローエリア（全面スライドショー） */
@@ -161,80 +220,6 @@
       color: #fff;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: none;
-      display: inline-block;
-      font-size: 13px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .btn-primary:hover {
-      background: #6a0000;
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      padding: 6px 12px;
-      border-radius: 999px;
-      display: inline-block;
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    /* スライドショー部分（個別） */
-    .hero-slider {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .slider {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      background: #000;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .slide.active {
-      opacity: 1;
-    }
-
-    .hero-slider-caption {
-      font-size: 12px;
-      color: #444;
-      text-align: right;
-    }
-
     /* メインコンテンツ */
     .wrapper {
       max-width: 1100px;
@@ -271,58 +256,14 @@
       color: #777;
     }
 
-   /* 3カラム 活動紹介カード */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  font-size: 14px;
-}
+    /* 3カラム 活動紹介カード（写真付き） */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 14px;
+    }
 
-.card {
-  border-radius: 10px;
-  border: 1px solid #eee;
-  background: #fff;
-  overflow: hidden;          /* 写真の角をカードに揃える */
-  padding: 0;                /* 中身側で余白管理する */
-}
-
-/* カード内の写真部分 */
-.card-img-wrap {
-  width: 100%;
-  aspect-ratio: 4 / 3;       /* お好みで 16/9 に変えてもOK */
-  overflow: hidden;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* テキスト部分 */
-.card-body {
-  padding: 14px 12px 12px;
-}
-
-.card-badge {
-  display: inline-block;
-  font-size: 11px;
-  padding: 3px 7px;
-  border-radius: 999px;
-  background: #ffecb3;
-  color: #795548;
-  margin-bottom: 6px;
-}
-
-.card-title {
-  font-weight: 700;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-
-    /* カード全体をリンクっぽくする */
     .card-link {
       text-decoration: none;
       color: inherit;
@@ -340,6 +281,46 @@
     .card-link:focus-visible .card {
       outline: 2px solid var(--primary);
       outline-offset: 3px;
+    }
+
+    .card {
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 14px 12px 12px;
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #ffecb3;
+      color: #795548;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 14px;
     }
 
     .card-text {
@@ -399,76 +380,6 @@
       margin-bottom: 10px;
     }
 
-    /* ▼ 年表用スタイル（国内 / ラオスで2カラム） ▼ */
-    .history-intro {
-      font-size: 13px;
-      color: #555;
-      margin-top: 4px;
-    }
-
-    .history-legend {
-      display: flex;
-      gap: 12px;
-      font-size: 12px;
-      margin-top: 10px;
-      color: #666;
-      flex-wrap: wrap;
-    }
-
-    .history-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #f5c27a;  /* 国内 */
-    }
-
-    .legend-dot.laos {
-      background: #c5e1a5;  /* ラオス */
-    }
-
-    .history-table {
-      margin-top: 14px;
-      border-top: 1px solid #eee;
-      font-size: 13px;
-    }
-
-    .history-row {
-      display: grid;
-      grid-template-columns: 70px 1fr 1fr;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f3f3f3;
-    }
-
-    .history-year {
-      font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 14px;
-    }
-
-    .history-col-title {
-      font-size: 11px;
-      font-weight: 700;
-      color: #777;
-      margin-bottom: 3px;
-    }
-
-    .history-col ul {
-      margin-left: 1.1em;
-      padding-left: 0;
-      list-style: disc;
-    }
-
-    .history-col li {
-      margin-bottom: 3px;
-    }
-
     /* フッター */
     footer {
       background: #212121;
@@ -478,7 +389,7 @@
       font-size: 12px;
     }
 
-    /* スマホ対応 */
+    /* スマホ対応（簡易） */
     @media (max-width: 768px) {
       .header-inner {
         flex-direction: column;
@@ -486,9 +397,28 @@
         gap: 6px;
       }
 
-      nav {
-        gap: 10px;
+      .global-nav {
         font-size: 13px;
+        gap: 12px;
+      }
+
+      .nav-sub {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        display: block;
+      }
+
+      .nav-sub a {
+        padding: 2px 0 0;
+        color: #ffe5d6;
+        background: none;
+      }
+
+      .nav-sub a:hover {
+        background: none;
+        text-decoration: underline;
       }
 
       .hero-inner {
@@ -510,11 +440,6 @@
       .two-cols {
         grid-template-columns: 1fr;
       }
-
-      /* 年表をスマホでは縦積みに */
-      .history-row {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -522,16 +447,58 @@
   <!-- ヘッダー -->
   <header>
     <div class="header-inner">
-      <!-- ▼ ロゴをクリックすると常にトップページへ戻る ▼ -->
+      <!-- ロゴ＋テキスト（クリックでトップへ） -->
       <a href="index.html" class="logo">
-        Smile F LAOS
-        <span>ラオスと日本をつなぐ学生サークル</span>
+        <img src="logo.jpg" alt="Smile F LAOS ロゴ" class="logo-mark">
+        <div>
+          <div class="logo-text-main">Smile F LAOS</div>
+          <span class="logo-text-sub">ラオスと日本をつなぐ学生サークル</span>
+        </div>
       </a>
+
+      <!-- グローバルナビ -->
       <nav>
-        <a href="about.html">Smile F LAOSとは</a>
-        <a href="#activities">活動内容</a>
-        <a href="gallery.html">写真ギャラリー</a>
-        <a href="#join">お問い合わせ</a>
+        <ul class="global-nav">
+          <!-- Smile F LAOSとは -->
+          <li>
+            <a href="about.html">Smile F LAOSとは</a>
+            <div class="nav-sub">
+              <a href="members.html">構成・メンバー紹介</a>
+              <a href="history.html">エフラオの歩み</a>
+              <a href="about.html#about-laos">ラオス概要</a>
+            </div>
+          </li>
+
+          <!-- 活動内容 -->
+          <li>
+            <a href="about.html#activities">活動内容</a>
+            <div class="nav-sub">
+              <a href="coffee.html">コーヒー</a>
+              <a href="education.html">教育支援</a>
+              <a href="studytour.html">スタディツアー</a>
+              <a href="news.html">お知らせ</a>
+            </div>
+          </li>
+
+          <!-- 製品紹介 -->
+          <li>
+            <a href="coffee.html">製品紹介</a>
+            <div class="nav-sub">
+              <a href="coffee.html">コーヒー</a>
+              <a href="order.html">注文</a>
+            </div>
+          </li>
+
+          <!-- ギャラリー -->
+          <li>
+            <a href="gallery.html">ギャラリー</a>
+          </li>
+
+          <!-- お問い合わせ -->
+          <li>
+            <a href="#join">お問い合わせ</a>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -570,79 +537,74 @@
 
   <!-- メイン -->
   <main class="wrapper">
-    <!-- ▼ 団体紹介 ▼ -->
-   <section class="section" id="about">
-  <div class="section-header">
-    <h2 class="section-title">Smile F LAOSとは？</h2>
-    <div class="section-sub">About us</div>
-  </div>
-  <p>
-    Smile F LAOS（エフラオ）は、ラオスの子どもたちの教育支援や文化交流を目的に活動している東洋大学の学生サークルです。
-    コーヒー販売・教育支援・スタディツアーなど、<strong>「楽しさ」×「学び」</strong> がつながる場づくりを大切にしています。
-  </p>
-  <p style="font-size:13px; color:#555; margin-top:8px;">
-    詳しい団体紹介やメンバー、これまでの歩みは「団体紹介」ページにまとめています。
-  </p>
-  <a href="about.html" class="btn-primary" style="margin-top:10px;">団体紹介ページを見る</a>
-</section>
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2 class="section-title">Smile F LAOSとは？</h2>
+        <div class="section-sub">About us</div>
+      </div>
+      <p>
+        Smile F LAOS（エフラオ）は、ラオスの子どもたちの教育支援や文化交流を目的に活動している学生団体です。
+        コーヒー販売・教育支援・スタディツアーなど、 <strong>「楽しさ」×「学び」</strong> がつながる場づくりを大切にしています。
+      </p>
+    </section>
 
-
-    <!-- ▼ 主な活動 ▼ -->
     <section class="section" id="activities">
       <div class="section-header">
-        <h2 class="section-title">活動の３柱</h2>
+        <h2 class="section-title">エフラオの活動の3柱</h2>
         <div class="section-sub">Activities</div>
       </div>
 
       <div class="cards">
-  <!-- ラオス産コーヒー 詳細ページへ -->
-  <a href="coffee.html" class="card-link">
-    <article class="card">
-      <div class="card-img-wrap">
-        <img src="pillar-coffee.jpg.JPG" alt="ラオス産コーヒーの販売の様子" class="card-img">
-      </div>
-      <div class="card-body">
-        <div class="card-badge">coffee</div>
-        <h3 class="card-title">ラオス産コーヒーの販売</h3>
-        <p class="card-text">
-          ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
-        </p>
-      </div>
-    </article>
-  </a>
+        <!-- ラオス産コーヒー 詳細ページへ -->
+        <a href="coffee.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="pillar-coffee.jpg" alt="ラオス産コーヒーの販売の様子" class="card-img">
+            </div>
+            <div class="card-body">
+              <div class="card-badge">coffee</div>
+              <h3 class="card-title">ラオス産コーヒーの販売</h3>
+              <p class="card-text">
+                ラオスの農家さんからフェアトレードでコーヒー豆を仕入れ、学生が製品化します。2ヵ月に1度ほどの学内販売会や東洋大学の学園祭である白山祭、ラオスフェスティバルなどで紹介し、売上の一部を教育支援に活用しています。
+              </p>
+            </div>
+          </article>
+        </a>
 
-  <!-- 教育支援 詳細ページへ -->
-  <a href="education.html" class="card-link">
-    <article class="card">
-      <div class="card-img-wrap">
-        <img src="pillar-education.jpg.JPG" alt="ラオスの小学校での教育支援の様子" class="card-img">
-      </div>
-      <div class="card-body">
-        <div class="card-badge">Education</div>
-        <h3 class="card-title">教育支援</h3>
-        <p class="card-text">
-          毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
-        </p>
-      </div>
-    </article>
-  </a>
+        <!-- 教育支援 詳細ページへ -->
+        <a href="education.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="pillar-education.jpg" alt="ラオスの小学校での教育支援の様子" class="card-img">
+            </div>
+            <div class="card-body">
+              <div class="card-badge">Education</div>
+              <h3 class="card-title">教育支援</h3>
+              <p class="card-text">
+                毎年行う活動は変わりますが、すべてラオスのこども達の教育支援につながる活動を行っています。2025年度は去年度の職業図鑑をバージョンアップした図鑑を寄贈します。
+              </p>
+            </div>
+          </article>
+        </a>
 
-  <!-- スタディツアー 詳細ページへ -->
-  <a href="studytour.html" class="card-link">
-    <article class="card">
-      <div class="card-img-wrap">
-        <img src="pillar-studytour.jpg.JPG" alt="スタディツアーで現地を訪問している様子" class="card-img">
+        <!-- スタディツアー 詳細ページへ -->
+        <a href="studytour.html" class="card-link">
+          <article class="card">
+            <div class="card-img-wrap">
+              <img src="pillar-studytour.jpg" alt="スタディツアーで現地を訪問している様子" class="card-img">
+            </div>
+            <div class="card-body">
+              <div class="card-badge">studytour</div>
+              <h3 class="card-title">スタディツアー</h3>
+              <p class="card-text">
+                毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
+              </p>
+            </div>
+          </article>
+        </a>
       </div>
-      <div class="card-body">
-        <div class="card-badge">studytour</div>
-        <h3 class="card-title">スタディツアー</h3>
-        <p class="card-text">
-          毎年12月に開催する約10日間のスタディツアー。学生が実際にラオスに足を運び、現地の人と交流します。スタディツアーの大きなプロジェクトは小学校でのワークショップや家計調査、ホームステイの3つがあります。
-        </p>
-      </div>
-    </article>
-  </a>
-</div>
+
+    </section>
 
     <section class="section">
       <div class="section-header">
@@ -672,17 +634,17 @@
 
     <section class="section" id="join">
       <div class="section-header">
-        <h2 class="section-title">参加してみたい方へ</h2>
-        <div class="section-sub">Join us</div>
+        <h2 class="section-title">お問い合わせ・参加してみたい方へ</h2>
+        <div class="section-sub">Contact / Join us</div>
       </div>
       <div class="cta">
         <p>
-          「ラオスが好き」「国際協力に興味がある」「子どもと関わるのが好き」  
+          「ラオスが好き」「国際協力に興味がある」「子どもに関わるのが好き」  
           そんな人は、きっとエフラオと相性ばっちりです。
         </p>
         <p>
           新歓情報や活動の様子は、SNSや写真ギャラリーでも発信していきます。  
-          気になった方は、メンバーやSNS経由で気軽に声をかけてください。
+          参加やコラボ、取材のご相談なども、お気軽にご連絡ください。
         </p>
       </div>
     </section>
