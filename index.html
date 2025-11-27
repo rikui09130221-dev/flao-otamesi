@@ -111,14 +111,22 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: #ffffff;
+      background:rgba(255, 255, 255, 0.85);  /* ← 透明度 85% */
+      backdrop-filter: blur(6px);            /* ← 背景ぼかし（オシャレ度UP） */
       color: #333;
       border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
       box-shadow:0 3px 10px rgba(0,0,0,0.12);
       padding: 6px 0;
       min-width: 180px;
       display: none;
       z-index: 200;
+       opacity: 0;
+  　　transform: translateY(5px);
+ 　　 transition: all 0.2s ease;
+　　　.nav-item:hover .nav-sub {
+  　　opacity: 1;
+     transform: translateY(0);
     }
 
     .global-nav > li:hover .nav-sub,
