@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お知らせ｜Smile F LAOS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f7f4ee;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* ▼ ヘッダー（ほかのページに合わせて調整してね） */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e4ded0;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo img {
+      height: 32px; /* ロゴ画像入れるなら差し替え */
+    }
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #444;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    nav a:hover {
+      background: rgba(164, 79, 48, 0.08);
+      transform: translateY(-1px);
+    }
+
+    /* ▼ メインレイアウト */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .page-lead {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    /* ▼ タブ（ページ内リンク） */
+    .news-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    .news-tabs a {
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #d2c6b5;
+      background: #fff;
+      color: #5a4535;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .news-tabs a:hover {
+      background: #f3e6da;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    /* ▼ セクションタイトル */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 32px 0 12px;
+      border-left: 4px solid #a44f30;
+      padding-left: 10px;
+    }
+
+    /* ▼ お知らせカード */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border: 1px solid #e5ddcf;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .news-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      color: #8a7666;
+      margin-bottom: 4px;
+    }
+
+    .news-date {
+      letter-spacing: 0.03em;
+    }
+
+    .news-category {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fff4e9;
+      border: 1px solid #f0d8b8;
+      font-weight: 600;
+    }
+
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 4px 0 4px;
+    }
+
+    .news-title a {
+      text-decoration: none;
+      color: #3f2a1e;
+    }
+
+    .news-title a:hover {
+      text-decoration: underline;
+    }
+
+    .news-body {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .news-more {
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .news-more a {
+      text-decoration: none;
+      color: #a44f30;
+    }
+
+    .news-more a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼ フッター（簡易） */
+    footer {
+      border-top: 1px solid #e4ded0;
+      padding: 16px 20px 24px;
+      font-size: 12px;
+      color: #897b6a;
+      text-align: center;
+      background: #f5efe5;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding-inline: 12px;
+      }
+      nav ul {
+        gap: 10px;
+        font-size: 13px;
+      }
+      .page-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ▼ ヘッダー（必要に応じて index.html と同じ構造に変えてね） -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <!-- <img src="images/logo.png" alt="Smile F LAOS ロゴ" /> -->
+        <span>Smile F LAOS</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="about.html">Smile F LAOSとは</a></li>
+          <li><a href="activities.html">活動内容</a></li>
+          <li><a href="coffee.html">製品紹介</a></li>
+          <li><a href="gallery.html">ギャラリー</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ▼ メイン -->
+  <main>
+    <h1 class="page-title">お知らせ</h1>
+    <p class="page-lead">
+      Smile F LAOS の販売会情報やイベント、活動に関する最新のお知らせを掲載しています。
+    </p>
+
+    <!-- ▼ タブ（ページ内リンク） -->
+    <div class="news-tabs">
+      <a href="#all">すべて</a>
+      <a href="#coffee-events">販売会情報</a>
+      <a href="#events">イベント</a>
+      <a href="#info">お知らせ</a>
+    </div>
+
+    <!-- ▼ すべて -->
+    <section id="all">
+      <h2 class="section-title">最新のお知らせ</h2>
+      <div class="news-list">
+        <!-- 1件目の例 -->
+        <article class="news-card">
+          <div class="news-meta">
+            <span class="news-date">2025.12.10</span>
+            <span class="news-category">販売会</span>
+          </div>
+          <h3 class="news-title">
+            白山キャンパスにて冬のコーヒー販売会を実施します
+          </h3>
+          <p class="news-body">
+            東洋大学白山キャンパスにて、ラオス産コーヒーの冬季限定販売会を行います。
+            定番の中深煎りブレンドに加えて、新しいドリップパックも数量限定で登場予定です。
+          </p>
+          <p class="news-more"><a href="#coffee-events">▶ 詳しい日時・場所を見る</a></p>
+        </article>
+
+        <!-- 2件目の例 -->
+        <article class="news-card">
+          <div class="news-meta">
+            <span class="news-date">2025.11.30</span>
+            <span class="news-category">イベント</span>
+          </div>
+          <h3 class="news-title">
+            学童でのラオスワークショップを実施しました
+          </h3>
+          <p class="news-body">
+            都内の学童保育にて、ラオス紹介・クイズ・めんこづくりなどを通して、
+            子どもたちにラオスを身近に感じてもらうワークショップを行いました。
+          </p>
+          <p class="news-more"><a href="#events">▶ 活動のようすを見る</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ▼ 販売会情報（coffee.html からここにリンクすると良い） -->
+    <section id="coffee-events">
+      <h2 class="section-title">販売会情報</h2>
+      <div class="news-list">
+        <article class="news-card">
+          <div class="news-meta">
+            <span class="news-date">2025.12.10</span>
+            <span class="news-category">販売会</span>
+          </div>
+          <h3 class="news-title">
+            【予定】冬の白山キャンパス販売会
+          </h3>
+          <p class="news-body">
+            日時：2025年12月10日（水）11:00〜16:00（予定）<br>
+            場所：東洋大学 白山キャンパス ○号館前<br>
+            内容：コーヒー豆・ドリップパックの販売、活動紹介パネルの展示 など
+          </p>
+        </article>
+
+        <!-- ここに今後の販売会を追加していく -->
+      </div>
+    </section>
+
+    <!-- ▼ イベント -->
+    <section id="events">
+      <h2 class="section-title">イベント・ワークショップ</h2>
+      <div class="news-list">
+        <article class="news-card">
+          <div class="news-meta">
+            <span class="news-date">2025.11.30</span>
+            <span class="news-category">イベント</span>
+          </div>
+          <h3 class="news-title">
+            学童向けラオスワークショップ（報告）
+          </h3>
+          <p class="news-body">
+            ラオスの文化紹介やクイズ、めんこ遊び、おてだまなどを通じて、
+            子どもたちと楽しく交流しました。いただいた感想は今後の企画にも活かしていきます。
+          </p>
+        </article>
+
+        <!-- ここに他のイベント報告を追加 -->
+      </div>
+    </section>
+
+    <!-- ▼ その他のお知らせ -->
+    <section id="info">
+      <h2 class="section-title">その他のお知らせ</h2>
+      <div class="news-list">
+        <article class="news-card">
+          <div class="news-meta">
+            <span class="news-date">2025.11.01</span>
+            <span class="news-category">お知らせ</span>
+          </div>
+          <h3 class="news-title">
+            Smile F LAOS 公式ホームページ公開のお知らせ
+          </h3>
+          <p class="news-body">
+            活動内容やコーヒー、ラオスでの教育支援について、より分かりやすくお伝えするため、
+            公式ホームページを公開しました。今後も内容を充実させていきます。
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ▼ フッター -->
+  <footer>
+    &copy; 2025 Smile F LAOS
+  </footer>
+</body>
+</html>
