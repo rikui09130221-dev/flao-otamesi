@@ -5,131 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>お知らせ｜Smile F LAOS</title>
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-      background: #f7f4ee;
-      color: #333;
-      line-height: 1.7;
+    :root {
+      --primary: #a44f30;
+      --primary-dark: #a44f30;
+      --bg: #ffffff;
+      --text-main: #000000;
     }
 
-    /* ▼ ヘッダー（ほかのページに合わせて調整してね） */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #ffffffcc;
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid #e4ded0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-top: 60px;
+    }
+
+    /* ヘッダー（about / coffee / education / history と同じ系統） */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    .logo img {
-      height: 32px; /* ロゴ画像入れるなら差し替え */
-    }
-    nav ul {
-      display: flex;
-      gap: 18px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 14px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #444;
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background 0.2s, transform 0.1s;
-    }
-    nav a:hover {
-      background: rgba(164, 79, 48, 0.08);
-      transform: translateY(-1px);
+      padding: 10px 16px;
     }
 
-    /* ▼ メインレイアウト */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 32px 20px 60px;
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .logo span {
+      font-size: 12px;
+      display: block;
+      opacity: .8;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* レイアウト共通 */
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .page-hero {
+      background: #fff5ee;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
     }
 
     .page-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #777;
     }
 
     .page-lead {
-      font-size: 15px;
-      color: #666;
-      margin-bottom: 24px;
+      font-size: 14px;
+      margin-top: 8px;
+      color: #333;
     }
 
-    /* ▼ タブ（ページ内リンク） */
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 18px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* タブ風リンク（ページ内リンク） */
     .news-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 24px;
-      font-size: 14px;
+      margin-bottom: 10px;
+      font-size: 12px;
     }
+
     .news-tabs a {
       text-decoration: none;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 999px;
-      border: 1px solid #d2c6b5;
+      border: 1px solid #d9c9bc;
       background: #fff;
-      color: #5a4535;
-      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      color: var(--primary-dark);
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
     }
+
     .news-tabs a:hover {
-      background: #f3e6da;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      background: #fff5ee;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
       transform: translateY(-1px);
     }
 
-    /* ▼ セクションタイトル */
-    .section-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin: 32px 0 12px;
-      border-left: 4px solid #a44f30;
-      padding-left: 10px;
-    }
-
-    /* ▼ お知らせカード */
+    /* お知らせカード */
     .news-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .news-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px 16px 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-      border: 1px solid #e5ddcf;
-      transition: transform 0.1s, box-shadow 0.1s;
-    }
-
-    .news-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      background: #fff8f4;
+      border-radius: 10px;
+      padding: 10px 12px 9px;
+      border: 1px solid #f0dfd1;
     }
 
     .news-meta {
@@ -138,223 +185,317 @@
       gap: 8px;
       align-items: center;
       font-size: 12px;
-      color: #8a7666;
-      margin-bottom: 4px;
+      color: #777;
+      margin-bottom: 2px;
     }
 
     .news-date {
-      letter-spacing: 0.03em;
-    }
-
-    .news-category {
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #fff4e9;
-      border: 1px solid #f0d8b8;
       font-weight: 600;
-    }
-
-    .news-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 4px 0 4px;
-    }
-
-    .news-title a {
-      text-decoration: none;
-      color: #3f2a1e;
-    }
-
-    .news-title a:hover {
-      text-decoration: underline;
-    }
-
-    .news-body {
-      font-size: 14px;
       color: #555;
     }
 
-    .news-more {
-      margin-top: 6px;
+    .news-category {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #ffecb3;
+      color: #795548;
+    }
+
+    .news-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #3f2a1e;
+    }
+
+    .news-body {
       font-size: 13px;
+      color: #444;
+    }
+
+    .news-more {
+      margin-top: 4px;
+      font-size: 12px;
     }
 
     .news-more a {
+      color: var(--primary-dark);
       text-decoration: none;
-      color: #a44f30;
     }
 
     .news-more a:hover {
       text-decoration: underline;
     }
 
-    /* ▼ フッター（簡易） */
-    footer {
-      border-top: 1px solid #e4ded0;
-      padding: 16px 20px 24px;
+    .news-note {
       font-size: 12px;
-      color: #897b6a;
-      text-align: center;
-      background: #f5efe5;
+      color: #777;
+      margin-top: 8px;
     }
 
-    @media (max-width: 640px) {
+    /* セクション内見出し（小さめ） */
+    .news-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    /* ページ下のリンク */
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--primary-dark);
+    }
+
+    .back-link::before {
+      content: "← ";
+    }
+
+    .back-link-main {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .back-link-main::before {
+      content: "";
+    }
+
+    .back-link-main:hover {
+      background: #8a3f25;
+    }
+
+    /* フッター */
+    footer {
+      background: #212121;
+      color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
       .header-inner {
-        padding-inline: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
-      nav ul {
-        gap: 10px;
+
+      nav {
         font-size: 13px;
+        gap: 10px;
       }
+
       .page-title {
-        font-size: 22px;
+        font-size: 19px;
       }
     }
   </style>
 </head>
 <body>
+<header>
+  <div class="header-inner">
+    <!-- ロゴクリックでトップへ（他ページと同じ） -->
+    <a href="index.html" class="logo">
+      Smile F LAOS
+      <span>ラオスと日本をつなぐ学生サークル</span>
+    </a>
+    <nav>
+      <a href="about.html">団体紹介</a>
+      <a href="index.html#activities">活動内容</a>
+      <a href="gallery.html">写真ギャラリー</a>
+      <a href="index.html#join">参加したい方へ</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- ▼ ヘッダー（必要に応じて index.html と同じ構造に変えてね） -->
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        <!-- <img src="images/logo.png" alt="Smile F LAOS ロゴ" /> -->
-        <span>Smile F LAOS</span>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="about.html">Smile F LAOSとは</a></li>
-          <li><a href="activities.html">活動内容</a></li>
-          <li><a href="coffee.html">製品紹介</a></li>
-          <li><a href="gallery.html">ギャラリー</a></li>
-          <li><a href="contact.html">お問い合わせ</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ▼ メイン -->
-  <main>
-    <h1 class="page-title">お知らせ</h1>
+<main class="wrapper">
+  <!-- ページヒーロー -->
+  <div class="page-hero">
+    <div class="page-title">お知らせ</div>
+    <div class="page-sub">News & Events</div>
     <p class="page-lead">
-      Smile F LAOS の販売会情報やイベント、活動に関する最新のお知らせを掲載しています。
+      学内販売会や学園祭、ラオスフェスティバルへの出店、ワークショップの実施など、<br>
+      Smile F LAOS の最新情報をこちらのページにまとめていきます。
     </p>
+  </div>
 
-    <!-- ▼ タブ（ページ内リンク） -->
+  <!-- お知らせ一覧（タブ＋最新） -->
+  <section class="section" id="all">
+    <div class="section-header">
+      <h2 class="section-title">最新のお知らせ一覧</h2>
+      <div class="section-sub">All updates</div>
+    </div>
+
     <div class="news-tabs">
       <a href="#all">すべて</a>
       <a href="#coffee-events">販売会情報</a>
-      <a href="#events">イベント</a>
-      <a href="#info">お知らせ</a>
+      <a href="#events">イベント・ワークショップ</a>
+      <a href="#info">その他のお知らせ</a>
     </div>
 
-    <!-- ▼ すべて -->
-    <section id="all">
-      <h2 class="section-title">最新のお知らせ</h2>
-      <div class="news-list">
-        <!-- 1件目の例 -->
-        <article class="news-card">
-          <div class="news-meta">
-            <span class="news-date">2025.12.10</span>
-            <span class="news-category">販売会</span>
-          </div>
-          <h3 class="news-title">
-            白山キャンパスにて冬のコーヒー販売会を実施します
-          </h3>
-          <p class="news-body">
-            東洋大学白山キャンパスにて、ラオス産コーヒーの冬季限定販売会を行います。
-            定番の中深煎りブレンドに加えて、新しいドリップパックも数量限定で登場予定です。
-          </p>
-          <p class="news-more"><a href="#coffee-events">▶ 詳しい日時・場所を見る</a></p>
-        </article>
+    <h3 class="news-section-title">最新のお知らせ</h3>
+    <div class="news-list">
+      <!-- 例1：販売会系 -->
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.12.10</span>
+          <span class="news-category">販売会</span>
+        </div>
+        <div class="news-title">
+          冬の白山キャンパス販売会を実施します（予定）
+        </div>
+        <p class="news-body">
+          東洋大学白山キャンパスにて、ラオス産コーヒーの冬季販売会を予定しています。
+          定番の中煎り・深煎りに加えて、新しいドリップパックも数量限定で販売予定です。
+        </p>
+        <p class="news-more">
+          <a href="#coffee-events">▶ 詳しい日時・場所を見る</a>
+        </p>
+      </article>
 
-        <!-- 2件目の例 -->
-        <article class="news-card">
-          <div class="news-meta">
-            <span class="news-date">2025.11.30</span>
-            <span class="news-category">イベント</span>
-          </div>
-          <h3 class="news-title">
-            学童でのラオスワークショップを実施しました
-          </h3>
-          <p class="news-body">
-            都内の学童保育にて、ラオス紹介・クイズ・めんこづくりなどを通して、
-            子どもたちにラオスを身近に感じてもらうワークショップを行いました。
-          </p>
-          <p class="news-more"><a href="#events">▶ 活動のようすを見る</a></p>
-        </article>
-      </div>
-    </section>
+      <!-- 例2：イベント・学童WS -->
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.11.30</span>
+          <span class="news-category">イベント</span>
+        </div>
+        <div class="news-title">
+          学童でのラオスワークショップを実施しました（報告）
+        </div>
+        <p class="news-body">
+          都内の学童保育にて、ラオス紹介・クイズ・めんこづくり・おてだま遊びなどを行いました。
+          子どもたちの様子や、気づきについては教育支援のページでも紹介していきます。
+        </p>
+        <p class="news-more">
+          <a href="#events">▶ ワークショップの概要を見る</a>
+        </p>
+      </article>
 
-    <!-- ▼ 販売会情報（coffee.html からここにリンクすると良い） -->
-    <section id="coffee-events">
+      <!-- 例3：その他のお知らせ -->
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.11.01</span>
+          <span class="news-category">お知らせ</span>
+        </div>
+        <div class="news-title">
+          Smile F LAOS 公式ホームページ公開のお知らせ
+        </div>
+        <p class="news-body">
+          活動内容やラオスでの教育支援、スタディツアーの様子を紹介する公式ホームページを公開しました。
+          少しずつ内容を充実させていきますので、温かく見守っていただけると嬉しいです。
+        </p>
+      </article>
+    </div>
+
+    <p class="news-note">
+      ※ 日程や内容は変更になる場合があります。最新情報は本ページまたはSNSでご確認ください。
+    </p>
+  </section>
+
+  <!-- 販売会情報（coffee.html からの導線用） -->
+  <section class="section" id="coffee-events">
+    <div class="section-header">
       <h2 class="section-title">販売会情報</h2>
-      <div class="news-list">
-        <article class="news-card">
-          <div class="news-meta">
-            <span class="news-date">2025.12.10</span>
-            <span class="news-category">販売会</span>
-          </div>
-          <h3 class="news-title">
-            【予定】冬の白山キャンパス販売会
-          </h3>
-          <p class="news-body">
-            日時：2025年12月10日（水）11:00〜16:00（予定）<br>
-            場所：東洋大学 白山キャンパス ○号館前<br>
-            内容：コーヒー豆・ドリップパックの販売、活動紹介パネルの展示 など
-          </p>
-        </article>
+      <div class="section-sub">Coffee events</div>
+    </div>
 
-        <!-- ここに今後の販売会を追加していく -->
-      </div>
-    </section>
+    <h3 class="news-section-title">今後の販売会予定</h3>
+    <div class="news-list">
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.12.10</span>
+          <span class="news-category">販売会</span>
+        </div>
+        <div class="news-title">
+          【予定】冬の白山キャンパス販売会
+        </div>
+        <p class="news-body">
+          日時：2025年12月10日（水）11:00〜16:00（予定）<br>
+          場所：東洋大学 白山キャンパス ○号館前<br>
+          内容：コーヒー豆・ドリップパックの販売、ラオスでの教育支援パネル展示 など
+        </p>
+      </article>
 
-    <!-- ▼ イベント -->
-    <section id="events">
+      <!-- 追加したくなったら、この記事ブロックをコピペして増やしていく感じでOK -->
+    </div>
+  </section>
+
+  <!-- イベント・ワークショップ -->
+  <section class="section" id="events">
+    <div class="section-header">
       <h2 class="section-title">イベント・ワークショップ</h2>
-      <div class="news-list">
-        <article class="news-card">
-          <div class="news-meta">
-            <span class="news-date">2025.11.30</span>
-            <span class="news-category">イベント</span>
-          </div>
-          <h3 class="news-title">
-            学童向けラオスワークショップ（報告）
-          </h3>
-          <p class="news-body">
-            ラオスの文化紹介やクイズ、めんこ遊び、おてだまなどを通じて、
-            子どもたちと楽しく交流しました。いただいた感想は今後の企画にも活かしていきます。
-          </p>
-        </article>
+      <div class="section-sub">Events / Workshops</div>
+    </div>
 
-        <!-- ここに他のイベント報告を追加 -->
-      </div>
-    </section>
+    <div class="news-list">
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.11.30</span>
+          <span class="news-category">イベント</span>
+        </div>
+        <div class="news-title">
+          学童向けラオスワークショップの実施報告
+        </div>
+        <p class="news-body">
+          ラオスのクイズや文化紹介、めんこづくり・おてだま遊び、ビデオメッセージ撮影などを通して、
+          子どもたちがそれぞれの形でラオスに関心を持ってくれる様子が印象的でした。
+          詳しい内容は教育支援ページでも紹介予定です。
+        </p>
+        <p class="news-more">
+          <a href="education.html">▶ 教育支援ページを見る</a>
+        </p>
+      </article>
+    </div>
+  </section>
 
-    <!-- ▼ その他のお知らせ -->
-    <section id="info">
+  <!-- その他のお知らせ -->
+  <section class="section" id="info">
+    <div class="section-header">
       <h2 class="section-title">その他のお知らせ</h2>
-      <div class="news-list">
-        <article class="news-card">
-          <div class="news-meta">
-            <span class="news-date">2025.11.01</span>
-            <span class="news-category">お知らせ</span>
-          </div>
-          <h3 class="news-title">
-            Smile F LAOS 公式ホームページ公開のお知らせ
-          </h3>
-          <p class="news-body">
-            活動内容やコーヒー、ラオスでの教育支援について、より分かりやすくお伝えするため、
-            公式ホームページを公開しました。今後も内容を充実させていきます。
-          </p>
-        </article>
-      </div>
-    </section>
-  </main>
+      <div class="section-sub">Information</div>
+    </div>
 
-  <!-- ▼ フッター -->
-  <footer>
-    &copy; 2025 Smile F LAOS
-  </footer>
+    <div class="news-list">
+      <article class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2025.11.01</span>
+          <span class="news-category">お知らせ</span>
+        </div>
+        <div class="news-title">
+          Smile F LAOS 公式ホームページ公開
+        </div>
+        <p class="news-body">
+          エフラオの活動やラオスでの教育支援を、より分かりやすく伝えるためのホームページを公開しました。
+          これからメンバーと一緒に、コンテンツや写真を増やしていく予定です。
+        </p>
+      </article>
+    </div>
+
+    <div class="page-links">
+      <a href="index.html#activities" class="back-link">トップページ（活動内容）に戻る</a>
+      <a href="coffee.html" class="back-link back-link-main">コーヒーの紹介ページを見る</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Smile F LAOS
+</footer>
 </body>
 </html>
