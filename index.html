@@ -372,10 +372,15 @@
       font-size: 12px;
     }
 
-/* スマホ対応 */
+/* スマホ対応（768px以下） */
 @media (max-width: 768px) {
 
-  /* ▼ ヘッダーをコンパクトに（メニューは折りたたみ想定） */
+  /* スマホはヘッダーを少しだけ小さく見せる */
+  body {
+    padding-top: 56px;  /* PCより少しだけ低めにしておく */
+  }
+
+  /* ▼ ヘッダー周り（折りたたみナビ用） */
   .header-inner {
     flex-direction: row;
     align-items: center;
@@ -383,9 +388,8 @@
     gap: 6px;
   }
 
-  /* ▼ 折りたたみナビ（最初は非表示） */
   .global-nav {
-    display: none;                 /* ← 重要：スマホは折りたたむ */
+    display: none;                 /* ← スマホでは最初は隠す */
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
@@ -394,12 +398,10 @@
     font-size: 13px;
   }
 
-  /* ▼ ヘッダーが開いた時だけナビ表示 */
   .site-header.is-open .global-nav {
-    display: flex;
+    display: flex;                 /* ← ヘッダーをタップした時だけ表示 */
   }
 
-  /* ▼ ドロップダウンメニューは常時展開（ホバー無効） */
   .nav-sub {
     position: static;
     box-shadow: none;
@@ -424,33 +426,33 @@
     color: #ffffff;
   }
 
-  /* ▼ スライドショー（ヒーロー）調整 */
+  /* ▼ ヒーロー（スライドショー部分） */
   .hero {
-    margin-top: 70px;   /* ← ヘッダーと被らないように下げる */
-    min-height: 55vh;   /* ← PCより小さめ表示にする */
+    margin-top: 12px;   /* ヘッダーと少しだけ離す（70px → 12px に大幅減） */
+    min-height: 45vh;   /* 写真をかなり小さめに（80vh → 45vh） */
   }
 
-  /* ▼ スライド位置の調整：人物が切れないように上寄り */
+  /* 写真の見せ方：人物が切れにくいように上寄せ */
   .hero-bg .slide {
     object-position: center top;
   }
 
-  /* ▼ テキスト位置の微調整 */
+  /* テキストの上下余白も少しだけにする */
   .hero-inner {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
-  /* ▼ 見出しなど */
   .hero-title {
     font-size: 22px;
   }
 
+  /* ▼ メインコンテンツをできるだけ上に寄せる */
   .wrapper {
-    margin-top: 18px;
+    margin-top: 8px;
   }
 
-  /* ▼ 3カラムカード → 1カラムに */
+  /* 3カラム → 1カラム */
   .cards {
     grid-template-columns: 1fr;
   }
