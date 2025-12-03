@@ -381,6 +381,31 @@
     justify-content: space-between;
     gap: 6px;
   }
+@media (max-width: 768px) {
+
+  /* ここを追加 */
+
+  /* ヒーロー（スライドショー）を少し下にずらす＋高さを低くする */
+  .hero {
+    margin-top: 8px;      /* ヘッダーとの間に少し余白を作る */
+    min-height: 60vh;     /* もともと80vh → 写真を小さめに表示 */
+  }
+
+  /* 写真の中で見せたい位置を少し上寄りに（お好みで） */
+  .hero-bg .slide {
+    object-position: center top;
+  }
+
+  /* 必要ならテキストの位置も微調整（任意）
+  .hero-inner {
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
+  */
+
+  /* ここより下は、いま書いてあるスマホ用の他のスタイルをそのまま残してOK */
+
+}
 
   /* 折りたたみメニュー本体 */
   .global-nav {
