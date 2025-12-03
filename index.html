@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<header class="site-header">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smile F LAOS｜学生によるラオス支援サークル</title>
@@ -372,60 +372,74 @@
       font-size: 12px;
     }
 
-    /* スマホ対応（簡易） */
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
+    /* スマホ対応 */
+@media (max-width: 768px) {
+  /* ヘッダー：ロゴだけの細いバーにして、メニューは折りたたむ */
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
 
-      .global-nav {
-        font-size: 13px;
-        gap: 12px;
-      }
+  /* 折りたたみメニュー本体 */
+  .global-nav {
+    display: none;                 /* 最初は非表示 */
+    flex-direction: column;        /* 縦並び */
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 13px;
+  }
 
-      /* スマホではサブメニューを常に表示（シンプル版） */
-      .nav-sub {
-        position: static;
-        box-shadow: none;
-        background: transparent;
-        border: none;
-        padding: 0;
-        display: block;
-        opacity: 1;
-        transform: none;
-        backdrop-filter: none;
-      }
+  /* ヘッダーが .is-open のときだけ表示 */
+  .site-header.is-open .global-nav {
+    display: flex;
+  }
 
-      .nav-sub a {
-        padding: 2px 0 0;
-        color: #ffe5d6;
-        background: none;
-      }
+  /* サブメニューは常に開いた状態（今まで通り） */
+  .nav-sub {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: block;
+    opacity: 1;
+    transform: none;
+    backdrop-filter: none;
+  }
 
-      .nav-sub a:hover {
-        background: none;
-        text-decoration: underline;
-        color: #ffffff;
-      }
+  .nav-sub a {
+    padding: 2px 0 0;
+    color: #ffe5d6;
+    background: none;
+  }
 
-      .hero-inner {
-        padding: 26px 14px 22px;
-      }
+  .nav-sub a:hover {
+    background: none;
+    text-decoration: underline;
+    color: #ffffff;
+  }
 
-      .hero-title {
-        font-size: 22px;
-      }
+  /* ヒーロー・メインの調整は今までと同じ */
+  .hero-inner {
+    padding: 26px 14px 22px;
+  }
 
-      .wrapper {
-        margin-top: 18px;
-      }
+  .hero-title {
+    font-size: 22px;
+  }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
+  .wrapper {
+    margin-top: 18px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -639,21 +653,41 @@
     © 2025 Smile F LAOS
   </footer>
 
-  <!-- スライドショー用のシンプルなJS -->
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
+<script>
+  // スマホ用：ヘッダーをタップするとメニュー開閉
+  document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.site-header');
+    const headerInner = document.querySelector('.header-inner');
+    const nav = document.querySelector('.global-nav');
 
-    function showSlide(next) {
-      slides[current].classList.remove('active');
-      current = (next + slides.length) % slides.length;
-      slides[current].classList.add('active');
+    if (!header || !headerInner || !nav) return;
+
+    function isMobile() {
+      return window.matchMedia('(max-width: 768px)').matches;
     }
 
-    if (slides.length > 0) {
-      slides[0].classList.add('active');
-      setInterval(() => showSlide(current + 1), 5000); // 5秒ごとに切り替え
-    }
-  </script>
-</body>
-</html>
+    headerInner.addEventListener('click', function (e) {
+      if (!isMobile()) return;
+
+      // メニューのリンク部分を押したときは開閉させない
+      if (e.target.closest('nav')) return;
+
+      header.classList.toggle('is-open');
+    });
+  });
+
+  // スライドショー用のシンプルなJS（元のまま）
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(next) {
+    slides[current].classList.remove('active');
+    current = (next + slides.length) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  if (slides.length > 0) {
+    slides[0].classList.add('active');
+    setInterval(() => showSlide(current + 1), 5000); // 5秒ごとに切り替え
+  }
+</script>
