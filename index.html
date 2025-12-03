@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<header class="site-header">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smile F LAOS｜学生によるラオス支援サークル</title>
@@ -24,7 +24,7 @@
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
-      padding-top: 60px;
+      padding-top: 60px; /* 固定ヘッダーぶんの余白 */
     }
 
     /* ヘッダー & ナビ */
@@ -59,7 +59,7 @@
     }
 
     .logo-mark {
-      width: 52px;   /* ロゴの大きさ：好みで 48〜60px に調整OK */
+      width: 52px;
       height: 52px;
       border-radius: 50%;
       object-fit: contain;
@@ -109,13 +109,13 @@
     /* ▼ ドロップダウン ▼ */
     .nav-sub {
       position: absolute;
-      top: 100%; /* ヘッダーに少し近づける */
+      top: 100%;
       left: 0;
       min-width: 180px;
       padding: 6px 0;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.55); /* 半透明 */
-      backdrop-filter: blur(6px);            /* 背景ぼかし */
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
       box-shadow: 0 3px 10px rgba(0,0,0,0.12);
       border: 1px solid rgba(0, 0, 0, 0.1);
       display: none;
@@ -155,7 +155,6 @@
       min-height: 80vh;
     }
 
-    /* 背景スライド */
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -176,7 +175,6 @@
       opacity: 1;
     }
 
-    /* 上にかぶせるグラデーション */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -187,7 +185,6 @@
       );
     }
 
-    /* テキスト部分（前面） */
     .hero-inner {
       position: relative;
       z-index: 2;
@@ -262,7 +259,6 @@
       color: #777;
     }
 
-    /* 3カラム 活動紹介カード（写真付き） */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -334,7 +330,6 @@
       color: #555;
     }
 
-    /* お知らせ */
     .news-list {
       list-style: none;
       font-size: 13px;
@@ -352,7 +347,6 @@
       color: #555;
     }
 
-    /* Call to action */
     .cta {
       text-align: center;
       font-size: 14px;
@@ -363,7 +357,6 @@
       margin-bottom: 10px;
     }
 
-    /* フッター */
     footer {
       background: #212121;
       color: #eee;
@@ -372,96 +365,91 @@
       font-size: 12px;
     }
 
-/* スマホ対応（768px以下） */
-@media (max-width: 768px) {
+    /* ▼▼ スマホ対応（768px以下） ▼▼ */
+    @media (max-width: 768px) {
 
-  /* スマホはヘッダーを少しだけ小さく見せる */
-  body {
-    padding-top: 56px;  /* PCより少しだけ低めにしておく */
-  }
+      body {
+        padding-top: 56px;
+      }
 
-  /* ▼ ヘッダー周り（折りたたみナビ用） */
-  .header-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-  }
+      /* ヘッダー（ロゴ＋タイトルはそのまま／メニューは折りたたみ） */
+      .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+      }
 
-  .global-nav {
-    display: none;                 /* ← スマホでは最初は隠す */
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 100%;
-    margin-top: 8px;
-    font-size: 13px;
-  }
+      .global-nav {
+        display: none; /* スマホではデフォ非表示 */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+        margin-top: 8px;
+        font-size: 13px;
+      }
 
-  .site-header.is-open .global-nav {
-    display: flex;                 /* ← ヘッダーをタップした時だけ表示 */
-  }
+      /* .site-header に is-open が付いた時だけ表示（JSで付け外し） */
+      .site-header.is-open .global-nav {
+        display: flex;
+      }
 
-  .nav-sub {
-    position: static;
-    box-shadow: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-    display: block;
-    opacity: 1;
-    transform: none;
-    backdrop-filter: none;
-  }
+      .nav-sub {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        padding: 0;
+        display: block;
+        opacity: 1;
+        transform: none;
+        backdrop-filter: none;
+      }
 
-  .nav-sub a {
-    padding: 2px 0 0;
-    color: #ffe5d6;
-    background: none;
-  }
+      .nav-sub a {
+        padding: 2px 0 0;
+        color: #ffe5d6;
+        background: none;
+      }
 
-  .nav-sub a:hover {
-    background: none;
-    text-decoration: underline;
-    color: #ffffff;
-  }
+      .nav-sub a:hover {
+        background: none;
+        text-decoration: underline;
+        color: #ffffff;
+      }
 
-  /* ▼ ヒーロー（スライドショー部分） */
-  .hero {
-    margin-top: 12px;   /* ヘッダーと少しだけ離す（70px → 12px に大幅減） */
-    min-height: 45vh;   /* 写真をかなり小さめに（80vh → 45vh） */
-  }
+      /* ヒーローを小さめに＆下のコンテンツも見えるように */
+      .hero {
+        margin-top: 8px;
+        min-height: 40vh;
+      }
 
-  /* 写真の見せ方：人物が切れにくいように上寄せ */
-  .hero-bg .slide {
-    object-position: center top;
-  }
+      .hero-bg .slide {
+        object-position: center top;
+      }
 
-  /* テキストの上下余白も少しだけにする */
-  .hero-inner {
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
+      .hero-inner {
+        padding: 18px 14px 18px;
+      }
 
-  .hero-title {
-    font-size: 22px;
-  }
+      .hero-title {
+        font-size: 22px;
+      }
 
-  /* ▼ メインコンテンツをできるだけ上に寄せる */
-  .wrapper {
-    margin-top: 8px;
-  }
+      .wrapper {
+        margin-top: 10px;
+      }
 
-  /* 3カラム → 1カラム */
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- ヘッダー -->
-  <header>
+  <header class="site-header">
     <div class="header-inner">
       <!-- ロゴ＋テキスト（クリックでトップへ） -->
       <a href="index.html" class="logo">
@@ -475,7 +463,6 @@
       <!-- グローバルナビ -->
       <nav>
         <ul class="global-nav">
-          <!-- Smile F LAOSとは -->
           <li>
             <a href="about.html">Smile F LAOSとは</a>
             <div class="nav-sub">
@@ -485,7 +472,6 @@
             </div>
           </li>
 
-          <!-- 活動内容 -->
           <li>
             <a href="about.html#activities">活動内容</a>
             <div class="nav-sub">
@@ -496,7 +482,6 @@
             </div>
           </li>
 
-          <!-- 製品紹介 -->
           <li>
             <a href="coffee.html">製品紹介</a>
             <div class="nav-sub">
@@ -505,12 +490,10 @@
             </div>
           </li>
 
-          <!-- ギャラリー -->
           <li>
             <a href="gallery.html">ギャラリー</a>
           </li>
 
-          <!-- お問い合わせ -->
           <li>
             <a href="#join">お問い合わせ</a>
           </li>
@@ -521,7 +504,6 @@
 
   <!-- ヒーロー：全面スライドショー＋テキスト -->
   <section class="hero">
-    <!-- 背景スライドたち -->
     <div class="hero-bg">
       <img src="HP1.jpg.jpg" alt="ラオスの様子1" class="slide active">
       <img src="HP2.jpg.jpg" alt="ラオスの様子2" class="slide">
@@ -531,10 +513,8 @@
       <img src="HP6.jpg.jpg" alt="ラオスの様子6" class="slide">
     </div>
 
-    <!-- 写真の上にかぶせるグラデーション -->
     <div class="hero-overlay"></div>
 
-    <!-- 手前側のテキスト・ボタン -->
     <div class="hero-inner">
       <h1 class="hero-title">
         １杯のコーヒーがつなぐラオスのこども達の笑顔
@@ -571,7 +551,6 @@
       </div>
 
       <div class="cards">
-        <!-- ラオス産コーヒー 詳細ページへ -->
         <a href="coffee.html" class="card-link">
           <article class="card">
             <div class="card-img-wrap">
@@ -587,7 +566,6 @@
           </article>
         </a>
 
-        <!-- 教育支援 詳細ページへ -->
         <a href="education.html" class="card-link">
           <article class="card">
             <div class="card-img-wrap">
@@ -603,7 +581,6 @@
           </article>
         </a>
 
-        <!-- スタディツアー 詳細ページへ -->
         <a href="studytour.html" class="card-link">
           <article class="card">
             <div class="card-img-wrap">
@@ -619,7 +596,6 @@
           </article>
         </a>
       </div>
-
     </section>
 
     <section class="section">
@@ -637,14 +613,9 @@
           2025年版 職業図鑑の制作がスタートしました。内容チェックにご協力いただける方も募集中です。
         </li>
       </ul>
-      <!-- ▼ お知らせ専用ページへの導線 ▼ -->
       <div class="cta">
-        <p>
-          今後の販売会やイベントの詳しい予定は、お知らせページにまとめていきます。
-        </p>
-        <p>
-          <a href="news.html" class="btn-primary">お知らせページへ</a>
-        </p>
+        <p>今後の販売会やイベントの詳しい予定は、お知らせページにまとめていきます。</p>
+        <p><a href="news.html" class="btn-primary">お知らせページへ</a></p>
       </div>
     </section>
 
@@ -670,41 +641,40 @@
     © 2025 Smile F LAOS
   </footer>
 
-<script>
-  // スマホ用：ヘッダーをタップするとメニュー開閉
-  document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('.site-header');
-    const headerInner = document.querySelector('.header-inner');
-    const nav = document.querySelector('.global-nav');
+  <script>
+    // スマホ用：ヘッダーをタップするとメニュー開閉
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.querySelector('.site-header');
+      const headerInner = document.querySelector('.header-inner');
+      const nav = document.querySelector('.global-nav');
 
-    if (!header || !headerInner || !nav) return;
+      if (!header || !headerInner || !nav) return;
 
-    function isMobile() {
-      return window.matchMedia('(max-width: 768px)').matches;
+      function isMobile() {
+        return window.matchMedia('(max-width: 768px)').matches;
+      }
+
+      headerInner.addEventListener('click', function (e) {
+        if (!isMobile()) return;
+        if (e.target.closest('nav')) return; // メニューをタップしたときは開閉しない
+        header.classList.toggle('is-open');
+      });
+    });
+
+    // スライドショー
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(next) {
+      slides[current].classList.remove('active');
+      current = (next + slides.length) % slides.length;
+      slides[current].classList.add('active');
     }
 
-    headerInner.addEventListener('click', function (e) {
-      if (!isMobile()) return;
-
-      // メニューのリンク部分を押したときは開閉させない
-      if (e.target.closest('nav')) return;
-
-      header.classList.toggle('is-open');
-    });
-  });
-
-  // スライドショー用のシンプルなJS（元のまま）
-  const slides = document.querySelectorAll('.slide');
-  let current = 0;
-
-  function showSlide(next) {
-    slides[current].classList.remove('active');
-    current = (next + slides.length) % slides.length;
-    slides[current].classList.add('active');
-  }
-
-  if (slides.length > 0) {
-    slides[0].classList.add('active');
-    setInterval(() => showSlide(current + 1), 5000); // 5秒ごとに切り替え
-  }
-</script>
+    if (slides.length > 0) {
+      slides[0].classList.add('active');
+      setInterval(() => showSlide(current + 1), 5000);
+    }
+  </script>
+</body>
+</html>
