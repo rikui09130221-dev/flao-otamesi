@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コーヒーのご注文｜Smile F LAOS</title>
+  <style>
+    :root {
+      --primary: #a44f30;
+      --primary-dark: #a44f30;
+      --accent: #a44f30;
+      --bg: #ffffff;
+      --text-main: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-top: 60px;
+    }
+
+    /* ヘッダー & ナビ（indexと同じ） */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #a44f30;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .logo-text-main {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      display: block;
+      opacity: 0.8;
+    }
+
+    .global-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      font-size: 16px;
+      list-style: none;
+    }
+
+    .global-nav > li {
+      position: relative;
+      list-style: none;
+    }
+
+    .global-nav > li > a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 0;
+      display: inline-block;
+    }
+
+    .global-nav > li > a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-sub {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      padding: 6px 0;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      display: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 200;
+    }
+
+    .global-nav > li:hover .nav-sub,
+    .global-nav > li:focus-within .nav-sub {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-sub a {
+      display: block;
+      padding: 6px 14px;
+      font-size: 14px;
+      color: #000000;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-sub a:hover {
+      background: #fff5ee;
+      color: #a44f30;
+    }
+
+    /* ヒーロー（注文ページ用のシンプルな帯） */
+    .hero-order {
+      background: #a44f30;
+      color: #fff;
+      border-bottom: 4px solid #8b4127;
+    }
+
+    .hero-order-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 24px;
+    }
+
+    .hero-order-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-order-sub {
+      font-size: 14px;
+      opacity: 0.95;
+      max-width: 720px;
+    }
+
+    /* メイン */
+    .wrapper {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 20px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* 商品カード */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    .product-card {
+      border-radius: 10px;
+      border: 1px solid #eee;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f9f5f2;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-body {
+      padding: 12px 12px 14px;
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-roast {
+      font-size: 12px;
+      color: #a44f30;
+      margin-bottom: 4px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-note {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* 注文の流れ */
+    .flow-list {
+      list-style: none;
+      counter-reset: step;
+      font-size: 14px;
+    }
+
+    .flow-item {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 12px;
+    }
+
+    .flow-item::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #a44f30;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ボタン */
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--primary-dark);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      background: #8b4127;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    }
+
+    .cta-center {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* フッター */
+    footer {
+      background: #212121;
+      color: #eee;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+
+      body {
+        padding-top: 56px;
+      }
+
+      .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .global-nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .site-header.is-open .global-nav {
+        display: flex;
+      }
+
+      .nav-sub {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        padding: 0;
+        display: block;
+        opacity: 1;
+        transform: none;
+        backdrop-filter: none;
+      }
+
+      .nav-sub a {
+        padding: 2px 0 0;
+        color: #ffe5d6;
+        background: none;
+      }
+
+      .nav-sub a:hover {
+        background: none;
+        text-decoration: underline;
+        color: #ffffff;
+      }
+
+      .hero-order-inner {
+        padding: 20px 14px 18px;
+      }
+
+      .hero-order-title {
+        font-size: 20px;
+      }
+
+      .wrapper {
+        margin-top: 18px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr; /* 2列→1列 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.jpg" alt="Smile F LAOS ロゴ" class="logo-mark">
+        <div>
+          <div class="logo-text-main">Smile F LAOS</div>
+          <span class="logo-text-sub">ラオスと日本をつなぐ学生サークル</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="global-nav">
+          <li>
+            <a href="about.html">Smile F LAOSとは</a>
+            <div class="nav-sub">
+              <a href="members.html">構成・メンバー紹介</a>
+              <a href="history.html">エフラオの歩み</a>
+              <a href="about.html#about-laos">ラオス概要</a>
+            </div>
+          </li>
+
+          <li>
+            <a href="about.html#activities">活動内容</a>
+            <div class="nav-sub">
+              <a href="coffee.html">コーヒー</a>
+              <a href="education.html">教育支援</a>
+              <a href="studytour.html">スタディツアー</a>
+              <a href="news.html">お知らせ</a>
+            </div>
+          </li>
+
+          <li>
+            <a href="coffee.html">製品紹介</a>
+            <div class="nav-sub">
+              <a href="coffee.html">コーヒー</a>
+              <a href="order.html">注文</a>
+            </div>
+          </li>
+
+          <li>
+            <a href="gallery.html">ギャラリー</a>
+          </li>
+
+          <li>
+            <a href="index.html#join">お問い合わせ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー（帯） -->
+  <section class="hero-order">
+    <div class="hero-order-inner">
+      <h1 class="hero-order-title">コーヒーのご注文</h1>
+      <p class="hero-order-sub">
+        Smile F LAOSのフェアトレードコーヒーに興味を持ってくださりありがとうございます。<br>
+        現在、主に学内販売会やイベントでのお渡しを中心に販売していますが、数量や日程によってご予約・ご相談も承っています。
+      </p>
+    </div>
+  </section>
+
+  <!-- メイン -->
+  <main class="wrapper">
+    <!-- 商品一覧 -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">ラインナップ</h2>
+        <div class="section-sub">Products</div>
+      </div>
+
+      <p style="font-size: 14px; margin-bottom: 12px;">
+        下記は現在販売している代表的な商品です。イベントや在庫状況によって内容が変わる場合があります。
+      </p>
+
+      <div class="product-grid">
+        <!-- 中煎り100g -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <!-- 写真があれば差し替えてね -->
+            <img src="beans-medium.jpg" alt="ラオス産コーヒー 中煎り" class="product-img">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">ラオス産コーヒー豆 100g</h3>
+            <div class="product-roast">中煎り</div>
+            <div class="product-price">価格例：900（税込）</div>
+            <p class="product-note">
+              バランスの良い飲みやすい焙煎。酸味とコクのバランスがよく、毎日の一杯にもおすすめです。
+            </p>
+          </div>
+        </article>
+
+        <!-- 深煎り100g -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="beans-dark.jpg" alt="ラオス産コーヒー 深煎り" class="product-img">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">ラオス産コーヒー豆 100g</h3>
+            <div class="product-roast">深煎り</div>
+            <div class="product-price">価格例：900（税込）</div>
+            <p class="product-note">
+              しっかりとした苦味と香ばしさが特徴。ミルクや砂糖との相性も良く、カフェオレにもぴったりです。
+            </p>
+          </div>
+        </article>
+
+        <!-- ドリップ3個 -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="drip-3set.jpg" alt="ドリップパック3個セット" class="product-img">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">ドリップパック 3個セット</h3>
+            <div class="product-price">価格例：500円（税込）</div>
+            <p class="product-note">
+              お試し用や、ちょっとしたプレゼントに人気のセットです。お湯だけで手軽にラオスコーヒーを楽しめます。
+            </p>
+          </div>
+        </article>
+
+        <!-- ドリップ5個 -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="drip-5set.jpg" alt="ドリップパック5個セット" class="product-img">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">ドリップパック 5個セット</h3>
+            <div class="product-price">価格例：800〜900円（税込）</div>
+            <p class="product-note">
+              まとめて楽しみたい方向けのセット。ご家族やご友人へのギフトとしてもご利用いただいています。
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 注文の流れ -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">ご注文の流れ</h2>
+        <div class="section-sub">How to order</div>
+      </div>
+      <ul class="flow-list">
+        <li class="flow-item">
+          フォームからご希望の商品・数量・お受け取り方法（学内販売会、イベントなど）を入力して送信してください。
+        </li>
+        <li class="flow-item">
+          担当者からメールまたはSNSにて在庫状況・金額・お渡し日時などの確認連絡を差し上げます。
+        </li>
+        <li class="flow-item">
+          内容にご同意いただけましたら、当日会場にてお支払い・お渡しとなります。
+        </li>
+      </ul>
+      <p style="font-size: 12px; color:#777; margin-top: 8px;">
+        ※ 大量注文やイベントでの利用をお考えの方は、余裕をもってご相談いただけると助かります。
+      </p>
+
+      <div class="cta-center">
+        <!-- ▼ ここを実際のGoogleフォームのURLに差し替えてね ▼ -->
+        <a href="https://forms.gle/xxxxxxxxxxxxxxxx" class="btn-primary" target="_blank" rel="noopener">
+          ご注文・ご相談フォームを開く
+        </a>
+      </div>
+    </section>
+
+    <!-- よくある質問など、あとで増やしてもOK -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">よくあるお問い合わせ</h2>
+        <div class="section-sub">FAQ</div>
+      </div>
+      <p style="font-size: 14px; margin-bottom: 6px;">
+        Q. 通販（配送）は行っていますか？<br>
+        A. 現在は主に対面でのお渡しを中心にしていますが、状況によって個別にご相談をお受けしています。まずはフォームからお問い合わせください。
+      </p>
+      <p style="font-size: 14px;">
+        Q. 大学関係者以外でも購入できますか？<br>
+        A. 学園祭や学外イベントなど、一般の方もご参加いただける場で販売しています。最新情報は「お知らせ」やSNSをご覧ください。
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Smile F LAOS
+  </footer>
+
+  <script>
+    // スマホ用：ヘッダーをタップするとメニュー開閉（indexと同じ）
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.querySelector('.site-header');
+      const headerInner = document.querySelector('.header-inner');
+      const nav = document.querySelector('.global-nav');
+
+      if (!header || !headerInner || !nav) return;
+
+      function isMobile() {
+        return window.matchMedia('(max-width: 768px)').matches;
+      }
+
+      headerInner.addEventListener('click', function (e) {
+        if (!isMobile()) return;
+        if (e.target.closest('nav')) return;
+        header.classList.toggle('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
